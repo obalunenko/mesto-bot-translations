@@ -1,0 +1,513 @@
+UndefinedCommandError:
+  description: "User entered undefined command"
+  other: "Я не знаю этой команды"
+
+AnotherCommandError:
+  description: "User already run another command and must finish it before run another command"
+  other: "Вы уже запустили другую команду. Пожалуйста, дождитесь завершения или отмените ее при помощи /cancel"
+
+NoCommandError:
+  description: "/cancel on no command"
+  one: "No active command to cancel. I wasn't doing anything anyway. Zzzzz..."
+  other: "Нет активных команд для отмены. Впрочем, я все равно ничем не занимался. Zzzzz..."
+
+InternalError:
+  description: "Cannot connect to database or to lambdas"
+  other: "Произошла внутренняя ошибка: <code>{{ .Error }}</code>"
+
+InvalidCountError:
+  other: "Вы ввели неверное число"
+
+TooLongGameNameError:
+  description: "User entered too long game name"
+  other: "Слишком длинное название игры. Пожалуйста, выберите корректную игру."
+
+UndefinedGameError:
+  description: "User entered undefined game"
+  other: "Игра не найдена в списке доступных игр. Пожалуйста, выберите корректную игру"
+
+UndefinedActionError:
+  description: "User selected undefined action"
+  other: "Действие не найдено. Пожалуйста, выберите корректное действие"
+
+FullGame:
+  other: "На выбранную игру закончились места"
+
+FullEvent:
+  other: "На выбранное событие закончились места"
+
+InvalidGameError:
+  description: "User selected invalid game"
+  other: "Игра <code>{{ .Game }}</code> не верна. Пожалуйста, выберите игру снова"
+
+InvalidDateError:
+  description: "User entered invalid date"
+  other: "Дата <code>{{ .Date }}</code> введена неверно. Пожалуйста, введите дату снова в формате <code>dd.mm</code>."
+
+TooLateError:
+  other: "Слишком позднее время начала. Выберите время раньше 21:00."
+
+TooFarDate21Error:
+  description: "User entered invalid date"
+  other: "Дата <code>{{ .Date }}</code> слишком далеко. Пожалуйста, введите дату снова в пределах 3 недель."
+
+InvalidTimeError:
+  description: "User entered invalid date"
+  other: "Время <code>{{ .Time }}</code> введено неверно. Пожалуйста, введите время снова в формате <code>HH:MM</code>."
+
+InvalidLocationError:
+  description: "User entered invalid location"
+  other: "Выбранная локация <code>{{ .Location }}</code> не существует. Пожалуйста, выберите локацию снова.."
+
+EnterTime:
+  other: "Вы выбрали {{ .Date }} {{ .Weekday }}. Пожалуйста, введите теперь время (<code>HH:MM</code>)"
+
+EnterNewTime:
+  other: "Вы выбрали {{ .Date }} {{ .Weekday }}. Пожалуйста, введите теперь новое время (<code>HH:MM</code>)"
+
+EnterDate:
+  other: "Хорошо. Вы выбрали <b>{{ .Game }}</b>. Пожалуйста, введите дату (<code>dd.mm</code>)"
+
+EnterNewDate:
+  other: "Хорошо. Вы выбрали <b>{{ .Announce }}</b>. Пожалуйста, введите новую дату (<code>dd.mm</code>)"
+
+SelectGuestsCount:
+  other: "Пожалуйста, выберите число гостей"
+
+NoSeatsInTheGame:
+  other: "К сожалению, все места заняты. Попробуйте договориться о другом времени или другой игре"
+
+AreYouSure:
+  other: "Вы уверены?"
+
+GuestsAddedToAnnounce:
+  other: |
+    Вы успешно добавили {{ .PlayersCount }} гостей в игру в <b>{{ .GameRu }}</b> на {{ .LocationRu }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}.
+
+GuestsAddedToEvent:
+  other: |
+    Вы успешно добавили {{ .ParticipantsCount }} гостей в событие <b>{{ .Name }}</b> на {{ .LocationRu }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}.
+
+GuestsRemovedFromAnnounce:
+  other: |
+    Вы удалили {{ .PlayersCount }} гостей из игры в <b>{{ .GameRu }}</b> на {{ .LocationRu }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}.
+
+GuestsRemovedFromEvent:
+  other: |
+    Вы удалили {{ .ParticipantsCount }} гостей из события <b>{{ .Name }}</b> на {{ .LocationRu }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}.
+
+NoGuests:
+  other: |
+    Вы ещё никого не пригласили
+
+SelectAnnounceToJoin:
+  other: "Пожалуйста, выберите анонс, к которому хотите присоединиться"
+
+SelectAnnounceToMove:
+  other: "Пожалуйста, выберите анонс, который хотите переместить"
+
+SelectAnnounceToLeave:
+  other: "Пожалуйста, выберите анонс, который хотите покинуть"
+
+SelectAnnounceToDelete:
+  other: "Пожалуйста, выберите анонс, который хотите удалить"
+
+SelectAnnounceToAddGuests:
+  other: "Пожалуйста, выберите анонс, в который хотите добавить гостей"
+
+SelectAnnounceToRemoveGuests:
+  other: "Пожалуйста, выберите анонс, из которого хотите удалить гостей"
+
+SelectGame:
+  other: "Пожалуйста, выберите игру"
+
+SelectAction:
+  other: "Пожалуйста, выберите действие"
+
+SelectCommand:
+  other: "Пожалуйста, выберите команду"
+
+Bye:
+  other: "Пока :)"
+
+NotReadyYet:
+  other: "Ещё не готово"
+
+GoingToSleep:
+  description: "Before bot stops"
+  other: "Простите, мне надо немного подремать..."
+
+GameInited:
+  other: |
+    Вы успешно анонсировали игру в <b>{{ .GameRu }}</b> на {{ .LocationRu }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}.
+
+GameMoved:
+  other: |
+    Вы успешно переместили игру в <b>{{ .GameRu }}</b> на {{ .LocationRu }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}.
+
+EventMoved:
+  other: |
+    Вы успешно переместили событие <b>{{ .Name }}</b> на {{ .LocationRu }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}.
+
+MyGames:
+  other: |
+    {{- range $i, $date := . }}
+    <b><u>{{ $date.Weekday }} - {{ $date.Date }}</u></b>
+    {{- range $j, $announce := $date.Announces }}
+      {{ $announce.Emoji }}<b>{{ $announce.Time }} {{ $announce.GameRu }} ({{ $announce.LocationRu }})</b>
+      {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков:
+      {{- range $k, $player := $announce.Players }}
+      @{{ $player.Username }}{{ if not (eq $player.Guests 0) }} +{{ $player.Guests }}{{ end }}{{ if eq $player.Username $announce.Initiator }} (инициатор игры){{ end }}
+      {{- end }}
+    {{- end }}
+    {{ end }}
+
+CurrentGames:
+  other: |
+    {{- range $i, $date := . }}
+    <b><u>{{ $date.Weekday }} - {{ $date.Date }}</u></b>
+    {{- range $j, $announce := $date.Announces }}
+    {{ $announce.Emoji }}<b>{{ $announce.Time }} - {{ $announce.GameRu }} ({{ $announce.LocationRu }})</b>
+      {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков
+      {{- if not (eq $announce.Initiator "" ) }}
+      Инициатор: @{{ $announce.Initiator }}{{ end }}
+    {{- end }}
+    {{ end }}
+
+GameLeft:
+  other: |
+    Вы покинули игру <b>{{ .GameRu }}</b>, проводимую <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.
+
+EventLeft:
+  other: |
+    Вы покинули событие <b>{{ .Name }}</b>, проводимый <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.
+
+AnnounceRevoked:
+  other: |
+    Игра <b>{{ .GameRu }}</b>, проводимая в <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b> отменена.
+
+GameJoined:
+  other: |
+    Вы успешно присоединились к игре <b>{{ .GameRu }}</b>, проводимой <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.
+
+EventJoined:
+  other: |
+    Вы успешно присоединились к событию <b>{{ .Name }}</b>, проводимой <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.
+
+AnnouncesNoChanges:
+  other: |
+    Анонсы оставлены без изменения.
+
+GameDescription:
+  other: |
+    {{- if .BGGLink }}{{ $link := deref .BGGLink }}{{ if not (eq $link "")}}
+    {{ .Emoji }}<b><a href="{{ .BGGLink }}">{{ .NameEn }}/{{ .NameRu }}</a></b>
+    {{- else }}
+    {{ .Emoji }}<b>{{ .NameEn }}/{{ .NameRu }}</b>
+    {{- end }}
+    {{- end }}
+    <code>
+    Количество игроков: {{ .MinPlayers}}-{{ .MaxPlayers }}
+    Рекомендованное количество игроков: {{ .RecommendedPlayers }}
+    Сложность: {{ .Complexity }} / 5
+    Продолжительность: {{ .MinDuration }}-{{ .MaxDuration }} мин
+    {{ .DescriptionRu }}</code>
+    {{- $length := len .Owners }}
+    {{- if eq $length 1 }}
+    {{- $first := index .Owners 0}}
+    Владелец:  {{- if not (eq $first.Username "МЕСТО") }}@{{ end }}{{ $first.Username }}{{ if $first.Notes }}{{ $notes := deref $first.Notes }}{{ if not (eq $notes "")}} ({{ $notes }}){{ end }}{{ end }}
+    {{- else if gt $length 1 }}
+    Владельцы:
+    {{- range $i, $owner := .Owners}}
+    {{ if not (eq $owner.Username "МЕСТО") }}@{{ end }}{{ $owner.Username }}{{ if $owner.Notes }}{{ $notes := deref $owner.Notes }}{{ if not (eq $notes "")}} ({{ $notes }}){{ end }}{{ end }}
+    {{- end }}
+    {{- end }}
+    {{ if .Addons }}
+    Дополнения:
+    {{- range $i, $addon := .Addons}}
+    - {{ $addon }}
+    {{- end }}
+    {{- end }}
+    {{ if .Tags }}
+    {{- range $i, $tag := .Tags}}#{{ $tag }} {{ end }}
+    {{- end }}
+
+ListGames:
+  other: |
+    <code>
+    {{- range $i, $game := . }}
+    {{ $game.NameRu }} ({{ $game.Language }}): {{ $game.MinPlayers }}-{{ $game.MaxPlayers }} игроков
+    {{- end }}
+    </code>
+
+Next:
+  other: "Далее >"
+
+Previous:
+  other: "< Назад"
+
+Start:
+  other: |
+    Список доступных команд появится автоматически, когда вы наберете /.
+
+NoAnnounces:
+  other: "На данный момент Вы ещё не записались ни на одну игру."
+
+NoAnnouncesToDelete:
+  other: "На данный момент нет созданных вами игр."
+
+NoAnnouncesToJoin:
+  other: "На данный момент в расписании нет игр, к которым вы можете присоединиться."
+
+AnnounceDeleted:
+  other: |
+    Игра <b>{{ .GameRu }}</b>, проводимая в <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b> была отменена @{{ .Initiator }}.
+
+NoGames:
+  other: "Нет анонсированных игр в ближайшую неделю."
+
+YouAreBanned:
+  other: "Вы забанены @{{ .BannedBy }}. Причина бана: <code>{{ .BanReason }}</code>"
+
+SelectLocation:
+  other: |
+    Пожалуйста, выберите локацию.
+
+UseInlineKeyboard:
+  other: |
+    Пожалуйста, используйте встроенную клавиатуру перед Вами.
+
+TimeIntersection:
+  other: |
+    Кто-то уже играет в эту игру в это время.
+
+ClosedLocation:
+  other: |
+    Время игры выходит за ограничения времени работы МЕСТА. Пожалуйста, выберите другое время для игры.
+
+PlaceIntersection:
+  other: |
+    На это время все столы заняты.
+
+YesAnswer:
+  other: "Да"
+
+NoAnswer:
+  other: "Нет"
+
+Subscribed:
+  other: "Вы успешно подписались на игру <b>{{ .NameRu }}</b>. Если кто-то её анонсирует, мы Вам сразу сообщим."
+
+Unsubscribed:
+  other: "Вы отписались от игры <b>{{ .NameRu }}</b>. Уведомления о её анонсах перестанут приходить."
+
+SubscribedGames:
+  other: |
+    <code>{{- range $i, $game := .}}
+    {{ $game.NameRu }}
+    {{- end }}</code>
+
+NoSubscribedGames:
+  other: Вы ещё не подписались ни на одну игру.
+
+InitGameNotification:
+  other: |
+    Пользователь @{{ .Initiator }} анонсировал игру <b>{{ .GameRu }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.
+
+DeleteAnnounceNotification:
+  other: |
+    Пользователь @{{ .Initiator }} <u>отменил</u> игру <b>{{ .GameRu }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.
+
+MoveGameNotification:
+  other: |
+    Пользователь @{{ .Initiator }} <u>сдвинул</u> игру <b>{{ .GameRu }}</b>.
+    Новое время: <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b>.
+    Новая локация: <b>{{ .LocationRu }}</b>.
+
+MoveEventNotification:
+  other: |
+    Событие <b>{{ .Name }}</b> было <u>сдвинуто</u>.
+    Новое время: <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b>.
+    Новая локация: <b>{{ .LocationRu }}</b>.
+
+NewPlaceInAnnounceNotification:
+  other: |
+    Только что появилось свободное место на игру <b>{{ .GameRu }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.
+
+# Admin part
+
+ShowBanned:
+  other: |
+    {{- range $i, $user := . }}
+    @{{ .Username }} - {{ .BanReason }}. Забанен @{{ .BannedBy }}
+    {{- end }}
+
+NoBannedUsers:
+  other: |
+    Никто пока не забанен.
+
+ShowAdmins:
+  other: |
+    {{- range $i, $user := . }}
+    @{{ .Username }}
+    {{- end }}
+
+YouAreNotAdmin:
+  other: "Вы не админ"
+
+EnterUsername:
+  other: "Введите юзернейм"
+
+AdminEnterUsernameToAddGuests:
+  other: "Введите юзернейм пользователя, к которому хотите добавить гостей"
+
+AdminEnterUsernameToRemoveGuests:
+  other: "Введите юзернейм пользователя, у которого хотите уменьшить число гостей"
+
+SelectUsernameToUnban:
+  other: "Выберите пользователя, которого хотите разбанить"
+
+EnterUsernameToBan:
+  other: "Введите юзернейм пользователя, которого хотите забанить"
+
+EnterBanReason:
+  other: "Введите причину бана"
+
+UserBanned:
+  other: "Пользователь @{{ . }} забанен"
+
+UserUnbanned:
+  other: "Пользователь @{{ . }} разбанен"
+
+EnterUsernameToPromote:
+  other: "Введите юзернейм пользователя, которого хотите повысить до админов"
+
+SelectUsernameToDemote:
+  other: "Выберите пользователя, которого хотите разжаловать из админов"
+
+UserPromoted:
+  other: "Пользователь @{{ . }} повышен до админа"
+
+UserDemoted:
+  other: "Пользователь @{{ . }} разжалован из админов"
+
+YouJoinedUserToGame:
+  other: |
+    Вы успешно добавили пользователя в игру <b>{{ .GameRu }}</b>, проводимой в <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.
+
+AdminEnterUsernameToJoin:
+  other: "Пожалуйста, введите юзернейм пользователя, которого хотите присоединить к какой-либо игре или событию"
+
+AdminEnterUsernameToLeave:
+  other: "Пожалуйста, введите юзернейм пользователя, которого хотите удалить из какой-либо игре или событию"
+
+AdminSelectAnnounce:
+  other: "Пожалуйста, выберите анонс"
+
+AdminSelectAnnounceToJoin:
+  other: "Пожалуйста, выберите анонс, к которому хотите присоединить пользователя"
+
+AdminSelectAnnounceToLeave:
+  other: "Пожалуйста, выберите анонс, из которого хотите убрать пользователя"
+
+AdminGameJoined:
+  other: |
+    Вы успешно присоединили @{{ .User }} к игре <b>{{ .Game.GameRu }}</b>, проводимой <b>{{ .Game.StartTime.Format "02.01.2006" }} ({{ weekday .Game.StartTime "ru"}}) в {{ .Game.StartTime.Format "15:04" }}</b> на <b>{{ .Game.LocationRu }}</b>.
+
+AdminEventJoined:
+  other: |
+    Вы успешно присоединили @{{ .User }} к событию <b>{{ .Event.Name }}</b>, проводимой <b>{{ .Event.StartTime.Format "02.01.2006" }} ({{ weekday .Event.StartTime "ru"}}) в {{ .Event.StartTime.Format "15:04" }}</b> на <b>{{ .Event.LocationRu }}</b>.
+
+AdminGameLeft:
+  other: |
+    Вы удалили @{{ .User }} из игры <b>{{ .Game.GameRu }}</b>, проводимую <b>{{ .Game.StartTime.Format "02.01.2006" }} ({{ weekday .Game.StartTime "ru"}}) в {{ .Game.StartTime.Format "15:04" }}</b> на <b>{{ .Game.LocationRu }}</b>.
+
+AdminEventLeft:
+  other: |
+    Вы удалили @{{ .User }} из события <b>{{ .Event.Name }}</b>, проводимый <b>{{ .Event.StartTime.Format "02.01.2006" }} ({{ weekday .Event.StartTime "ru"}}) в {{ .Event.StartTime.Format "15:04" }}</b> на <b>{{ .Event.LocationRu }}</b>.
+
+AdminSelectAnnounceToAddGuests:
+  other: "Пожалуйста, выберите анонс, к которому хотите добавить гостей пользователя"
+
+AdminSelectAnnounceToRemoveGuests:
+  other: "Пожалуйста, выберите анонс, из которого хотите убрать гостей пользователя"
+
+SelectEventToCancel:
+  other: "Выберите событие для отмены"
+
+SelectEventToResume:
+  other: "Выберите событие для восстановления"
+
+SelectEventToMove:
+  other: "Выберите событие, которое хотите переместить"
+
+EventCancelled:
+  other: "Событие отменено"
+
+EventResumed:
+  other: "Событие восстановлено"
+
+NoEventsToCancel:
+  other: "Нет событий для отмены"
+
+NoEventsToResume:
+  other: "Нет событий для восстановления"
+
+NoEventsToMove:
+  other: "Нет событий для перемещения"
+
+UserInfo:
+  other: |
+    @{{ .Username }}
+    Репутация: {{ .Reputation }}
+    Админ: <code>{{ .IsAdmin }}</code>
+    {{ if .Banned }}Забанен @{{ .BannedBy }} по причине: <code>{{ .BanReason }}</code>{{- end }}
+    {{- if .Games }}
+    Владеет играми:
+    {{- range $k, $game := .Games }}
+    - {{ $game.Emoji }}{{ $game.GameRu }}{{ if $game.Notes }}{{ $notes := deref $game.Notes }}{{ if not (eq $notes "")}} ({{ $notes }}){{ end }}{{ end }}
+    {{- end }}
+    {{- end }}
+    {{- if not (eq .SubscribedBy "") }}
+    Купил абонемент {{ .SubscriptionDate.Format "02.01.2006" }} на {{ .SubscriptionDuration }} дней у @{{ .SubscribedBy }}.
+    {{- end }}
+    {{- if .Attendance }}
+    Собирается посетить:
+    {{- range $k, $game := .Attendance }}
+    - {{ $game.Emoji }}<code>{{ $game.GameRu }} на {{ $game.LocationRu }} {{ $game.StartTime.Format "02.01.2006 15:04"}}</code>
+    {{- end }}
+    {{- end }}
+
+AdminAnnounceInfo:
+  other: |
+    <b><u>{{ .StartTime.Format "02.01.2006 15:04" }}</u></b>
+    {{ .Emoji }}<b>{{ .GameRu }} ({{ .LocationRu }})</b>
+      Инициатор: @{{ .Initiator }}
+      {{ .PlayersCount }}/{{ .MaxPlayers }} игроков:
+      {{- range $k, $player := .Players }}
+      @{{ $player.Username }}{{ if not (eq $player.Guests 0) }} +{{ $player.Guests }}{{ end }}
+      {{- end }}
+
+AdminEventInfo:
+  other: |
+    <b><u>{{ .StartTime.Format "02.01.2006 15:04" }}</u></b>
+    {{ .Emoji }}<b>{{ .Name }} ({{ .LocationRu }})</b>
+      {{ .ParticipantsCount }}/{{ .MaxParticipants }} участников:
+      {{- range $k, $participant := .Participants }}
+      @{{ $participant.Username }}{{ if not (eq $participant.Guests 0) }} +{{ $participant.Guests }}{{ end }}
+      {{- end }}
+
+EnterUsernameToGtfo:
+  other: "Введите юзернейм пользователя, которого собираетесь гнать ссанными тряпками"
+
+UserGTFOed:
+  other: "Пользователь удалён и забанен"
+
+UserLiked:
+  other: "Пользователь @{{ . }} получил +1 к репутации"
+
+UserDisliked:
+  other: "Пользователь @{{ . }} получил -1 к репутации"
+
+SubscriptionSold:
+  other: "Абонемент на {{ .Duration }} дней продан @{{ .User }}"
