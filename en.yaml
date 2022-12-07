@@ -1,6 +1,6 @@
 UndefinedCommandError:
   description: "User entered undefined command"
-  other: "I don't know this command"
+  other: "I don't know this command."
 
 AnotherCommandError:
   description: "User already run another command and must finish it before run another command"
@@ -11,7 +11,7 @@ NoCommandError:
   other: "No active command to cancel. I wasn't doing anything anyway. Zzzzz..."
 
 InvalidCountError:
-  other: "You have entered an invalid number"
+  other: "You have entered an invalid number."
 
 InternalError:
   description: "Cannot connect to database or to lambdas"
@@ -19,25 +19,25 @@ InternalError:
 
 TooLongGameNameError:
   description: "User entered too long game name"
-  other: "The name you have entered is too long. Please enter a correct name"
+  other: "The name you have entered is too long. Please enter a correct name."
 
 UndefinedGameError:
   description: "User entered undefined game"
-  other: "Game is not on the list of available games. Please select an available game"
+  other: "Game is not on the list of available games. Please select an available game."
 
 UndefinedActionError:
   description: "User selected undefined action"
-  other: "Action not found. Please select a correct action"
+  other: "Action not found. Please select a correct action."
 
 InvalidGameError:
   description: "User selected invalid game"
   other: "<code>{{ .Game }}</code> is not a valid game. Please select a game again."
 
 FullGame:
-  other: "There are no players slots left for this game"
+  other: "Sorry, there are no players slots left for this game."
 
 FullEvent:
-  other: "There are no participants slots left for this event"
+  other: "Sorry, this event is already at full capacity."
 
 TooFarDate21Error:
   description: "User entered invalid date"
@@ -81,23 +81,23 @@ NoSeatsInTheGame:
 
 GuestsAddedToAnnounce:
   other: |
-    You successfully added {{ .PlayersCount }} guests to the game <b>{{ .GameEn }}</b> at {{ .LocationEn }} on {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}}) at {{ .StartTime.Format "15:04" }}.
+    You have successfully added {{ .PlayersCount }} players to the game of <b>{{ .GameEn }}</b> at {{ .LocationEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}.
 
 GuestsAddedToEvent:
   other: |
-    You successfully added {{ .ParticipantsCount }} guests to the event <b>{{ .Name }}</b> at {{ .LocationEn }} on {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}}) at {{ .StartTime.Format "15:04" }}.
+    You have successfully added {{ .ParticipantsCount }} guests to <b>{{ .Name }}</b> at {{ .LocationEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}.
 
 GuestsRemovedFromAnnounce:
   other: |
-    You removed {{ .PlayersCount }} guests from the game <b>{{ .GameEn }}</b> at {{ .LocationEn }} on {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}}) at {{ .StartTime.Format "15:04" }}.
+    You have removed {{ .PlayersCount }} players from the game of <b>{{ .GameEn }}</b> at {{ .LocationEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}.
 
 GuestsRemovedFromEvent:
   other: |
-    You removed {{ .ParticipantsCount }} guests from the event <b>{{ .Name }}</b> at {{ .LocationEn }} on {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}}) at {{ .StartTime.Format "15:04" }}.
+    You removed {{ .ParticipantsCount }} guests from the event <b>{{ .Name }}</b> at {{ .LocationEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}.
 
 NoGuests:
   other: |
-    You didn't invite any guest yet.
+    You haven't invited any guests yet.
 
 SelectAnnounceToJoin:
   other: "Select announce you would like to join, please"
@@ -118,19 +118,19 @@ SelectAnnounceToRemoveGuests:
   other: "Select announce, from what you would like to remove guests, please"
 
 SelectGame:
-  other: "Select a game, please"
+  other: "Please select a game."
 
 SelectCommand:
-  other: "Select command, please"
+  other: "Please choose a command."
 
 SelectAction:
-  other: "Select action, please"
+  other: "Please select an action."
 
 Bye:
   other: "Bye :)"
 
 NotReadyYet:
-  other: "Not ready yet"
+  other: "I'm not ready yet."
 
 GoingToSleep:
   description: "Before bot stops"
