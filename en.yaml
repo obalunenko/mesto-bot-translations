@@ -1,37 +1,37 @@
 UndefinedCommandError:
   description: "User entered undefined command"
-  other: "I don't know that command"
+  other: "I don't know this command"
 
 AnotherCommandError:
   description: "User already run another command and must finish it before run another command"
-  other: "You have already run another command. Please, wait for it, finish it or /cancel it."
+  other: "You are already running another command. Please complete the command it or cancel it."
 
 NoCommandError:
   description: "/cancel on no command"
   other: "No active command to cancel. I wasn't doing anything anyway. Zzzzz..."
 
 InvalidCountError:
-  other: "You entered invalid number"
+  other: "You have entered an invalid number"
 
 InternalError:
   description: "Cannot connect to database or to lambdas"
-  other: "An internal error occured: <code>{{ .Error }}</code>"
+  other: "An internal error has occured: <code>{{ .Error }}</code>"
 
 TooLongGameNameError:
   description: "User entered too long game name"
-  other: "Too long game name. Please select correct game"
+  other: "The name you have entered is too long. Please enter a correct name"
 
 UndefinedGameError:
   description: "User entered undefined game"
-  other: "Game not found in list of available games. Please select correct game"
+  other: "Game is not on the list of available games. Please select an available game"
 
 UndefinedActionError:
   description: "User selected undefined action"
-  other: "Action not found. Please, select correct action"
+  other: "Action not found. Please select a correct action"
 
 InvalidGameError:
   description: "User selected invalid game"
-  other: "Game <code>{{ .Game }}</code> is invalid. Select game again, please."
+  other: "<code>{{ .Game }}</code> is not a valid game. Please select a game again."
 
 FullGame:
   other: "There are no players slots left for this game"
@@ -41,14 +41,14 @@ FullEvent:
 
 TooFarDate21Error:
   description: "User entered invalid date"
-  other: "Date <code>{{ .Date }}</code> is too far. Enter date again within 3 weeks, please."
+  other: "<code>{{ .Date }}</code> is too far away. Please enter a date within 3 weeks."
 
 InvalidDateError:
   description: "User entered invalid date"
-  other: "Date <code>{{ .Date }}</code> is not valid. Enter date again using <code>dd.mm</code> format, please."
+  other: "<code>{{ .Date }}</code> is not a valid date. Please enter a date again using the <code>dd.mm</code> format."
 
 TooLateError:
-  other: "Too late start time. Select start time before 9:00 PM."
+  other: "The starting time is too late. Please select a starting time before 9:00 PM."
 
 InvalidTimeError:
   description: "User entered invalid time"
@@ -56,28 +56,28 @@ InvalidTimeError:
 
 InvalidLocationError:
   description: "User entered invalid location"
-  other: "Selected location <code>{{ .Location }}</code> does not exist. Select location again, please."
+  other: "<code>{{ .Location }}</code> is not a valid location. Please select a location again."
 
 AreYouSure:
   other: "Are you sure?"
 
 EnterTime:
-  other: "You choose {{ .Date }} {{ .Weekday }}. Now enter time of the game (<code>HH:MM</code>), please"
+  other: "You chose {{ .Date }} {{ .Weekday }}. Now enter the starting time for the game (<code>HH:MM</code>)"
 
 EnterNewTime:
-  other: "You choose {{ .Date }} {{ .Weekday }}. Now enter new time of the game (<code>HH:MM</code>), please"
+  other: "You chose {{ .Date }} {{ .Weekday }}. Now enter the new starting time for the game (<code>HH:MM</code>)"
 
 EnterDate:
-  other: "Ok. You choose <b>{{ .Game }}</b>. Enter date (<code>dd.mm</code>), please"
+  other: "You choose <b>{{ .Game }}</b>. Please enter the date (<code>dd.mm</code>)"
 
 EnterNewDate:
-  other: "Ok. You choose <b>{{ .Announce }}</b>. Enter new date (<code>dd.mm</code>), please"
+  other: "You chose <b>{{ .Announce }}</b>. Please enter the new date (<code>dd.mm</code>)"
 
 SelectGuestsCount:
-  other: "Select guests count, please"
+  other: "Please select the number of guests"
 
 NoSeatsInTheGame:
-  other: "Unfortunately, all seats are occupied. Try to negotiate about other time or other game"
+  other: "Unfortunately, there are no open slots left. Please pick a different time or a different game"
 
 GuestsAddedToAnnounce:
   other: |
