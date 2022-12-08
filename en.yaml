@@ -244,56 +244,56 @@ Previous:
 
 Start:
   other: |
-    The list of available commands will appear automatically when you type /.
+    The list of available commands will pop up automatically after you type "/".
 
 AnnouncesNoChanges:
   other: |
-    Announces has left without changes.
+    No changes were made.
 
 NoAnnounces:
   other: "You haven't signed up for any games yet."
 
 NoAnnouncesToDelete:
-  other: "There are no games you have created."
+  other: "You haven't created any games yet."
 
 NoAnnouncesToJoin:
-  other: "There are no games you can join now."
+  other: "There are no available games to join."
 
 AnnounceDeleted:
   other: |
-    The game <b>{{ .GameEn }}</b> at <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}}) at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b> is cancelled by @{{ .Initiator }}
+    The game of <b>{{ .GameEn }}</b> on ({{ weekday .StartTime "en"}}) <b>{{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b> has been cancelled by @{{ .Initiator }}
 
 NoGames:
-  other: "No announced games on this week"
+  other: "There are no games scheduled for this week yet."
 
 YouAreBanned:
-  other: "You banned by @{{ .BannedBy }}. Ban reason: <code>{{ .BanReason }}</code>"
+  other: "You have been banned by @{{ .BannedBy }}. Ban reason: <code>{{ .BanReason }}</code>"
 
 SelectLocation:
   other: |
-    Select location, please
+    Please select location.
 
 UseInlineKeyboard:
   other: |
-    Use inline keyboard, please.
+    Please use the inline keyboard.
 
 TimeIntersection:
   other: |
-    Somebody plays this game at this time.
+    Somebody already plays this game at this time.
 
 ClosedLocation:
   other: |
-    This time slot is outside our operating hours. Choose a different starting time, please.
+    This time slot is outside our operating hours. Please choose a different starting time.
 
 PlaceIntersection:
   other: |
-    All tables are occupied at this time.
+    There are no vacant tables available at this time.
 
 Subscribed:
-  other: "You have successfully subscribed to the game <b>{{ .NameEn }}</b>. If someone announces it, you will be notified."
+  other: "You are now receiving updates about <b>{{ .NameEn }}</b> games. If someone announces a game, you will get a notification."
 
 Unsubscribed:
-  other: "You have unsubscribed from the game <b>{{ .NameEn }}</b>. Notifications of it announces will stop coming."
+  other: "You are no longer receiving updates about <b>{{ .NameEn }}</b>."
 
 SubscribedGames:
   other: |
@@ -302,7 +302,7 @@ SubscribedGames:
     {{- end }}</code>
 
 NoSubscribedGames:
-  other: You have not subscribed on any game yet.
+  other: You have not receiving updates about any games yet.
 
 YesAnswer:
   other: "Yes"
@@ -312,15 +312,15 @@ NoAnswer:
 
 InitGameNotification:
   other: |
-    User @{{ .Initiator }} has announced the game <b>{{ .GameEn }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}}) at {{ .StartTime.Format "15:04" }}</b> on <b>{{ .LocationEn }}</b>.
+    User @{{ .Initiator }} has announced the game of <b>{{ .GameEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }}  at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
 
 DeleteAnnounceNotification:
   other: |
-    User @{{ .Initiator }} <u>cancelled</u> the game <b>{{ .GameEn }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}}) at {{ .StartTime.Format "15:04" }}</b> on <b>{{ .LocationEn }}</b>.
+    User @{{ .Initiator }} <u>has cancelled</u> the game of <b>{{ .GameEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }}  at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
 
 MoveGameNotification:
   other: |
-    User @{{ .Initiator }} <u>has moved</u> the game <b>{{ .GameEn }}</b>.
+    User @{{ .Initiator }} <u>has moved</u> the game of <b>{{ .GameEn }}</b>.
     New time: <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}}) at {{ .StartTime.Format "15:04" }}</b>.
     New Location: <b>{{ .LocationEn }}</b>.
 
