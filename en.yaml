@@ -316,7 +316,7 @@ InitGameNotification:
 
 DeleteAnnounceNotification:
   other: |
-    User @{{ .Initiator }} <u>has cancelled</u> a game of <b>{{ .GameEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }}  at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
+    User @{{ .Initiator }} <u>has cancelled</u> the game of <b>{{ .GameEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }}  at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
 
 MoveGameNotification:
   other: |
@@ -410,31 +410,31 @@ AdminEnterUsernameToLeave:
   other: "Enter the username that you would like to remove from a game or event."
 
 AdminSelectAnnounce:
-  other: "Select announce, please"
+  other: "Please select an announced event."
 
 AdminSelectAnnounceToJoin:
-  other: "Select announce you would like to join user, please"
+  other: "Select an announced event to add a user to."
 
 AdminSelectAnnounceToLeave:
-  other: "Select announce you would like to remove player, please"
+  other: "Select an announced event to remove a user from."
 
 AdminSelectAnnounceToAddGuests:
-  other: "Select announce you would like to add user guests, please"
+  other: "Select an announced event to add user guests to."
 
 AdminSelectAnnounceToRemoveGuests:
-  other: "Select announce you would like to remove user guests, please"
+  other: "Select an announced event to remove user guests from."
 
 SelectEventToCancel:
-  other: "Select event to cancel, please"
+  other: "Select an event to cancel."
 
 SelectEventToResume:
-  other: "Select event to resume, please"
+  other: "Select an event to restore."
 
 SelectEventToMove:
-  other: "Select event to move, please"
+  other: "Select an event you'd like to move."
 
 EventCancelled:
-  other: "Event is cancelled"
+  other: "The event has been cancelled."
 
 EventResumed:
   other: "Event is resumed"
