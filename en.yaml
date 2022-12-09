@@ -305,10 +305,10 @@ NoSubscribedGames:
   other: You are not receiving updates about any games yet.
 
 YesAnswer:
-  other: "Yes"
+  other: "Yes."
 
 NoAnswer:
-  other: "No"
+  other: "No."
 
 InitGameNotification:
   other: |
@@ -358,46 +358,46 @@ GameJoined:
 
 EventJoined:
   other: |
-    You have successfully joined @{{ .Initiator }} to the event <b>{{ .Name }}</b> held on <b>({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
+    You have successfully joined the following event: <b>{{ .Name }}</b> held on <b>({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
 
 YouAreNotAdmin:
-  other: "You are not admin"
+  other: "You are not an admin."
 
 EnterUsername:
-  other: "Enter username"
+  other: "Enter username."
 
 AdminEnterUsernameToAddGuests:
-  other: "Please, enter username you'd like to add guests to."
+  other: "Please enter the username you'd like to add guests to."
 
 AdminEnterUsernameToRemoveGuests:
-  other: "Please, enter username you'd like to remove guests from."
+  other: "Please enter the username you'd like to remove guests from."
 
 SelectUsernameToUnban:
-  other: "Select username to unban"
+  other: "Select a username to unban."
 
 EnterUsernameToBan:
-  other: "Enter username to ban"
+  other: "Enter username to ban."
 
 EnterBanReason:
-  other: "Enter ban reason"
+  other: "Specify the ban reason."
 
 UserBanned:
-  other: "User @{{ . }} banned"
+  other: "User @{{ . }} has been banned"
 
 UserUnbanned:
-  other: "User @{{ . }} unbanned"
+  other: "User @{{ . }} has been unbanned"
 
 EnterUsernameToPromote:
-  other: "Enter username to promote"
+  other: "Enter a username to promote."
 
 SelectUsernameToDemote:
-  other: "Select username to demote"
+  other: "Select a username to demote."
 
 UserPromoted:
-  other: "User @{{ . }} promoted"
+  other: "User @{{ . }} has been promoted."
 
 UserDemoted:
-  other: "User @{{ . }} demoted"
+  other: "User @{{ . }} has been demoted."
 
 YouJoinedUserToGame:
   other: |
