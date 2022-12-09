@@ -401,13 +401,13 @@ UserDemoted:
 
 YouJoinedUserToGame:
   other: |
-    You successfully joined user to the game <b>{{ .GameEn }}</b> held on <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}}) at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
+    You have successfully added the user to the game of <b>{{ .GameEn }}</b> held on <b>({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
 
 AdminEnterUsernameToJoin:
-  other: "Enter username that you would like to join to some game or event, please"
+  other: "Enter the username that you would like to add to a game or event."
 
 AdminEnterUsernameToLeave:
-  other: "Enter username that you would like to remove from some game or event, please"
+  other: "Enter the username that you would like to remove from a game or event."
 
 AdminSelectAnnounce:
   other: "Select announce, please"
