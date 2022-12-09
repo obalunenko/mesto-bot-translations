@@ -290,7 +290,7 @@ PlaceIntersection:
     There are no vacant tables available at this time.
 
 Subscribed:
-  other: "You are now receiving updates about <b>{{ .NameEn }}</b> games. If someone announces a game, you will get a notification."
+  other: "You are now receiving updates about upcoming <b>{{ .NameEn }}</b> games. If someone announces a game, you will get a notification."
 
 Unsubscribed:
   other: "You are no longer receiving updates about <b>{{ .NameEn }}</b>."
@@ -302,7 +302,7 @@ SubscribedGames:
     {{- end }}</code>
 
 NoSubscribedGames:
-  other: You have not receiving updates about any games yet.
+  other: You are not receiving updates about any games yet.
 
 YesAnswer:
   other: "Yes"
@@ -312,16 +312,16 @@ NoAnswer:
 
 InitGameNotification:
   other: |
-    User @{{ .Initiator }} has announced the game of <b>{{ .GameEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }}  at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
+    User @{{ .Initiator }} has announced a game of <b>{{ .GameEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }}  at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
 
 DeleteAnnounceNotification:
   other: |
-    User @{{ .Initiator }} <u>has cancelled</u> the game of <b>{{ .GameEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }}  at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
+    User @{{ .Initiator }} <u>has cancelled</u> a game of <b>{{ .GameEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }}  at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
 
 MoveGameNotification:
   other: |
-    User @{{ .Initiator }} <u>has moved</u> the game of <b>{{ .GameEn }}</b>.
-    New time: <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}}) at {{ .StartTime.Format "15:04" }}</b>.
+    User @{{ .Initiator }} <u>has moved</u> a game of <b>{{ .GameEn }}</b>.
+    New time: ({{ weekday .StartTime "en"}}) <b>{{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b>.
     New Location: <b>{{ .LocationEn }}</b>.
 
 MoveEventNotification:
@@ -332,7 +332,7 @@ MoveEventNotification:
 
 NewPlaceInAnnounceNotification:
   other: |
-    New place just appeared in the game <b>{{ .GameEn }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}}) at {{ .StartTime.Format "15:04" }}</b> on <b>{{ .LocationEn }}</b>.
+    New spot has just become available for a game: <b>{{ .GameEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> on <b>{{ .LocationEn }}</b>.
 
 # Admin part
 
@@ -350,15 +350,15 @@ ShowAdmins:
 
 NoBannedUsers:
   other: |
-    Nobody are banned for now.
+    Nobody has been banned yet.
 
 GameJoined:
   other: |
-    You successfully joined @{{ .Initiator }} to the game <b>{{ .GameEn }}</b> held on <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}}) at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
+    You have successfully joined @{{ .Initiator }} for a game of <b>{{ .GameEn }}</b> held on <b>({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
 
 EventJoined:
   other: |
-    You successfully joined @{{ .Initiator }} to the event <b>{{ .Name }}</b> held on <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}}) at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
+    You have successfully joined @{{ .Initiator }} to the event <b>{{ .Name }}</b> held on <b>({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
 
 YouAreNotAdmin:
   other: "You are not admin"
