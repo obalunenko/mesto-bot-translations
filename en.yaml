@@ -437,16 +437,16 @@ EventCancelled:
   other: "The event has been cancelled."
 
 EventResumed:
-  other: "Event is resumed"
+  other: "The event has been restored."
 
 NoEventsToCancel:
-  other: "No events to cancel"
+  other: "No events to cancel."
 
 NoEventsToResume:
-  other: "No events to resume"
+  other: "No events to restore."
 
 NoEventsToMove:
-  other: "No events to move"
+  other: "No events to move."
 
 UserInfo:
   other: |
@@ -455,18 +455,18 @@ UserInfo:
     Admin: <code>{{ .IsAdmin }}</code>
     {{ if .Banned }}Banned @{{ .BannedBy }} for: <code>{{ .BanReason }}</code>{{- end }}
     {{- if .Games }}
-    Own games:
+    Owns games:
     {{- range $k, $game := .Games }}
     - {{ $game.Emoji }}{{ $game.GameEn }}{{ if $game.Notes }}{{ $notes := deref $game.Notes }}{{ if not (eq $notes "")}} ({{ $notes }}){{ end }}{{ end }}
     {{- end }}
     {{- end }}
     {{- if not (eq .SubscribedBy "") }}
-    Bought a subscription at {{ .SubscriptionDate.Format "02.01.2006" }} on {{ .SubscriptionDuration }} days at @{{ .SubscribedBy }}.
+    Purchased a membership on {{ .SubscriptionDate.Format "02.01.2006" }} for {{ .SubscriptionDuration }} days from @{{ .SubscribedBy }}.
     {{- end }}
     {{- if .Attendance }}
-    Going to attend:
+    Plans to attend:
     {{- range $k, $game := .Attendance }}
-    - {{ $game.Emoji }}<code>{{ $game.GameEn }} on {{ $game.LocationRu }} {{ $game.StartTime.Format "02.01.2006 15:04"}}</code>
+    - {{ $game.Emoji }}<code>{{ $game.GameEn }} at {{ $game.LocationEn }} on {{ $game.StartTime.Format "02.01.2006 15:04"}}</code>
     {{- end }}
     {{- end }}
 
@@ -492,20 +492,20 @@ AdminEventInfo:
       {{- end }}
 
 EnterUsernameToGtfo:
-  other: "Enter username you'd like to get the fuck out."
+  other: "Enter the username you wish to GTFO."
 
 UserGTFOed:
-  other: "User has been fucked out."
+  other: "User has been GTFOd."
 
 SubscriptionSold:
-  other: "Subscription on {{ .Duration }} days sold to @{{ .User }}"
+  other: "A {{ .Duration }} day membership has been sold to @{{ .User }}"
 
 AdminEventJoined:
   other: |
-    You successfully joined  @{{ .User }} to event <b>{{ .Event.Name }}</b> at <b>{{ .Event.StartTime.Format "02.01.2006" }} ({{ weekday .Event.StartTime "ru"}}) at {{ .Event.StartTime.Format "15:04" }}</b> ob <b>{{ .Event.LocationEn }}</b>.
+    You have successfully added  @{{ .User }} to <b>{{ .Event.Name }}</b>, held on <b>({{ weekday .Event.StartTime "ru"}}) {{ .Event.StartTime.Format "02.01.2006" }} at {{ .Event.StartTime.Format "15:04" }}</b> at <b>{{ .Event.LocationEn }}</b>.
 
 AdminEventLeft:
   other: |
-    You removed @{{ .User }} from event <b>{{ .Event.Name }}</b> at <b>{{ .Event.StartTime.Format "02.01.2006" }} ({{ weekday .Event.StartTime "ru"}}) in {{ .Event.StartTime.Format "15:04" }}</b> on <b>{{ .Event.LocationRu }}</b>.
+    You have removed @{{ .User }} from <b>{{ .Event.Name }}</b>, held on <b>({{ weekday .Event.StartTime "ru"}} {{ .Event.StartTime.Format "02.01.2006" }} ) at {{ .Event.StartTime.Format "15:04" }}</b> at <b>{{ .Event.LocationRu }}</b>.
 
 
