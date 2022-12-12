@@ -59,17 +59,23 @@ InvalidLocationError:
   description: "User entered invalid location"
   other: "Выбранная локация <code>{{ .Location }}</code> не существует. Пожалуйста, выберите локацию снова.."
 
+EnterEventTime:
+  other: "Вы выбрали <b>{{ .Weekday }}</b>. Пожалуйста, введите теперь время (<code>HH:MM</code>)"
+
 EnterTime:
-  other: "Вы выбрали {{ .Date }} {{ .Weekday }}. Пожалуйста, введите теперь время (<code>HH:MM</code>)"
+  other: "Вы выбрали <b>{{ .Date }} {{ .Weekday }}</b>. Пожалуйста, введите теперь время (<code>HH:MM</code>)"
 
 EnterNewTime:
-  other: "Вы выбрали {{ .Date }} {{ .Weekday }}. Пожалуйста, введите теперь новое время (<code>HH:MM</code>)"
+  other: |
+    Вы выбрали <b>{{ .Date }} {{ .Weekday }}</b>. Пожалуйста, введите теперь новое время (<code>HH:MM</code>)
 
 EnterDate:
-  other: "Хорошо. Вы выбрали <b>{{ .Game }}</b>. Пожалуйста, введите дату (<code>dd.mm</code>)"
+  other: |
+    Хорошо. Вы выбрали <b>{{ .Game }}</b>. Пожалуйста, введите дату (<code>dd.mm</code>). Сегодня <code>{{ now.Format "02.01"}}</code> 
 
 EnterNewDate:
-  other: "Хорошо. Вы выбрали <b>{{ .Announce }}</b>. Пожалуйста, введите новую дату (<code>dd.mm</code>)"
+  other: |
+    Хорошо. Вы выбрали <b>{{ .Announce }}</b>. Пожалуйста, введите новую дату (<code>dd.mm</code>). Сегодня <code>{{ now.Format "02.01"}}</code>
 
 SelectGuestsCount:
   other: "Пожалуйста, выберите число гостей"
@@ -79,6 +85,14 @@ NoSeatsInTheGame:
 
 AreYouSure:
   other: "Вы уверены?"
+
+MaxPlayersDecreasedInAnnounce:
+  other: |
+    Вы успешно уменьшили максимальное количество игроков до {{ .PlayersCount }} человек в игре в <b>{{ .GameRu }}</b> на {{ .LocationRu }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}.
+
+MaxPlayersIncreasedInAnnounce:
+  other: |
+    Вы успешно увеличили максимальное количество игроков до {{ .PlayersCount }} человек в игре в <b>{{ .GameRu }}</b> на {{ .LocationRu }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}.
 
 GuestsAddedToAnnounce:
   other: |
@@ -173,6 +187,35 @@ CurrentGames:
       Инициатор: @{{ $announce.Initiator }}{{ end }}
     {{- end }}
     {{ end }}
+
+Announcement:
+  other: |
+    Открытые на текущий момент игры:
+    {{ range $i, $date := . }}
+    <b>{{ $date.Weekday }} - {{ $date.Date }}</b>
+    {{- range $j, $announce := $date.Announces }}
+    {{- if lt $announce.PlayersCount $announce.MaxPlayers }}
+    {{ $announce.Time }} {{ $announce.Emoji }} {{ $announce.GameRu }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков) <b>({{ $announce.LocationRu }})</b>
+    {{- end }}
+    {{- end }}
+    {{ end }}
+    Записываться на игры <a href="https://docs.google.com/spreadsheets/d/1R_9X4pbxbKhkOVZr8sFtxumGpcsRcwBo92lA5f_0QFk/edit?usp=sharing">ТУТ</a>
+    Sign up <a href="https://docs.google.com/spreadsheets/d/1R_9X4pbxbKhkOVZr8sFtxumGpcsRcwBo92lA5f_0QFk/edit#gid=2123882920">HERE</a>
+    Находимся: <a href="https://www.google.com/maps/place/MESTO/@41.7123272,44.8034361,16.25z/data=!4m5!3m4!1s0x0:0xebb52ae2df885eb5!8m2!3d41.7078998!4d44.7976618?hl=ru">Марджанишвили</a> и <a href="https://www.google.com/maps/place/165-179,+165+Shalva+Nutsubidze+St,+T'bilisi/@41.7266447,44.7281625,17z/data=!3m1!4b1!4m5!3m4!1s0x40447309639f6529:0x913174e679eb1559!8m2!3d41.7266447!4d44.7281625?hl=en">Важа-Пшавела</a>
+    Location (English club): <a href="https://www.google.com/maps/place/MESTO/@41.7123272,44.8034361,16.25z/data=!4m5!3m4!1s0x0:0xebb52ae2df885eb5!8m2!3d41.7078998!4d44.7976618?hl=ru">Marjanishvili</a>
+
+AdminCurrentGames:
+  other: |
+    {{- range $i, $location := . }}
+    <b><u>{{ $location.LocationRu }}</u></b>
+    {{- range $j, $day := $location.Announces }}
+    <b>{{ $day.Weekday }} - {{ $day.Date }}</b>
+    {{- range $j, $announce := $day.Announces }}
+    {{ $announce.Emoji }}<b>{{ $announce.Time }} - {{ $announce.GameRu }}</b>
+      {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков
+    {{- end }}
+    {{ end }}
+    {{- end }}
 
 GameLeft:
   other: |
@@ -309,6 +352,9 @@ SubscribedGames:
 
 NoSubscribedGames:
   other: Вы ещё не подписались ни на одну игру.
+
+NoSubscriptions:
+  other: Пока ни одного абонемента.
 
 InitGameNotification:
   other: |
@@ -511,3 +557,27 @@ UserDisliked:
 
 SubscriptionSold:
   other: "Абонемент на {{ .Duration }} дней продан @{{ .User }}"
+
+EnterSubscriptionDate:
+  other: |
+    Введите дату покупки абонемента (<code>dd.mm</code>). Сегодня <code>{{ now.Format "02.01"}}</code>
+
+Subscriptions:
+  other: |
+    Сегодня <code>{{ now.Format "02.01.2006" }}</code>
+    {{- range $i, $sub := . }}
+    @{{ $sub.Username }} - Начинается: <code>{{ .PurchaseDate.Format "02.01.2006" }}</code>. Осталось <code>{{ daysLeft .PurchaseDate .Duration }}</code> дней
+    {{- end }}
+
+CannotDecrease:
+  other: |
+    Некуда уменьшать максимальное число игроков.
+
+SelectMaxPlayersCount:
+  other: Пожалуйста, выберите, на сколько человек изменить максимальное число игроков.
+
+TooEarly:
+  other: Выбранное время ранее текущего.
+
+SelectNewWeekday:
+  other: Выберите новый день недели.
