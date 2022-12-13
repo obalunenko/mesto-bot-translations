@@ -560,7 +560,7 @@ SubscriptionSold:
 
 EnterSubscriptionDate:
   other: |
-    Введите дату покупки абонемента (<code>dd.mm</code>). Сегодня <code>{{ now.Format "02.01"}}</code>
+    Введите дату покупки абонемента (<code>dd.mm.yyyy</code>). Сегодня <code>{{ now.Format "02.01.2006"}}</code>
 
 Subscriptions:
   other: |

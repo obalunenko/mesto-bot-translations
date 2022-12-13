@@ -556,7 +556,7 @@ AdminEventLeft:
 
 EnterSubscriptionDate:
   other: |
-    Enter date of buying subscription (<code>dd.mm</code>). Today is <code>{{ now.Format "02.01"}}</code>
+    Enter date of buying subscription (<code>dd.mm.yyyy</code>). Today is <code>{{ now.Format "02.01.2006"}}</code>
 
 Subscriptions:
   other: |
