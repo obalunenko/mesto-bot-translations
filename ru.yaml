@@ -126,6 +126,9 @@ SelectAnnounceToLeave:
 SelectAnnounceToDelete:
   other: "Пожалуйста, выберите анонс, который хотите удалить"
 
+SelectIrregularEventToDelete:
+  other: "Пожалуйста, выберите событие, которое хотите удалить"
+
 SelectAnnounceToAddGuests:
   other: "Пожалуйста, выберите анонс, в который хотите добавить гостей"
 
@@ -245,6 +248,10 @@ AnnouncesNoChanges:
   other: |
     Анонсы оставлены без изменения.
 
+IrregularEventsNoChanges:
+  other: |
+    События оставлены без изменения.
+
 GameDescription:
   other: |
     {{- if .BGGLink }}{{ $link := deref .BGGLink }}{{ if not (eq $link "")}}
@@ -310,6 +317,10 @@ AnnounceDeleted:
   other: |
     Игра <b>{{ .GameRu }}</b>, проводимая в <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b> была отменена @{{ .Initiator }}.
 
+IrregularEventDeleted:
+  other: |
+    Событие <b>{{ .Name }}</b>, проводимое в <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b> было удалено.
+
 NoGames:
   other: "Нет анонсированных игр в ближайшую неделю."
 
@@ -367,6 +378,10 @@ InitGameNotification:
 DeleteAnnounceNotification:
   other: |
     Пользователь @{{ .Initiator }} <u>отменил</u> игру <b>{{ .GameRu }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.
+
+DeleteIrregularEventNotification:
+  other: |
+    Событие <b>{{ .Name }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b> отменено.
 
 MoveGameNotification:
   other: |

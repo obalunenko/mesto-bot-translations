@@ -124,6 +124,9 @@ SelectAnnounceToLeave:
 SelectAnnounceToDelete:
   other: "Please select an announced event to cancel."
 
+SelectIrregularEventToDelete:
+  other: "Please select an event to delete."
+
 SelectAnnounceToAddGuests:
   other: "Please select an announced event to add guests to."
 
@@ -296,6 +299,10 @@ AnnouncesNoChanges:
   other: |
     No changes were made.
 
+IrregularEventsNoChanges:
+  other: |
+    No changes were made.
+
 NoAnnounces:
   other: "You haven't signed up for any games yet."
 
@@ -308,6 +315,10 @@ NoAnnouncesToJoin:
 AnnounceDeleted:
   other: |
     The game of <b>{{ .GameEn }}</b> on ({{ weekday .StartTime "en"}}) <b>{{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b> has been cancelled by @{{ .Initiator }}
+
+IrregularEventDeleted:
+  other: |
+    The event of <b>{{ .Name }}</b> on ({{ weekday .StartTime "en"}}) <b>{{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b> has been deleted.
 
 NoGames:
   other: "There are no games scheduled for this week yet."
@@ -366,6 +377,10 @@ InitGameNotification:
 DeleteAnnounceNotification:
   other: |
     User @{{ .Initiator }} <u>has cancelled</u> the game of <b>{{ .GameEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }}  at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
+
+DeleteIrregularEventNotification:
+  other: |
+    The event of <b>{{ .Name }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }}  at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b><u>has been cancelled</u> .
 
 MoveGameNotification:
   other: |
