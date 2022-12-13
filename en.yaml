@@ -586,10 +586,10 @@ EnterEmail:
   other: Please enter email
 
 InvalidEmail:
-  other: Invalid email <code>{{ . }}</code>
+  other: "Invalid email: <code>{{ . }}</code>"
 
 EmailIsSet:
-  other: Email <code>{{ . }}</code> is successfully set. Now you will be notified by Google.Calendar
+  other: "Email <code>{{ . }}</code> is successfully set. Now you will be notified by Google.Calendar"
 
 EmailIsUnset:
-  other: Email is successfully unset. Now you won't be notified by Google.Calendar
+  other: "Email is successfully unset. Now you won't be notified by Google.Calendar"

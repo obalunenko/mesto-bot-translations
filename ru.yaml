@@ -587,13 +587,13 @@ SelectNewWeekday:
   other: Выберите новый день недели.
 
 EnterEmail:
-  other: Введите email
+  other: "Введите email"
 
 InvalidEmail:
-  other: Некоректный email: <code>{{ . }}</code>
+  other: "Некоректный email: <code>{{ . }}</code>"
 
 EmailIsSet:
-  other: Email <code>{{ . }}</code> успешно установлен. Теперь Вам будут приходить уведомления в Google.Calendar
+  other: "Email <code>{{ . }}</code> успешно установлен. Теперь Вам будут приходить уведомления в Google.Calendar"
 
 EmailIsUnset:
-  other: Email успешно аннулирован. Теперь Вам не будут приходить уведомления в Google.Calendar
+  other: "Email успешно аннулирован. Теперь Вам не будут приходить уведомления в Google.Calendar"
