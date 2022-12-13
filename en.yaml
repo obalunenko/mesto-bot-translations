@@ -601,7 +601,7 @@ EnterEventName:
 
 EnterEventDate:
   other: |
-    Enter event date
+    Enter event date (<code>dd.mm</code>). Today is <code>{{ now.Format "02.01"}}</code>
 
 EnterEventDuration:
   other: |
