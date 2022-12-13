@@ -590,7 +590,8 @@ EnterEmail:
   other: Введите email
 
 InvalidEmail:
-  other: Некоректный email: <code>{{ . }}</code>
+  other: |
+    Некоректный email: <code>{{ . }}</code>
 
 EmailIsSet:
   other: Email <code>{{ . }}</code> успешно установлен. Теперь Вам будут приходить уведомления в Google.Calendar
