@@ -650,7 +650,7 @@ IrregularEventCreated:
   other: |
     Событие <b>{{ .Name }}</b> успешно создано.
 
-AdminEventJoined:
+AdminIrregularEventJoined:
   other: |
     Вы успешно присоединили @{{ .User }} к событию <b>{{ .Event.Name }}</b>, проводимой <b>{{ .Event.StartTime.Format "02.01.2006" }} ({{ weekday .Event.StartTime "ru"}}) в {{ .Event.StartTime.Format "15:04" }}</b> на <b>{{ .Event.LocationRu }}</b>.
 
