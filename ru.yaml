@@ -190,10 +190,12 @@ Announcement:
   other: |
     Открытые на текущий момент игры:
     {{ range $i, $date := . }}
+    {{- if len $date.Announces }}
     <b>{{ $date.Weekday }} - {{ $date.Date }}</b>
     {{- range $j, $announce := $date.Announces }}
     {{- if lt $announce.PlayersCount $announce.MaxPlayers }}
     {{ $announce.Time }} {{ $announce.Emoji }} {{ $announce.GameRu }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков) <b>({{ $announce.LocationRu }})</b>
+    {{- end }}
     {{- end }}
     {{- end }}
     {{ end }}
