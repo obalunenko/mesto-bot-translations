@@ -189,7 +189,7 @@ Announcement:
   other: |
     Открытые на текущий момент игры:
     {{ range $i, $date := . }}
-    {{- if len $date.Announces }}
+    {{- $length := len $date.Announces }}{{ if gt $length 0}}
     <b>{{ $date.Weekday }} - {{ $date.Date }}</b>
     {{- range $j, $announce := $date.Announces }}
     {{- if lt $announce.PlayersCount $announce.MaxPlayers }}
