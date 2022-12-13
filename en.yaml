@@ -86,11 +86,11 @@ NoSeatsInTheGame:
 
 MaxPlayersDecreasedInAnnounce:
   other: |
-    You successfully decreased maximum count of player to {{ .PlayersCount }} persons in the game <b>{{ .GameEn }}</b> on {{ .LocationEn }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}}) в {{ .StartTime.Format "15:04" }}.
+    You successfully decreased maximum count of player to {{ .MaxPlayers }} persons in the game <b>{{ .GameEn }}</b> on {{ .LocationEn }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}}) в {{ .StartTime.Format "15:04" }}.
 
 MaxPlayersIncreasedInAnnounce:
   other: |
-    You successfully increased maximum count of player to {{ .PlayersCount }} persons in the game <b>{{ .GameEn }}</b> on {{ .LocationEn }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}}) в {{ .StartTime.Format "15:04" }}.
+    You successfully increased maximum count of player to {{ .MaxPlayers }} persons in the game <b>{{ .GameEn }}</b> on {{ .LocationEn }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}}) в {{ .StartTime.Format "15:04" }}.
 
 GuestsAddedToAnnounce:
   other: |

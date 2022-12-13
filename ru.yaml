@@ -88,11 +88,11 @@ AreYouSure:
 
 MaxPlayersDecreasedInAnnounce:
   other: |
-    Вы успешно уменьшили максимальное количество игроков до {{ .PlayersCount }} человек в игре в <b>{{ .GameRu }}</b> на {{ .LocationRu }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}.
+    Вы успешно уменьшили максимальное количество игроков до {{ .MaxPlayers }} человек в игре в <b>{{ .GameRu }}</b> на {{ .LocationRu }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}.
 
 MaxPlayersIncreasedInAnnounce:
   other: |
-    Вы успешно увеличили максимальное количество игроков до {{ .PlayersCount }} человек в игре в <b>{{ .GameRu }}</b> на {{ .LocationRu }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}.
+    Вы успешно увеличили максимальное количество игроков до {{ .MaxPlayers }} человек в игре в <b>{{ .GameRu }}</b> на {{ .LocationRu }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}.
 
 GuestsAddedToAnnounce:
   other: |
