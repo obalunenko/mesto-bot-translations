@@ -161,7 +161,7 @@ GameMoved:
 
 EventMoved:
   other: |
-    Вы успешно переместили событие <b>{{ .Name }}</b> на {{ .LocationRu }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}.
+    Вы успешно переместили событие <b>{{ .Name }}</b> на {{ .LocationRu }} {{ weekday .StartTime "ru"}} в {{ .StartTime.Format "15:04" }}.
 
 MyGames:
   other: |
