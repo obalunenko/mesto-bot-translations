@@ -182,8 +182,6 @@ CurrentGames:
     {{- range $j, $announce := $date.Announces }}
     {{ $announce.Emoji }}<b>{{ $announce.Time }} {{ $announce.GameEn }} ({{ $announce.LocationEn }})</b>
       {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players
-      {{- if not (eq $announce.Initiator "" ) }}
-      Initiator: @{{ $announce.Initiator }}{{ end }}
     {{- end }}
     {{ end }}
 
@@ -212,6 +210,8 @@ AdminCurrentGames:
     {{- range $j, $announce := $day.Announces }}
     {{ $announce.Emoji }}<b>{{ $announce.Time }} - {{ $announce.GameRu }}</b>
       {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players
+      {{- if not (eq $announce.Initiator "" ) }}
+      Initiator: @{{ $announce.Initiator }}{{ end }}
     {{- end }}
     {{ end }}
     {{- end }}
