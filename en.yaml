@@ -644,4 +644,9 @@ EnterNotes:
 
 IrregularEventCreated:
   other: |
-    Event {{ .Name }} has been created successfully.
+    Event <b>{{ .Name }}</b> has been created successfully.
+
+AdminIrregularEventJoined:
+  other: |
+    You have successfully signed up for <b>{{ .Name }}</b> held on ({{ weekday .StartTime "en"}}) <b>{{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
+
