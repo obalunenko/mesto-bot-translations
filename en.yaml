@@ -581,3 +581,15 @@ TooEarly:
 
 SelectNewWeekday:
   other: Select new weekday.
+
+EnterEmail:
+  other: Please enter email
+
+InvalidEmail:
+  other: Invalid email
+
+EmailIsSet:
+  other: Email is successfully set. Now you will be notified by Google.Calendar
+
+EmailIsUnset:
+  other: Email is successfully unset. Now you won't be notified by Google.Calendar
