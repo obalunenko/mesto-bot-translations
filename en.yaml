@@ -586,10 +586,46 @@ EnterEmail:
   other: Please enter email
 
 InvalidEmail:
-  other: "Invalid email: <code>{{ . }}</code>"
+  other: Invalid email <code>{{ . }}</code>
 
 EmailIsSet:
-  other: "Email <code>{{ . }}</code> is successfully set. Now you will be notified by Google.Calendar"
+  other: Email <code>{{ . }}</code> is successfully set. Now you will be notified by Google.Calendar
 
 EmailIsUnset:
-  other: "Email is successfully unset. Now you won't be notified by Google.Calendar"
+  other: Email is successfully unset. Now you won't be notified by Google.Calendar
+
+EnterEventName:
+  other: |
+    Enter event name
+
+EnterEventDate:
+  other: |
+    Enter event date
+
+EnterEventDuration:
+  other: |
+    Enter event duration in minutes
+
+EnterEventInitiator:
+  other: |
+    Enter event initiator username
+
+EnterParticipantsCount:
+  other: |
+    Enter maximum event participants count
+
+EnterTableCount:
+  other: |
+    Enter required table count
+
+SelectRegistration:
+  other: |
+    Should this event have open registration?
+
+EnterNotes:
+  other: |
+    Enter additional notes for the event
+
+IrregularEventCreated:
+  other: |
+    Event {{ .Name }} has been created successfully.

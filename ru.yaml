@@ -587,13 +587,49 @@ SelectNewWeekday:
   other: Выберите новый день недели.
 
 EnterEmail:
-  other: "Введите email"
+  other: Введите email
 
 InvalidEmail:
-  other: "Некоректный email: <code>{{ . }}</code>"
+  other: Некоректный email: <code>{{ . }}</code>
 
 EmailIsSet:
-  other: "Email <code>{{ . }}</code> успешно установлен. Теперь Вам будут приходить уведомления в Google.Calendar"
+  other: Email <code>{{ . }}</code> успешно установлен. Теперь Вам будут приходить уведомления в Google.Calendar
 
 EmailIsUnset:
-  other: "Email успешно аннулирован. Теперь Вам не будут приходить уведомления в Google.Calendar"
+  other: Email успешно аннулирован. Теперь Вам не будут приходить уведомления в Google.Calendar
+
+EnterEventName:
+  other: |
+    Введите название события
+
+EnterEventDate:
+  other: |
+    Введите дату события
+
+EnterEventDuration:
+  other: |
+    Введите продолжительность события в минутах
+
+EnterEventInitiator:
+  other: |
+    Введите никнейм инициатора события
+
+EnterParticipantsCount:
+  other: |
+    Введите максимальное число участников
+
+EnterTableCount:
+  other: |
+    Введите необходимое количество столов
+
+SelectRegistration:
+  other: |
+    У события открытая регистрация?
+
+EnterNotes:
+  other: |
+    Введите дополнительные заметки для события
+
+IrregularEventCreated:
+  other: |
+    Событие {{ .Name }} успешно создано.
