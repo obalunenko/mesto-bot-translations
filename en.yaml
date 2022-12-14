@@ -127,6 +127,9 @@ SelectAnnounceToDelete:
 SelectIrregularEventToDelete:
   other: "Please select an event to delete."
 
+SelectIrregularEventToEdit:
+  other: "Please select an event to edit."
+
 SelectAnnounceToAddGuests:
   other: "Please select an announced event to add guests to."
 

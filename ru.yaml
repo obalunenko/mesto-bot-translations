@@ -129,6 +129,9 @@ SelectAnnounceToDelete:
 SelectIrregularEventToDelete:
   other: "Пожалуйста, выберите событие, которое хотите удалить"
 
+SelectIrregularEventToEdit:
+  other: "Пожалуйста, выберите событие, которое хотите изменить"
+
 SelectAnnounceToAddGuests:
   other: "Пожалуйста, выберите анонс, в который хотите добавить гостей"
 
