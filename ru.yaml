@@ -678,3 +678,126 @@ AdminIrregularEventInfo:
       {{- end }}
       Заметки: <code>{{ .Notes }}</code>
 
+ChangeName:
+  other: |
+    Название события
+
+ChangeStartTime:
+  other: |
+    Время начала события
+
+ChangeDuration:
+  other: |
+    Продолжительность
+
+ChangeTables:
+  other: |
+    Количество столов
+
+ChangeMaxParticipants:
+  other: |
+    Максимальное число участников
+
+ChangeLocation:
+  other: |
+    Локацию
+
+ChangeNotes:
+  other: |
+    Заметки
+
+CloseRegistration:
+  other: |
+    Закрыть регистрацию
+
+OpenRegistration:
+  other: |
+    Открыть регистрацию
+
+ResumeEvent:
+  other: |
+    Возобновить событие
+
+CancelEvent:
+  other: |
+    Отменить событие
+
+SelectAction:
+  other: |
+    Пожалуйста, выберите, что хотели бы изменить у события
+
+EnterNewEventName:
+  other: |
+    Введите новое название события <b>{{ .Name }}</b>
+
+EnterNewEventStartTime:
+  other: |
+    Введите новое время начала события <b>{{ .Name }}</b> в формате <code>dd.mm.yyyy HH:MM</code>
+
+EnterNewEventDuration:
+  other: |
+    Введите новую продолжительность события <b>{{ .Name }}</b> в минутах
+
+EnterNewEventTablesCount:
+  other: |
+    Введите новое количество столов
+
+EnterNewEventMaxParticipants:
+  other: |
+    Введите новое максимальное число участников события <b>{{ .Name }}</b>
+
+SelectNewEventLocation:
+  other: |
+    Выберите новую локацию события <b>{{ .Name }}</b>
+
+EnterNewEventNotes:
+  other: |
+    Введите новые заметки о событии <b>{{ .Name }}</b>
+
+RegistrationOpened:
+  other: |
+    Регистрация на <b>{{ .Name }}</b> открыта
+
+RegistrationClosed:
+  other: |
+    Регистрация на <b>{{ .Name }}</b> закрыта
+
+EventCancelled:
+  other: |
+    Событие <b>{{ .Name }}</b> отменено
+
+EventResumed:
+  other: |
+    Событие <b>{{ .Name }}</b> возобновлено
+
+EventNameChanged:
+  other: |
+    Название события изменено на <b>{{ .Name }}</b>
+
+EventStartTimeChanged:
+  other: |
+    Время начала события <b>{{ .Name }}</b> изменено на <b>{{ .StartTime.Format "02.01.2006 15:04" }}</b>
+
+EventDurationChanged:
+  other: |
+    Продолжительность события <b>{{ .Name }}</b> изменена на <b>{{ .Duration }}</b> минут
+
+EventLocationChanged:
+  other: |
+    Локация события <b>{{ .Name }}</b> изменена на <b>{{ .LocationRu }}</b>
+
+EventTablesCountChanged:
+  other: |
+    Количество требуемых столов изменено до <b>{{ .Tables }}</b>
+
+EventMaxParticipantsChanged:
+  other: |
+    Максимальное число участников изменено до <b>{{ .MaxParticipants }}</b>
+
+EventNotesChanged:
+  other: |
+    Заметки о событии <b>{{ .Name }}</b> изменены
+
+EditIrregularEventNotification:
+  other: |
+    Событие <b>{{ .Name }}</b> было изменено.
