@@ -658,3 +658,12 @@ AdminIrregularEventLeft:
   other: |
     Вы удалили @{{ .User }} из события <b>{{ .Event.Name }}</b>, проводимый <b>{{ .Event.StartTime.Format "02.01.2006" }} ({{ weekday .Event.StartTime "ru"}}) в {{ .Event.StartTime.Format "15:04" }}</b> на <b>{{ .Event.LocationRu }}</b>.
 
+AdminIrregularEventInfo:
+  other: |
+    <b><u>{{ .StartTime.Format "02.01.2006 15:04" }}</u></b>
+    {{ .Emoji }}<b>{{ .Name }} ({{ .LocationRu }})</b>
+      {{ .ParticipantsCount }}/{{ .MaxParticipants }} участников:
+      {{- range $k, $participant := .Participants }}
+      @{{ $participant.Username }}{{ if not (eq $participant.Guests 0) }} +{{ $participant.Guests }}{{ end }}
+      {{- end }}
+

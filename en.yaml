@@ -654,3 +654,12 @@ AdminIrregularEventLeft:
   other: |
     You have removed @{{ .User }} from <b>{{ .Event.Name }}</b>, held on <b>({{ weekday .Event.StartTime "ru"}} {{ .Event.StartTime.Format "02.01.2006" }} ) at {{ .Event.StartTime.Format "15:04" }}</b> at <b>{{ .Event.LocationRu }}</b>.
 
+AdminIrregularEventInfo:
+  other: |
+    <b><u>{{ .StartTime.Format "02.01.2006 15:04" }}</u></b>
+    {{ .Emoji }}<b>{{ .Name }} ({{ .LocationEn }})</b>
+      {{ .ParticipantsCount }}/{{ .MaxParticipants }} participants:
+      {{- range $k, $participant := .Participants }}
+      @{{ $participant.Username }}{{ if not (eq $participant.Guests 0) }} +{{ $participant.Guests }}{{ end }}
+      {{- end }}
+
