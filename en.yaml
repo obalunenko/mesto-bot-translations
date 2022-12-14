@@ -666,6 +666,7 @@ AdminIrregularEventInfo:
       {{ end }}
       Initiator: @{{ .Initiator }}
       Tables count: {{ .Tables }}
+      Duration: {{ .Duration }} minutes
       {{- if .Registration }}
       Open registration
       {{- else }}

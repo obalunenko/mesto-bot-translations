@@ -670,6 +670,7 @@ AdminIrregularEventInfo:
       {{ end }}
       Инициатор: @{{ .Initiator }}
       Количество столов: {{ .Tables }}
+      Продолжительность: {{ .Duration }} минут
       {{- if .Registration }}
       Открытая регистрация
       {{- else }}
