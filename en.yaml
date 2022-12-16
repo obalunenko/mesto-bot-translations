@@ -67,8 +67,8 @@ EnterEventTime:
 SelectTime:
   other: "You chose {{ .Date }} {{ .Weekday }}. Now select the starting time for the game"
 
-EnterNewTime:
-  other: "You chose {{ .Date }} {{ .Weekday }}. Now enter the new starting time for the game (<code>HH:MM</code>)"
+SelectNewTime:
+  other: "You chose {{ .Date }} {{ .Weekday }}. Now select the new starting time for the game (<code>HH:MM</code>)"
 
 EnterDate:
   other: |
@@ -76,7 +76,7 @@ EnterDate:
 
 EnterNewDate:
   other: |
-    You chose <b>{{ .Announce }}</b>. Please enter the new date (<code>dd.mm</code>). Today is <code>{{ now.Format "02.01"}}</code>
+    Please enter the new date (<code>dd.mm</code>). Today is <code>{{ now.Format "02.01"}}</code>
 
 SelectGuestsCount:
   other: "Please select the number of guests"
@@ -162,7 +162,7 @@ GameInited:
 
 EventMoved:
   other: |
-    You have successfully moved <b>{{ .Name }}</b>. The event will take place at {{ .LocationEn }} on {{ weekday .StartTime "en"}} at {{ .StartTime.Format "15:04" }}.
+    You have successfully moved <b>{{ .Name }}</b>. The event will take place at {{ .LocationEn }} on {{ weekdayName .Weekday "en"}} at {{ .StartTime.Format "15:04" }}.
 
 GameMoved:
   other: |
@@ -800,3 +800,6 @@ EventNotesChanged:
 EditIrregularEventNotification:
   other: |
     Событие <b>{{ .Name }}</b> было изменено.
+
+NoAvailableTimeSlots:
+  other: No available time slots on this day.
