@@ -74,6 +74,10 @@ EnterDate:
   other: |
     Please enter the date (<code>dd.mm</code>). Today is <code>{{ now.Format "02.01"}}</code>
 
+SelectDate:
+  other: |
+    Please select the date
+
 EnterNewDate:
   other: |
     Please enter the new date (<code>dd.mm</code>). Today is <code>{{ now.Format "02.01"}}</code>
