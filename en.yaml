@@ -64,6 +64,9 @@ AreYouSure:
 EnterEventTime:
   other: "You chose <b>{{ .Weekday }}</b>. Now enter the starting time for the event (<code>HH:MM</code>)"
 
+EnterTime:
+  other: "You chose {{ .Date }} {{ .Weekday }}. Now enter the starting time for the game (<code>HH:MM</code>)"
+
 SelectTime:
   other: "You chose {{ .Date }} {{ .Weekday }}. Now select the starting time for the game"
 

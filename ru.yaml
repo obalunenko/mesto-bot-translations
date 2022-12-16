@@ -62,6 +62,9 @@ InvalidLocationError:
 EnterEventTime:
   other: "Вы выбрали <b>{{ .Weekday }}</b>. Пожалуйста, введите теперь время (<code>HH:MM</code>)"
 
+EnterTime:
+  other: "Вы выбрали <b>{{ .Date }} {{ .Weekday }}</b>. Пожалуйста, введите теперь время (<code>HH:MM</code>)"
+
 SelectTime:
   other: "Вы выбрали <b>{{ .Date }} {{ .Weekday }}</b>. Пожалуйста, выберите время"
 
