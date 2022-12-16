@@ -82,6 +82,10 @@ EnterNewDate:
   other: |
     Please enter the new date (<code>dd.mm</code>). Today is <code>{{ now.Format "02.01"}}</code>
 
+SelectNewDate:
+  other: |
+    Please select the new date
+
 SelectGuestsCount:
   other: "Please select the number of guests"
 
@@ -624,6 +628,10 @@ EnterEventName:
 EnterEventDate:
   other: |
     Enter event date (<code>dd.mm</code>). Today is <code>{{ now.Format "02.01"}}</code>
+
+SelectEventDate:
+  other: |
+    Select event date
 
 EnterEventDuration:
   other: |
