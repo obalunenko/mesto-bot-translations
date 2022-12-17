@@ -829,7 +829,7 @@ SameAnnounceError:
 
 Reminder:
   other: |
-    Мы ждём Вас <b>{{ .StartTime.Format "15:04 02.01.2006" }}</b> - <b>{{ .GameRu }}</b>, локация - <b>{{ .LocationRu }}</b> 
+    Мы ждём Вас <b>{{ .StartTime.Format "02.01.2006 15:04" }}</b> - <b>{{ .GameRu }}</b>, локация - <b>{{ .LocationRu }}</b> 
 
     До встречи!
 
