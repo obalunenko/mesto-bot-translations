@@ -818,3 +818,9 @@ EditIrregularEventNotification:
 
 NoAvailableTimeSlots:
   other: No available time slots on this day.
+
+SameAnnounceError:
+  other: В этой локации уже есть та же игра в то же время
+
+Reminder:
+  other: Вы записаны на завтра в <b>{{ .StartTime.Format "15:04" }}</b> на <b>{{ .GameEn }}</b> на <b>{{ .LocationEn }}</b> 
