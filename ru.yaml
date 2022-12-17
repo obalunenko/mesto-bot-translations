@@ -829,3 +829,21 @@ SameAnnounceError:
 
 Reminder:
   other: Вы записаны в <b>{{ .StartTime.Format "15:04 02.01.2006" }}</b> на <b>{{ .GameRu }}</b> на <b>{{ .LocationRu }}</b> 
+
+SelectNotificationType:
+  other: Пожалуйста, выберите тип уведомлений
+
+NoNotification:
+  other: Отключить уведомления
+
+HourNotification:
+  other: Уведомлять за час
+
+ThreeHoursNotification:
+  other: Уведомлять за 3 часа
+
+DayNotification:
+  other: Уведомлять за день
+
+NotificationsUpdated:
+  other: Настройки уведомлений обновлены
