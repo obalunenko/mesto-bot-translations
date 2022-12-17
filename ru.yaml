@@ -828,7 +828,10 @@ SameAnnounceError:
   other: В этой локации уже есть та же игра в то же время
 
 Reminder:
-  other: Вы записаны в <b>{{ .StartTime.Format "15:04 02.01.2006" }}</b> на <b>{{ .GameRu }}</b> на <b>{{ .LocationRu }}</b> 
+  other: |
+    Мы ждём Вас <b>{{ .StartTime.Format "15:04 02.01.2006" }}</b> - <b>{{ .GameRu }}</b>, локация - <b>{{ .LocationRu }}</b> 
+
+    До встречи!
 
 SelectNotificationType:
   other: Пожалуйста, выберите тип уведомлений
