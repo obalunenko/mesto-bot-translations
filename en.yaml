@@ -578,9 +578,17 @@ UserGTFOed:
 SubscriptionSold:
   other: "A {{ .Duration }} day membership has been sold to @{{ .User }}"
 
+AdminGameJoined:
+  other: |
+    You have successfully added @{{ .User }} to <b>{{ .Game.GameEn }}</b>, held on <b>{{ .Game.StartTime.Format "02.01.2006" }} ({{ weekday .Game.StartTime "en"}}) at {{ .Game.StartTime.Format "15:04" }}</b> at <b>{{ .Game.LocationEn }}</b>.
+
+AdminGameLeft:
+  other: |
+    You have removed @{{ .User }} from <b>{{ .Game.GameEn }}</b>, held on <b>{{ .Game.StartTime.Format "02.01.2006" }} ({{ weekday .Game.StartTime "en"}}) at {{ .Game.StartTime.Format "15:04" }}</b> at <b>{{ .Game.LocationEn }}</b>.
+
 AdminEventJoined:
   other: |
-    You have successfully added  @{{ .User }} to <b>{{ .Event.Name }}</b>, held on <b>({{ weekday .Event.StartTime "ru"}}) {{ .Event.StartTime.Format "02.01.2006" }} at {{ .Event.StartTime.Format "15:04" }}</b> at <b>{{ .Event.LocationEn }}</b>.
+    You have successfully added @{{ .User }} to <b>{{ .Event.Name }}</b>, held on <b>({{ weekday .Event.StartTime "ru"}}) {{ .Event.StartTime.Format "02.01.2006" }} at {{ .Event.StartTime.Format "15:04" }}</b> at <b>{{ .Event.LocationEn }}</b>.
 
 AdminEventLeft:
   other: |
