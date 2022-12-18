@@ -89,8 +89,11 @@ SelectNewDate:
   other: |
     Please select the new date
 
-SelectGuestsCount:
-  other: "Please select the number of guests"
+SelectGuestsCountToAdd:
+  other: "Please select the number of guests to add"
+
+SelectGuestsCountToRemove:
+  other: "Please select the number of guests to remove"
 
 NoSeatsInTheGame:
   other: "Unfortunately, there are no open slots left. Please pick a different time or a different game"
