@@ -705,154 +705,154 @@ AdminIrregularEventInfo:
 
 ChangeName:
   other: |
-    Название события
+    Event name
 
 ChangeStartTime:
   other: |
-    Время начала события
+    Event start date
 
 ChangeDuration:
   other: |
-    Продолжительность
+    Duration
 
 ChangeTables:
   other: |
-    Количество столов
+    Number of tables
 
 ChangeMaxParticipants:
   other: |
-    Максимальное число участников
+    Maximum number of participants
 
 ChangeLocation:
   other: |
-    Локацию
+    Location
 
 ChangeNotes:
   other: |
-    Заметки
+    Notes
 
 CloseRegistration:
   other: |
-    Закрыть регистрацию
+    Close registration
 
 OpenRegistration:
   other: |
-    Открыть регистрацию
+    Open registration
 
 ResumeEvent:
   other: |
-    Возобновить событие
+    Resume the event
 
 CancelEvent:
   other: |
-    Отменить событие
+    Cancel the event
 
 SelectAction:
   other: |
-    Пожалуйста, выберите, что хотели бы изменить у события
+    Please, select what you would like to change about this event
 
 EnterNewEventName:
   other: |
-    Введите новое название события <b>{{ .Name }}</b>
+    Enter the new name of the event <b>{{ .Name }}</b>
 
 EnterNewEventStartTime:
   other: |
-    Введите новое время начала события <b>{{ .Name }}</b> в формате <code>dd.mm.yyyy HH:MM</code>
+    Enter the new start date of the event <b>{{ .Name }}</b> in the following format: <code>dd.mm.yyyy HH:MM</code>
 
 EnterNewEventDuration:
   other: |
-    Введите новую продолжительность события <b>{{ .Name }}</b> в минутах
+    Enter the new duration of the event <b>{{ .Name }}</b> in minutes
 
 EnterNewEventTablesCount:
   other: |
-    Введите новое количество столов
+    Enter the new number of tables
 
 EnterNewEventMaxParticipants:
   other: |
-    Введите новое максимальное число участников события <b>{{ .Name }}</b>
+    Enter the new maximum number of participants in the event <b>{{ .Name }}</b>
 
 SelectNewEventLocation:
   other: |
-    Выберите новую локацию события <b>{{ .Name }}</b>
+    Choose the new location of the event <b>{{ .Name }}</b>
 
 EnterNewEventNotes:
   other: |
-    Введите новые заметки о событии <b>{{ .Name }}</b>
+    Enter new notes for the event <b>{{ .Name }}</b>
 
 RegistrationOpened:
   other: |
-    Регистрация на <b>{{ .Name }}</b> открыта
+    The registration for <b>{{ .Name }}</b> is open
 
 RegistrationClosed:
   other: |
-    Регистрация на <b>{{ .Name }}</b> закрыта
+    The registration for <b>{{ .Name }}</b> is closed
 
 EventCancelled:
   other: |
-    Событие <b>{{ .Name }}</b> отменено
+    The event <b>{{ .Name }}</b> cancelled
 
 EventResumed:
   other: |
-    Событие <b>{{ .Name }}</b> возобновлено
+    The event <b>{{ .Name }}</b> resumed
 
 EventNameChanged:
   other: |
-    Название события изменено на <b>{{ .Name }}</b>
+    Event name was changed to <b>{{ .Name }}</b>
 
 EventStartTimeChanged:
   other: |
-    Время начала события <b>{{ .Name }}</b> изменено на <b>{{ .StartTime.Format "02.01.2006 15:04" }}</b>
+    Event start time <b>{{ .Name }}</b> was changed to <b>{{ .StartTime.Format "02.01.2006 15:04" }}</b>
 
 EventDurationChanged:
   other: |
-    Продолжительность события <b>{{ .Name }}</b> изменена на <b>{{ .Duration }}</b> минут
+    The duration of the event <b>{{ .Name }}</b> was changed to <b>{{ .Duration }}</b> minutes
 
 EventLocationChanged:
   other: |
-    Локация события <b>{{ .Name }}</b> изменена на <b>{{ .LocationRu }}</b>
+    Event location <b>{{ .Name }}</b> was changed to <b>{{ .LocationRu }}</b>
 
 EventTablesCountChanged:
   other: |
-    Количество требуемых столов изменено до <b>{{ .Tables }}</b>
+    The number of required tables was changed to <b>{{ .Tables }}</b>
 
 EventMaxParticipantsChanged:
   other: |
-    Максимальное число участников изменено до <b>{{ .MaxParticipants }}</b>
+    The maximum number of participants was changed to <b>{{ .MaxParticipants }}</b>
 
 EventNotesChanged:
   other: |
-    Заметки о событии <b>{{ .Name }}</b> изменены
+    Event notes <b>{{ .Name }}</b> changed
 
 EditIrregularEventNotification:
   other: |
-    Событие <b>{{ .Name }}</b> было изменено.
+    The event <b>{{ .Name }}</b> was updated.
 
 NoAvailableTimeSlots:
   other: No available time slots on this day.
 
 SameAnnounceError:
-  other: В этой локации уже есть та же игра в то же время
+  other: This game is already scheduled at the same time in this location
 
 Reminder:
   other: |
-    Мы ждём Вас <b>{{ .StartTime.Format "02.01.2006 15:04" }}</b> - <b>{{ .GameEn }}</b>, локация - <b>{{ .LocationEn }}</b> 
+    We'll be waiting for you at <b>{{ .StartTime.Format "02.01.2006 15:04" }}</b> - <b>{{ .GameEn }}</b>, location - <b>{{ .LocationEn }}</b> 
 
-    До встречи!
+    See you!
 
 SelectNotificationType:
-  other: Пожалуйста, выберите тип уведомлений
+  other: Please, select the type of notifications
 
 NoNotification:
-  other: Отключить уведомления
+  other: Disable notifications
 
 HourNotification:
-  other: Уведомлять за час
+  other: Notify 1 hour before
 
 ThreeHoursNotification:
-  other: Уведомлять за 3 часа
+  other: Notify 3 hours before
 
 DayNotification:
-  other: Уведомлять за день
+  other: Notify the day before
 
 NotificationsUpdated:
-  other: Настройки уведомлений обновлены
+  other: Notification settings updated
