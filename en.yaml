@@ -856,3 +856,24 @@ DayNotification:
 
 NotificationsUpdated:
   other: Настройки уведомлений обновлены
+
+EditIrregularEventNotification:
+  other: Событие <b>{{ .Name }}</b>, проводимое на <b>{{ .LocationRu }} {{ .StartTime.Format "02.01.2006 15:04" }}</b> было изменено. Посмотрите /my для получения подробной информации
+
+AdminJoinGameNotification:
+  other: Вас добавили в игру <b>{{ .GameRu }}</b>, проводимую на <b>{{ .LocationRu }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
+
+AdminJoinEventNotification:
+  other: Вас добавили к событию <b>{{ .Name }}</b>, проводимому на <b>{{ .LocationRu }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
+
+AdminJoinIrregularEventNotification:
+  other: Вас добавили к событию <b>{{ .Name }}</b>, проводимому на <b>{{ .LocationRu }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
+
+AdminLeaveGameNotification:
+  other: Вас удалили из игры <b>{{ .GameRu }}</b>, проводимую на <b>{{ .LocationRu }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
+
+AdminLeaveEventNotification:
+  other: Вас удалили с события <b>{{ .Name }}</b>, проводимого на <b>{{ .LocationRu }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
+
+AdminLeaveIrregularEventNotification:
+  other: Вас удалили с события <b>{{ .Name }}</b>, проводимого на <b>{{ .LocationRu }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
