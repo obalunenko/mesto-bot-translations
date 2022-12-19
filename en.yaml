@@ -823,10 +823,6 @@ EventNotesChanged:
   other: |
     Event notes <b>{{ .Name }}</b> changed
 
-EditIrregularEventNotification:
-  other: |
-    The event <b>{{ .Name }}</b> was updated.
-
 NoAvailableTimeSlots:
   other: No available time slots on this day.
 

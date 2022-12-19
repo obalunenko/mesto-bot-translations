@@ -820,10 +820,6 @@ EventNotesChanged:
   other: |
     Заметки о событии <b>{{ .Name }}</b> изменены
 
-EditIrregularEventNotification:
-  other: |
-    Событие <b>{{ .Name }}</b> было изменено.
-
 NoAvailableTimeSlots:
   other: На этот день нет доступных слотов.
 
