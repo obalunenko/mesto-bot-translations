@@ -187,7 +187,7 @@ MyGames:
     {{- range $i, $date := . }}
     <b><u>{{ $date.Weekday }} - {{ $date.Date }}</u></b>
     {{- range $j, $announce := $date.Announces }}
-    {{ $announce.Emoji }}<b>{{ $announce.Time }} {{ $announce.GameEn }} ({{ $announce.LocationEn }})</b>
+    <b>{{ $announce.Time }} {{ $announce.Emoji }} {{ $announce.GameEn }} ({{ $announce.LocationEn }})</b>
       {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players:
       {{- range $k, $player := $announce.Players }}
       @{{ $player.Username }}{{ if not (eq $player.Guests 0) }} +{{ $player.Guests }}{{ end }}{{ if eq $player.Username $announce.Initiator }} (game initiator){{ end }}
@@ -200,7 +200,7 @@ CurrentGames:
     {{- range $day, $date := . }}
     <b><u>{{ $date.Weekday }} - {{ $date.Date }}</u></b>
     {{- range $j, $announce := $date.Announces }}
-    {{ $announce.Emoji }}<b>{{ $announce.Time }} {{ $announce.GameEn }} ({{ $announce.LocationEn }})</b>
+    <b>{{ $announce.Time }} {{ $announce.Emoji }} {{ $announce.GameEn }} ({{ $announce.LocationEn }})</b>
       {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players
     {{- end }}
     {{ end }}
@@ -232,7 +232,7 @@ AdminCurrentGames:
     {{- range $j, $day := $location.Announces }}
     <b><u>{{ $day.Weekday }} - {{ $day.Date }}</u></b>
     {{- range $j, $announce := $day.Announces }}
-    {{ $announce.Emoji }}<b>{{ $announce.Time }} - {{ $announce.GameEn }}</b>
+    <b>{{ $announce.Time }} - {{ $announce.Emoji }} {{ $announce.GameEn }}</b>
       {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players
       {{- if not (eq $announce.Initiator "" ) }}
       Initiator: @{{ $announce.Initiator }}{{ end }}
