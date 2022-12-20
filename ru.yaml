@@ -870,3 +870,15 @@ AdminLeaveEventNotification:
 
 AdminLeaveIrregularEventNotification:
   other: Вас удалили с события <b>{{ .Name }}</b>, проводимого на <b>{{ .LocationRu }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
+
+IrregularEventChangedLocationNotification:
+  other: Событие <b>{{ .Name }}</b> было перемещено на <b>{{ .LocationRu }}</b>
+
+IrregularEventChangedTimeNotification:
+  other: Событие <b>{{ .Name }}</b> произойдёт в <b>{{ .StartTime.Format "15:04 02.01.2006" }}</b>
+
+IrregularEventCancelNotification:
+  other: Событие <b>{{ .Name }}</b> было отменено
+
+IrregularEventResumeNotification:
+  other: Событие <b>{{ .Name }}</b> было возобновлено

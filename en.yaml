@@ -214,7 +214,7 @@ Announcement:
     <b>{{ $date.Weekday }} - {{ $date.Date }}</b>
     {{- range $j, $announce := $date.Announces }}
     {{- if lt $announce.PlayersCount $announce.MaxPlayers }}
-    {{ $announce.Time }} {{ $announce.Emoji }} {{ $announce.GameRu }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков) <b>({{ $announce.LocationRu }})</b>
+    {{ $announce.Time }} {{ $announce.Emoji }} {{ $announce.GameEn }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков) <b>({{ $announce.LocationEn }})</b>
     {{- end }}
     {{- end }}
     {{- end }}
@@ -228,11 +228,11 @@ Announcement:
 AdminCurrentGames:
   other: |
     {{- range $i, $location := . }}
-    <b><u>{{ $location.LocationRu }}</u></b>
+    <b><u>{{ $location.LocationEn }}</u></b>
     {{- range $j, $day := $location.Announces }}
     <b><u>{{ $day.Weekday }} - {{ $day.Date }}</u></b>
     {{- range $j, $announce := $day.Announces }}
-    {{ $announce.Emoji }}<b>{{ $announce.Time }} - {{ $announce.GameRu }}</b>
+    {{ $announce.Emoji }}<b>{{ $announce.Time }} - {{ $announce.GameEn }}</b>
       {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players
       {{- if not (eq $announce.Initiator "" ) }}
       Initiator: @{{ $announce.Initiator }}{{ end }}
@@ -591,11 +591,11 @@ AdminGameLeft:
 
 AdminEventJoined:
   other: |
-    You have successfully added @{{ .User }} to <b>{{ .Event.Name }}</b>, held on <b>({{ weekday .Event.StartTime "ru"}}) {{ .Event.StartTime.Format "02.01.2006" }} at {{ .Event.StartTime.Format "15:04" }}</b> at <b>{{ .Event.LocationEn }}</b>.
+    You have successfully added @{{ .User }} to <b>{{ .Event.Name }}</b>, held on <b>({{ weekday .Event.StartTime "en"}}) {{ .Event.StartTime.Format "02.01.2006" }} at {{ .Event.StartTime.Format "15:04" }}</b> at <b>{{ .Event.LocationEn }}</b>.
 
 AdminEventLeft:
   other: |
-    You have removed @{{ .User }} from <b>{{ .Event.Name }}</b>, held on <b>({{ weekday .Event.StartTime "ru"}} {{ .Event.StartTime.Format "02.01.2006" }} ) at {{ .Event.StartTime.Format "15:04" }}</b> at <b>{{ .Event.LocationRu }}</b>.
+    You have removed @{{ .User }} from <b>{{ .Event.Name }}</b>, held on <b>({{ weekday .Event.StartTime "en"}} {{ .Event.StartTime.Format "02.01.2006" }} ) at {{ .Event.StartTime.Format "15:04" }}</b> at <b>{{ .Event.LocationEn }}</b>.
 
 
 EnterSubscriptionDate:
@@ -681,7 +681,7 @@ AdminIrregularEventJoined:
 
 AdminIrregularEventLeft:
   other: |
-    You have removed @{{ .User }} from <b>{{ .Event.Name }}</b>, held on <b>({{ weekday .Event.StartTime "ru"}} {{ .Event.StartTime.Format "02.01.2006" }} ) at {{ .Event.StartTime.Format "15:04" }}</b> at <b>{{ .Event.LocationRu }}</b>.
+    You have removed @{{ .User }} from <b>{{ .Event.Name }}</b>, held on <b>({{ weekday .Event.StartTime "en"}} {{ .Event.StartTime.Format "02.01.2006" }} ) at {{ .Event.StartTime.Format "15:04" }}</b> at <b>{{ .Event.LocationEn }}</b>.
 
 AdminIrregularEventInfo:
   other: |
@@ -809,7 +809,7 @@ EventDurationChanged:
 
 EventLocationChanged:
   other: |
-    Event location <b>{{ .Name }}</b> was changed to <b>{{ .LocationRu }}</b>
+    Event location <b>{{ .Name }}</b> was changed to <b>{{ .LocationEn }}</b>
 
 EventTablesCountChanged:
   other: |
@@ -854,22 +854,34 @@ NotificationsUpdated:
   other: Notification settings updated
 
 EditIrregularEventNotification:
-  other: Событие <b>{{ .Name }}</b>, проводимое на <b>{{ .LocationRu }} {{ .StartTime.Format "02.01.2006 15:04" }}</b> было изменено. Посмотрите /my для получения подробной информации
+  other: Событие <b>{{ .Name }}</b>, проводимое на <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b> было изменено. Посмотрите /my для получения подробной информации
 
 AdminJoinGameNotification:
-  other: Вас добавили в игру <b>{{ .GameRu }}</b>, проводимую на <b>{{ .LocationRu }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
+  other: Вас добавили в игру <b>{{ .GameEn }}</b>, проводимую на <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
 
 AdminJoinEventNotification:
-  other: Вас добавили к событию <b>{{ .Name }}</b>, проводимому на <b>{{ .LocationRu }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
+  other: Вас добавили к событию <b>{{ .Name }}</b>, проводимому на <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
 
 AdminJoinIrregularEventNotification:
-  other: Вас добавили к событию <b>{{ .Name }}</b>, проводимому на <b>{{ .LocationRu }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
+  other: Вас добавили к событию <b>{{ .Name }}</b>, проводимому на <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
 
 AdminLeaveGameNotification:
-  other: Вас удалили из игры <b>{{ .GameRu }}</b>, проводимую на <b>{{ .LocationRu }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
+  other: Вас удалили из игры <b>{{ .GameEn }}</b>, проводимую на <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
 
 AdminLeaveEventNotification:
-  other: Вас удалили с события <b>{{ .Name }}</b>, проводимого на <b>{{ .LocationRu }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
+  other: Вас удалили с события <b>{{ .Name }}</b>, проводимого на <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
 
 AdminLeaveIrregularEventNotification:
-  other: Вас удалили с события <b>{{ .Name }}</b>, проводимого на <b>{{ .LocationRu }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
+  other: Вас удалили с события <b>{{ .Name }}</b>, проводимого на <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
+
+IrregularEventChangedLocationNotification:
+  other: Событие <b>{{ .Name }}</b> было перемещено на <b>{{ .LocationEn }}</b>
+
+IrregularEventChangedTimeNotification:
+  other: Событие <b>{{ .Name }}</b> произойдёт в <b>{{ .StartTime.Format "15:04 02.01.2006" }}</b>
+
+IrregularEventCancelNotification:
+  other: Событие <b>{{ .Name }}</b> было отменено
+
+IrregularEventResumeNotification:
+  other: Событие <b>{{ .Name }}</b> было возобновлено
