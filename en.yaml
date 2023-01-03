@@ -126,6 +126,18 @@ NoGuests:
   other: |
     You haven't invited any guests yet.
 
+Join:
+  other: "Join"
+
+Leave:
+  other: "Leave"
+
+AddGuests:
+  other: "Add guests"
+
+RemoveGuests:
+  other: "Remove guests"
+
 SelectAnnounceToJoin:
   other: "Please select an announced event to join."
 
