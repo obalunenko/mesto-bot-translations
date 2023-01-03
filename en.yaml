@@ -138,6 +138,12 @@ AddGuests:
 RemoveGuests:
   other: "Remove guests"
 
+Subscribe:
+  other: "Subscribe"
+
+Unsubscribe:
+  other: "Unsubscribe"
+
 SelectAnnounceToJoin:
   other: "Please select an announced event to join."
 

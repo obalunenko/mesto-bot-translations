@@ -140,6 +140,12 @@ AddGuests:
 RemoveGuests:
   other: "Удалить гостей"
 
+Subscribe:
+  other: "Подписаться"
+
+Unsubscribe:
+  other: "Отписаться"
+
 SelectAnnounceToJoin:
   other: "Пожалуйста, выберите анонс, к которому хотите присоединиться"
 
