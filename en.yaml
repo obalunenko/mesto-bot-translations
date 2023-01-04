@@ -126,6 +126,10 @@ NoGuests:
   other: |
     You haven't invited any guests yet.
 
+SelectSubscriptionType:
+  other: |
+    Select subscription type
+
 Join:
   other: "Join"
 

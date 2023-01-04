@@ -128,6 +128,10 @@ NoGuests:
   other: |
     Вы ещё никого не пригласили
 
+SelectSubscriptionType:
+  other: |
+    Выберите тип абонемента
+
 Join:
   other: "Присоединиться"
 
@@ -644,7 +648,7 @@ Subscriptions:
   other: |
     Сегодня <code>{{ now.Format "02.01.2006" }}</code>
     {{- range $i, $sub := . }}
-    @{{ $sub.Username }} - Начинается: <code>{{ .PurchaseDate.Format "02.01.2006" }}</code>. Осталось <code>{{ daysLeft .PurchaseDate .Duration }}</code> дней
+    @{{ $sub.Username }} - Начинается: <code>{{ .PurchaseDate.Format "02.01.2006" }}</code>. Осталось <code>{{ daysLeft .PurchaseDate .Duration }}</code> дней. {{ if eq .Kind "unlimited" }}Безлимитный.{{ else }}На {{ .VisitsNumber }} посещений.{{ end }}
     {{- end }}
 
 CannotDecrease:
