@@ -603,6 +603,9 @@ UserInfo:
     {{- if not (eq .SubscribedBy "") }}
     Купил {{ if eq .Kind "unlimited" }}безлимитный{{ end }} абонемент {{ .SubscriptionDate.Format "02.01.2006" }} на {{ .SubscriptionDuration }} дней {{ if not (eq .Kind "unlimited") }}и на {{ .VisitsNumber }} посещений{{ end }} у @{{ .SubscribedBy }}.
     Посещений за эту подписку: {{ .VisitsLastSubscription }}
+    {{- range $i, $date := .VisitsListLastSubscription }}
+    - <code>{{ $date.Format "02.01.2006" }}</code>
+    {{- end }}
     {{- end }}
     {{- if .Attendance }}
     Собирается посетить:
