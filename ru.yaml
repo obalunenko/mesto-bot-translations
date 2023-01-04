@@ -587,6 +587,7 @@ NoEventsToMove:
 UserInfo:
   other: |
     @{{ .Username }}
+    Посещений в последний месяц: {{ .VisitsLastMonth }}
     Репутация: {{ .Reputation }}
     Админ: <code>{{ .IsAdmin }}</code>
     {{ if .Banned }}Забанен @{{ .BannedBy }} по причине: <code>{{ .BanReason }}</code>{{- end }}
@@ -597,7 +598,8 @@ UserInfo:
     {{- end }}
     {{- end }}
     {{- if not (eq .SubscribedBy "") }}
-    Купил абонемент {{ .SubscriptionDate.Format "02.01.2006" }} на {{ .SubscriptionDuration }} дней у @{{ .SubscribedBy }}.
+    Купил {{ if eq .Kind "unlimited" }}безлимитный{{ end }} абонемент {{ .SubscriptionDate.Format "02.01.2006" }} на {{ .SubscriptionDuration }} дней {{ if not (eq .Kind "unlimited") }}и на {{ .VisitsNumber }} посещений{{ end }} у @{{ .SubscribedBy }}.
+    Посещений за эту подписку: {{ .VisitsLastSubscription }}
     {{- end }}
     {{- if .Attendance }}
     Собирается посетить:
@@ -928,3 +930,12 @@ IrregularEventCancelNotification:
 
 IrregularEventResumeNotification:
   other: Событие <b>{{ .Name }}</b> было возобновлено
+
+EnterUsernameToMark:
+  other: "Введите имя пользователя, которого хотели бы отметить"
+
+UserMarked:
+  other: "Пользователь @{{ . }} отмечен"
+
+UserAlreadyMarked:
+  other: "Пользователь @{{ . }} уже был отмечен сегодня"

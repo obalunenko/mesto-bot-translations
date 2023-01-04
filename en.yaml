@@ -931,3 +931,9 @@ IrregularEventCancelNotification:
 
 IrregularEventResumeNotification:
   other: Событие <b>{{ .Name }}</b> было возобновлено
+
+EnterUsernameToMark:
+  other: "Введите имя пользователя, которого хотели бы отметить"
+
+UserMarked:
+  other: "Пользователь {{ . }} отмечен"
