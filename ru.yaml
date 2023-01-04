@@ -171,6 +171,9 @@ Dislike:
 GTFO:
   other: "GTFO"
 
+MarkUser:
+  other: "Отметить посещение"
+
 SelectAnnounceToJoin:
   other: "Пожалуйста, выберите анонс, к которому хотите присоединиться"
 

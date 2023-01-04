@@ -169,6 +169,9 @@ Dislike:
 GTFO:
   other: "GTFO"
 
+MarkUser:
+  other: "Mark user"
+
 SelectAnnounceToJoin:
   other: "Please select an announced event to join."
 
