@@ -146,6 +146,27 @@ Subscribe:
 Unsubscribe:
   other: "Отписаться"
 
+Promote:
+  other: "Сделать админом"
+
+Demote:
+  other: "Убрать из админов"
+
+Ban:
+  other: "Забанить"
+
+Unban:
+  other: "Разбанить"
+
+Like:
+  other: "Повысить репутацию"
+
+Dislike:
+  other: "Понизить репутацию"
+
+GTFO:
+  other: "GTFO"
+
 SelectAnnounceToJoin:
   other: "Пожалуйста, выберите анонс, к которому хотите присоединиться"
 

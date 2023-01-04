@@ -144,6 +144,27 @@ Subscribe:
 Unsubscribe:
   other: "Unsubscribe"
 
+Promote:
+  other: "Promote"
+
+Demote:
+  other: "Demote"
+
+Ban:
+  other: "Ban"
+
+Unban:
+  other: "Unban"
+
+Like:
+  other: "Like"
+
+Dislike:
+  other: "Dislike"
+
+GTFO:
+  other: "GTFO"
+
 SelectAnnounceToJoin:
   other: "Please select an announced event to join."
 
