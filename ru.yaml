@@ -1009,8 +1009,11 @@ LinkIsNotValid:
   other: "Этот QR-код является недействительным"
 
 UserMarked:
-  other: "Пользователь @{{ . }} отмечен"
+  other: |
+    Пользователь @{{ .User }} отмечен. {{ if .Last }}Его/её абонемент закончился{{ end}}
 
 UserAlreadyMarked:
   other: "Пользователь @{{ . }} уже был отмечен сегодня"
 
+LastVisitNotification:
+  other: "У пользователя @{{ .Username }} только что закончился абонемент"

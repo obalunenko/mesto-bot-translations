@@ -939,10 +939,14 @@ EnterUsernameToMark:
   other: "Введите имя пользователя, которого хотели бы отметить"
 
 UserMarked:
-  other: "Пользователь {{ . }} отмечен"
+  other: |
+    Пользователь @{{ .User }} отмечен. {{ if .Last }}Его/её абонемент закончился{{ end}}
 
 VisitCounted:
   other: "Your visit counted"
 
 LinkIsNotValid:
   other: "This QR-code is not valid"
+
+LastVisitNotification:
+  other: "У пользователя @{{ .Username }} только что закончился абонемент"
