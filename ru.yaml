@@ -1002,8 +1002,15 @@ IrregularEventResumeNotification:
 EnterUsernameToMark:
   other: "Введите имя пользователя, которого хотели бы отметить"
 
+VisitCounted:
+  other: "Посещение учтено"
+
+LinkIsNotValid:
+  other: "Этот QR-код является недействительным"
+
 UserMarked:
   other: "Пользователь @{{ . }} отмечен"
 
 UserAlreadyMarked:
   other: "Пользователь @{{ . }} уже был отмечен сегодня"
+

@@ -940,3 +940,9 @@ EnterUsernameToMark:
 
 UserMarked:
   other: "Пользователь {{ . }} отмечен"
+
+VisitCounted:
+  other: "Your visit counted"
+
+LinkIsNotValid:
+  other: "This QR-code is not valid"
