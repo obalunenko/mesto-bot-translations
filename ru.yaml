@@ -171,8 +171,68 @@ Dislike:
 GTFO:
   other: "GTFO"
 
+SellSubscription:
+  other: "Продать абонемент"
+
 MarkUser:
   other: "Отметить посещение"
+
+EventInfo:
+  other: "Информация о событии"
+
+IrregularEvents:
+  other: "События"
+
+CreateIrregularEvent:
+  other: "Создать событие"
+
+EditIrregularEvent:
+  other: "Изменить событие"
+
+DeleteIrregularEvent:
+  other: "Удалить событие"
+
+RegularEvents:
+  other: "Регулярные мероприятия"
+
+MoveRegularEvent:
+  other: "Перенести регулярное мероприятие"
+
+CancelRegularEvent:
+  other: "Отменить регулярное мероприятие"
+
+RestoreRegularEvent:
+  other: "Возобновить отмененное регулярное мероприятие"
+
+Games:
+  other: "Игры"
+
+CreateGame:
+  other: "Создать игру"
+
+JoinGame:
+  other: "Записать на игру"
+
+AddGuests:
+  other: "Добавить гостей к игроку"
+
+Remove:
+  other: "Выписать с игры (вместе с гостями)"
+
+RemoveGuests:
+  other: "Выписать только гостей игрока"
+
+PlayersUp:
+  other: "Увеличить макс число игроков"
+
+PlayersDown:
+  other: "Уменьшить макс число игроков"
+
+MoveGame:
+  other: "Перенести игру"
+
+DeleteGame:
+  other: "Удалить игру"
 
 SelectAnnounceToJoin:
   other: "Пожалуйста, выберите анонс, к которому хотите присоединиться"
@@ -628,9 +688,11 @@ AdminEventInfo:
   other: |
     <b><u>{{ .StartTime.Format "02.01.2006 15:04" }}</u></b>
     {{ .Emoji }}<b>{{ .Name }} ({{ .LocationRu }})</b>
-      {{ .ParticipantsCount }}/{{ .MaxParticipants }} участников:
+      {{- if .MaxParticipants }}{{ $maxParticipants := derefUint .MaxParticipants }}
+      {{ .ParticipantsCount }}/{{ $maxParticipants }} участников:
       {{- range $k, $participant := .Participants }}
       @{{ $participant.Username }}{{ if not (eq $participant.Guests 0) }} +{{ $participant.Guests }}{{ end }}
+      {{- end }}
       {{- end }}
 
 EnterUsernameToGtfo:
