@@ -1017,3 +1017,20 @@ UserAlreadyMarked:
 
 LastVisitNotification:
   other: "У пользователя @{{ .Username }} только что закончился абонемент"
+
+NoVisits:
+  other: "За последние 8 дней не было ни одного посещения на <b>{{ . }}</b>"
+
+LastVisits:
+  other: |
+    Последние посещения ({{ .Location }}):
+    {{- range $i, $date := .Visits }}
+    <b><u>{{ $date.Weekday }} - {{ $date.Date.Format "02.01.2006" }}</u></b>
+    {{- range $j, $username := $date.Visitors }}
+    - @{{ $username }}
+    {{- end }}
+
+    {{- end }}
+
+LastVisitsCaption:
+  other: Последние посещения
