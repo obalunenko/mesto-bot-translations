@@ -1034,3 +1034,6 @@ LastVisits:
 
 LastVisitsCaption:
   other: Последние посещения
+
+QR:
+  other: QR-код
