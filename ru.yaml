@@ -223,7 +223,7 @@ CreateGame:
   other: "Создать игру"
 
 JoinGame:
-  other: "Записать на игру"
+  other: "Записать"
 
 AddGuests:
   other: "Добавить гостей к игроку"
