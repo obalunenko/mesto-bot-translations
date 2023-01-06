@@ -1033,7 +1033,7 @@ LastVisits:
     {{- end }}
 
 LastVisitsCaption:
-  other: Последние посещения
+  other: Игры за последние 8 дней
 
 QR:
-  other: QR-код
+  other: QR-код для списывания посещений

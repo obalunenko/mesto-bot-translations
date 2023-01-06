@@ -952,4 +952,4 @@ LastVisitNotification:
   other: "У пользователя @{{ .Username }} только что закончился абонемент"
 
 QR:
-  other: QR-code
+  other: QR-код для списывания посещений
