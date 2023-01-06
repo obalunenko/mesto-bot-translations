@@ -1035,7 +1035,7 @@ NoVisits:
 
 LastVisits:
   other: |
-    Последние посещения ({{ .Location }}):
+    Последние посещения за 8 дней ({{ .Location }}):
     {{- range $i, $date := .Visits }}
     <b><u>{{ $date.Weekday }} - {{ $date.Date.Format "02.01.2006" }}</u></b>
     {{- range $j, $username := $date.Visitors }}
@@ -1045,7 +1045,7 @@ LastVisits:
     {{- end }}
 
 LastVisitsCaption:
-  other: Игры за последние 8 дней
+  other: Последние посещения
 
 QR:
   other: QR-код для посещений
