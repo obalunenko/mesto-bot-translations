@@ -132,6 +132,18 @@ SelectSubscriptionType:
   other: |
     Выберите тип абонемента
 
+Users:
+  other: "Пользователи"
+
+UserInfoCaption:
+  other: "Информаци о пользователе"
+
+Banned:
+  other: "Забаненные"
+
+Admins:
+  other: "Администраторы"
+
 Join:
   other: "Присоединиться"
 
@@ -1036,4 +1048,4 @@ LastVisitsCaption:
   other: Игры за последние 8 дней
 
 QR:
-  other: QR-код для списывания посещений
+  other: QR-код для посещений
