@@ -599,8 +599,12 @@ UserInfo:
     - {{ $game.Emoji }}<code>{{ $game.GameEn }} at {{ $game.LocationEn }} on {{ $game.StartTime.Format "02.01.2006 15:04"}}</code>
     {{- end }}
     {{- end }}
-
-
+    {{- if .SubscribedOnGames }}
+    Subscribed on the games:
+    {{- range $k, $game := .SubscribedOnGames }}
+    - <code>{{ $game.NameEn }}</code>
+    {{- end }}
+    {{- end }}
 
 AdminAnnounceInfo:
   other: |

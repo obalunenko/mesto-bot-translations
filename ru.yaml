@@ -685,6 +685,12 @@ UserInfo:
     - {{ $game.Emoji }}<code>{{ $game.GameRu }} на {{ $game.LocationRu }} {{ $game.StartTime.Format "02.01.2006 15:04"}}</code>
     {{- end }}
     {{- end }}
+    {{- if .SubscribedOnGames }}
+    Подписан на игры:
+    {{- range $k, $game := .SubscribedOnGames }}
+    - <code>{{ $game.NameRu }}</code>
+    {{- end }}
+    {{- end }}
 
 AdminAnnounceInfo:
   other: |
