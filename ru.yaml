@@ -1047,6 +1047,9 @@ LastVisits:
 LastVisitsCaption:
   other: Последние посещения
 
+LastGamesCaption:
+  other: Последние игры
+
 QR:
   other: QR-код для посещений
 
