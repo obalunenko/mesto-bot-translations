@@ -342,10 +342,10 @@ Announcement:
     {{- end }}
     {{- end }}
     {{ end }}
-    Записываться на игры <a href="https://docs.google.com/spreadsheets/d/1R_9X4pbxbKhkOVZr8sFtxumGpcsRcwBo92lA5f_0QFk/edit?usp=sharing">ТУТ</a>
-    Sign up <a href="https://docs.google.com/spreadsheets/d/1R_9X4pbxbKhkOVZr8sFtxumGpcsRcwBo92lA5f_0QFk/edit#gid=2123882920">HERE</a>
-    Находимся: <a href="https://www.google.com/maps/place/MESTO/@41.7123272,44.8034361,16.25z/data=!4m5!3m4!1s0x0:0xebb52ae2df885eb5!8m2!3d41.7078998!4d44.7976618?hl=ru">Марджанишвили</a> и <a href="https://www.google.com/maps/place/165-179,+165+Shalva+Nutsubidze+St,+T'bilisi/@41.7266447,44.7281625,17z/data=!3m1!4b1!4m5!3m4!1s0x40447309639f6529:0x913174e679eb1559!8m2!3d41.7266447!4d44.7281625?hl=en">Важа-Пшавела</a>
-    Location (English club): <a href="https://www.google.com/maps/place/MESTO/@41.7123272,44.8034361,16.25z/data=!4m5!3m4!1s0x0:0xebb52ae2df885eb5!8m2!3d41.7078998!4d44.7976618?hl=ru">Marjanishvili</a>
+    Запись на игры: @mesto_bot
+    Sign up: @mesto_bot
+    Находимся: <a href="https://www.google.com/maps/place/MESTO+Board+Game+Club+%26+Coworking+Space/@41.7079064,44.7953917,17z/data=!3m1!4b1!4m5!3m4!1s0x40440d1a77c968a5:0xebb52ae2df885eb5!8m2!3d41.7079024!4d44.7975804?hl=en-GB">Марджанишвили</a> и <a href="https://www.google.com/maps/place/MESTO+Board+Game+Club+%26+Coworking+Space/@41.7266447,44.7281625,15z/data=!4m2!3m1!1s0x0:0xa6160a3dd5028235?sa=X&hl=en-GB&ved=2ahUKEwiyqsmprrP8AhVz8DgGHTXaBjYQ_BJ6BAhiECE">Важа-Пшавела</a>
+    Location (English club): <a href="https://www.google.com/maps/place/MESTO+Board+Game+Club+%26+Coworking+Space/@41.7079064,44.7953917,17z/data=!3m1!4b1!4m5!3m4!1s0x40440d1a77c968a5:0xebb52ae2df885eb5!8m2!3d41.7079024!4d44.7975804?hl=en-GB">Marjanishvili</a>
 
 AdminCurrentGames:
   other: |
