@@ -953,3 +953,12 @@ LastVisitNotification:
 
 QR:
   other: QR-код для списывания посещений
+
+MyMembership:
+  other: |
+    <b>{{ if eq .Kind "unlimited" }}Безлимитный {{ end }}Абонемент{{ if not (eq .Kind "unlimited") }} на {{ .VisitsNumber }} посещений{{ end }}</b>
+    Действителен с {{ .StartDate.Format "02.01.2006" }} по {{ .FinishDate.Format "02.01.2006" }}.
+    Посещений: {{ len .VisitsList }}{{ if not (eq .Kind "unlimited") }}/{{ .VisitsNumber }}{{ end }}
+    {{- range $i, $date := .VisitsList }}
+    - <code>{{ $date.Format "02.01.2006" }}</code>
+    {{- end }}
