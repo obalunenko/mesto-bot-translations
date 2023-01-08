@@ -386,8 +386,11 @@ IrregularEventDeleted:
   other: |
     The event of <b>{{ .Name }}</b> on ({{ weekday .StartTime "en"}}) <b>{{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b> has been deleted.
 
+NoMyGames:
+  other: "You have not joined to any game yet"
+
 NoGames:
-  other: "There are no games scheduled for this week yet."
+  other: "There are no games scheduled for this week yet"
 
 YouAreBanned:
   other: "You have been banned by @{{ .BannedBy }}. Ban reason: <code>{{ .BanReason }}</code>"

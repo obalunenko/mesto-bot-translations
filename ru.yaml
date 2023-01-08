@@ -459,8 +459,11 @@ IrregularEventDeleted:
   other: |
     Событие <b>{{ .Name }}</b>, проводимое в <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b> было удалено.
 
+NoMyGames:
+  other: "Вы пока не присоединились ни к одной игре"
+
 NoGames:
-  other: "Нет анонсированных игр в ближайшую неделю."
+  other: "Нет анонсированных игр в ближайшую неделю"
 
 YouAreBanned:
   other: "Вы забанены @{{ .BannedBy }}. Причина бана: <code>{{ .BanReason }}</code>"
