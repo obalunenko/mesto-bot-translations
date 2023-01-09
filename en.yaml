@@ -439,6 +439,9 @@ NoSubscribedGames:
 NoSubscriptions:
   other: No subscriptions yet.
 
+NoSubscription:
+  other: Вы пока не покупали абонемент
+
 YesAnswer:
   other: "Yes"
 

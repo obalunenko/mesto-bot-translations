@@ -528,6 +528,9 @@ NoSubscribedGames:
 NoSubscriptions:
   other: Пока ни одного абонемента.
 
+NoSubscription:
+  other: Вы пока не покупали абонемент
+
 InitGameNotification:
   other: |
     Пользователь @{{ .Initiator }} анонсировал игру <b>{{ .GameRu }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.
