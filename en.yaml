@@ -142,6 +142,12 @@ AddGuests:
 RemoveGuests:
   other: "Remove guests"
 
+AddGuestsAdmin:
+  other: "Add guests"
+
+RemoveGuestsAdmin:
+  other: "Remove guests"
+
 Subscribe:
   other: "Subscribe"
 
@@ -662,7 +668,7 @@ Subscriptions:
   other: |
     Today is <code>{{ now.Format "02.01.2006" }}</code>
     {{- range $i, $sub := . }}
-    @{{ $sub.Username }} - Begins: {{ .PurchaseDate.Format "02.01.2006" }}. <code>{{ daysLeft .PurchaseDate .Duration }}</code> days left
+    @{{ $sub.Username }} - Begins: {{ .PurchaseDate.Format "02.01.2006" }}, ends: {{ .FinishDate.Format "02.01.2006" }}. <code>{{ daysLeft .PurchaseDate .Duration }}</code> days left
     {{- end }}
 
 CannotDecrease:

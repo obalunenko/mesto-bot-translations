@@ -225,13 +225,13 @@ CreateGame:
 JoinGame:
   other: "Записать"
 
-AddGuests:
+AddGuestsAdmin:
   other: "Добавить гостей к игроку"
 
 Remove:
   other: "Выписать с игры (вместе с гостями)"
 
-RemoveGuests:
+RemoveGuestsAdmin:
   other: "Выписать только гостей игрока"
 
 PlayersUp:
@@ -358,6 +358,22 @@ AdminCurrentGames:
       {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков
       {{- if not (eq $announce.Initiator "" ) }}
       Инициатор: @{{ $announce.Initiator }}{{ end }}
+    {{- end }}
+    {{ end }}
+    {{- end }}
+
+AdminLastGames:
+  other: |
+    {{- range $i, $location := . }}
+    <b><u>{{ $location.LocationRu }}</u></b>
+    {{- range $j, $day := $location.Announces }}
+    <b>{{ $day.Weekday }} - {{ $day.Date }}</b>
+    {{- range $j, $announce := $day.Announces }}
+    <b>{{ $announce.Time }} - {{ $announce.Emoji }} {{ $announce.GameRu }}</b>
+      {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков:
+      {{- range $k, $player := $announce.Players }}
+      @{{ $player.Username }}{{ if not (eq $player.Guests 0) }} +{{ $player.Guests }}{{ end }}{{ if eq $player.Username $announce.Initiator }} (инициатор игры){{ end }}
+      {{- end }}
     {{- end }}
     {{ end }}
     {{- end }}
@@ -739,7 +755,7 @@ Subscriptions:
   other: |
     Сегодня <code>{{ now.Format "02.01.2006" }}</code>
     {{- range $i, $sub := . }}
-    @{{ $sub.Username }} - Начинается: <code>{{ .PurchaseDate.Format "02.01.2006" }}</code>. Осталось <code>{{ daysLeft .PurchaseDate .Duration }}</code> дней. {{ if eq .Kind "unlimited" }}Безлимитный.{{ else }}На {{ .VisitsNumber }} посещений.{{ end }}
+    @{{ $sub.Username }} - {{ if eq .Kind "unlimited" }}Безлимитный{{ else }}На {{ .VisitsNumber }} посещений{{ end }} с <code>{{ .PurchaseDate.Format "02.01.2006" }}</code> по <code>{{ .FinishDate.Format "02.01.2006" }}</code>. Осталось <code>{{ daysLeft .PurchaseDate .Duration }}</code> дней.
     {{- end }}
 
 CannotDecrease:
