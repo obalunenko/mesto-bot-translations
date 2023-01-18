@@ -768,7 +768,7 @@ Subscriptions:
   other: |
     Сегодня <code>{{ now.Format "02.01.2006" }}</code>
     {{- range $i, $sub := . }}
-    <code>@{{ $sub.Username }} | {{ .PurchaseDate.Format "02.01.2006" }}-{{ .FinishDate.Format "02.01.2006" }} {{ daysLeft .PurchaseDate .Duration }} дней / {{ if not (eq .Kind "unlimited") }}{{ .VisitsLeft }} посещений{{ else }}Безлимит{{ end }}</code>
+    <code>@{{ $sub.Username }} | {{ .PurchaseDate.Format "02.01.2006" }}-{{ .FinishDate.Format "02.01.2006" }} | {{ daysLeft .PurchaseDate .Duration }} дней / {{ if not (eq .Kind "unlimited") }}{{ .VisitsLeft }} посещений{{ else }}Безлимит{{ end }}</code>
     {{- end }}
 
 CannotDecrease:
