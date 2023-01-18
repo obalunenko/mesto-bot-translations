@@ -133,7 +133,11 @@ SelectSubscriptionType:
     Выберите тип абонемента
 
 Users:
-  other: "Пользователи"
+  other: |
+    Пользователи
+    {{ range $i, $username := . }}
+    @{{ $username }}
+    {{- end }}
 
 UserInfoCaption:
   other: "Информация о пользователе"
