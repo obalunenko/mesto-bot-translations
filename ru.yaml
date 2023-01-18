@@ -780,7 +780,7 @@ InterestingGamesCaption:
 InterestingGames:
   other: |
     Топ-10 игр по мнению игроков
-    <code>Название                     | Подписались | Было анонсировано</code>
+    <code>Название                      | Подписались | Было анонсировано</code>
     {{- range $i, $line := . }}
     <code>{{ $line }}</code>
     {{- end }}
