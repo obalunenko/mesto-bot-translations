@@ -774,6 +774,17 @@ Subscriptions:
     <code>@{{ $sub.Username }} | {{ .PurchaseDate.Format "02.01.2006" }}-{{ .FinishDate.Format "02.01.2006" }} | {{ daysLeft .PurchaseDate .Duration }} дней / {{ if not (eq .Kind "unlimited") }}{{ .VisitsLeft }} посещений{{ else }}Безлимит{{ end }}</code>
     {{- end }}
 
+InterestingGamesCaption:
+  other: "Топ-10 игр"
+
+InterestingGames:
+  other: |
+    Топ-10 игр по мнению игроков
+    <code>Название                     | Подписались | Было анонсировано</code>
+    {{- range $i, $line := . }}
+    <code>{{ $line }}</code>
+    {{- end }}
+
 CannotDecrease:
   other: |
     Некуда уменьшать максимальное число игроков.
