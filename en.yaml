@@ -252,11 +252,13 @@ CurrentGames:
     {{- range $day, $date := . }}
     <b><u>{{ $date.Weekday }} - {{ $date.Date }}</u></b>
     {{- range $j, $announce := $date.Announces }}
+    {{- if lt $announce.PlayersCount $announce.MaxPlayers }}
     <b>{{ $announce.Time }} {{ $announce.Emoji }} {{ $announce.GameEn }} ({{ $announce.LocationEn }})</b>
       {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players:
       {{- range $k, $player := $announce.Players }}
       @{{ $player.Username }}{{ if not (eq $player.Guests 0) }} +{{ $player.Guests }}{{ end }}{{ if eq $player.Username $announce.Initiator }} (game initiator){{ end }}
       {{- end }}
+    {{- end }}
     {{- end }}
     {{ end }}
 
