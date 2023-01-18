@@ -327,6 +327,16 @@ CurrentGames:
     {{- end }}
     {{ end }}
 
+Admin2CurrentGames:
+  other: |
+    {{- range $i, $date := . }}
+    <b><u>{{ $date.Weekday }} - {{ $date.Date }}</u></b>
+    {{- range $j, $announce := $date.Announces }}
+    <b>{{ $announce.Time }} - {{ $announce.Emoji }} {{ $announce.GameRu }} ({{ $announce.LocationRu }})</b>
+      {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков
+    {{- end }}
+    {{ end }}
+
 Announcement:
   other: |
     Открытые на текущий момент игры:
@@ -758,7 +768,7 @@ Subscriptions:
   other: |
     Сегодня <code>{{ now.Format "02.01.2006" }}</code>
     {{- range $i, $sub := . }}
-    @{{ $sub.Username }} - {{ if eq .Kind "unlimited" }}Безлимитный{{ else }}На {{ .VisitsNumber }} посещений{{ end }} с <code>{{ .PurchaseDate.Format "02.01.2006" }}</code> по <code>{{ .FinishDate.Format "02.01.2006" }}</code>. Осталось <code>{{ daysLeft .PurchaseDate .Duration }}</code> дней.
+    @{{ $sub.Username }} - {{ if eq .Kind "unlimited" }}Безлимитный{{ else }}На {{ .VisitsNumber }} посещений{{ end }} с <code>{{ .PurchaseDate.Format "02.01.2006" }}</code> по <code>{{ .FinishDate.Format "02.01.2006" }}</code>. Осталось <code>{{ daysLeft .PurchaseDate .Duration }}</code> дней{{ if not (eq .Kind "unlimited") }}, {{ .VisitsLeft }} посещений{{ end }}.
     {{- end }}
 
 CannotDecrease:
