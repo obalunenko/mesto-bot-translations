@@ -883,6 +883,7 @@ AdminIrregularEventInfo:
       @{{ $participant.Username }}{{ if not (eq $participant.Guests 0) }} +{{ $participant.Guests }}{{ end }}
       {{- end }}
       Заметки: <code>{{ .Notes }}</code>
+      Ссылка:  {{ .ChatLink }}
 
 ChangeName:
   other: |
@@ -907,6 +908,10 @@ ChangeMaxParticipants:
 ChangeLocation:
   other: |
     Локацию
+
+ChangeLink:
+  other: |
+    Ссылку
 
 ChangeNotes:
   other: |
@@ -935,6 +940,10 @@ SelectAction:
 EnterNewEventName:
   other: |
     Введите новое название события <b>{{ .Name }}</b>
+
+EnterNewEventLink:
+  other: |
+    Введите новую ссылку для события <b>{{ .Name }}</b>
 
 EnterNewEventStartTime:
   other: |
@@ -979,6 +988,14 @@ EventResumed:
 EventNameChanged:
   other: |
     Название события изменено на <b>{{ .Name }}</b>
+
+EventLinkChanged:
+  other: |
+    {{- if not (eq .ChatLink "") }}
+    Ссылка для события изменена на <b><a href="{{ .ChatLink }}">{{ .Name }}</a></b>
+    {{- else }}
+    Ссылка для события была удалена
+    {{- end }}
 
 EventStartTimeChanged:
   other: |
@@ -1111,6 +1128,9 @@ QR:
 
 SignUp:
   other: Запись
+
+EnterLink:
+  other: Пожалуйста, введите ссылку для мероприятия
 
 MyMembership:
   other: |
