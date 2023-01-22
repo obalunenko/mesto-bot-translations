@@ -303,7 +303,7 @@ GoingToSleep:
 
 GameInited:
   other: |
-    Вы успешно анонсировали игру в <b>{{ .GameRu }}</b> на {{ .LocationRu }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}.
+    Вы успешно анонсировали игру в <b>{{ .GameRu }}</b> на <a href="{{ .AddressLink }}">{{ .LocationRu }}</a> {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}.
 
 GameMoved:
   other: |
@@ -416,11 +416,11 @@ AnnounceRevoked:
 
 GameJoined:
   other: |
-    Вы успешно присоединились к игре <b>{{ .GameRu }}</b>, проводимой <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.
+    Вы успешно присоединились к игре <b>{{ .GameRu }}</b>, проводимой <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b><a href="{{ .AddressLink }}">{{ .LocationRu }}</a></b>.
 
 EventJoined:
   other: |
-    Вы успешно присоединились к событию <b>{{ .Name }}</b>, проводимой <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.
+    Вы успешно присоединились к событию <b>{{ .Name }}</b>, проводимой <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b><a href="{{ .AddressLink }}">{{ .LocationRu }}</a></b>.
 
 AnnouncesNoChanges:
   other: |
