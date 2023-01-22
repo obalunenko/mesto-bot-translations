@@ -980,3 +980,39 @@ MyMembership:
     {{- range $i, $date := .VisitsList }}
     - <code>{{ $date.Format "02.01.2006" }}</code>
     {{- end }}
+
+About:
+  other: About Mesto
+
+Addresses:
+  other: Addresses
+
+Prices:
+  other: Prices
+
+Contacts:
+  other: Contacts
+
+ContactsMsg:
+  other: |
+    Наш чат в Telegram: https://t.me/mesto_games
+
+    Администраторы:
+    {{- range $i, $loc := .}}
+    МЕСТО {{ $loc.NameRu }} – @{{ index $loc.Admins 0 }}
+    {{- end }}
+
+PricesMsg:
+  other: |
+    🎲 Игровой вечер / день в <b>будни – 20 лари</b>, в <b>выходные - 25 лари</b>. Абонемент на 5 посещений - <b>90 лари</b>. Безлимитный абонемент на месяц - <b>130 лари</b>.
+    Если вы принесли игру, на которую набралась компания, то вы играете бесплатно
+
+    💻 Коворкинг – <b>10 лари / час, 25 лари / день, 300 лари / месяц</b>.
+
+AddressesMsg:
+  other: |
+    {{- range $i, $loc := .}}
+    <b>МЕСТО {{ $loc.NameRu }}</b>
+    <a href="{{ $loc.AddressLink }}">{{ index $loc.Address "en" }}</a>
+    Как добраться от метро <a href="{{ $loc.HowToGoLink }}">{{ $loc.NameRu }}</a>
+    {{ end }}
