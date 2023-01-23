@@ -1187,7 +1187,7 @@ ContactsMsg:
 
     Администраторы:
     {{- range $i, $loc := .}}
-    МЕСТО {{ $loc.NameRu }} – @{{ index $loc.Admins 0 }}
+    МЕСТО {{ $loc.NameRu }} – @{{ range $index, $admin := $loc.Admins }}{{if $index}} @{{end}}{{$admin}}{{end}}
     {{- end }}
 
 PricesMsg:
