@@ -401,7 +401,7 @@ NoGames:
   other: "There are no games scheduled for this week yet"
 
 YouAreBanned:
-  other: "You have been banned by @{{ .BannedBy }}. Ban reason: <code>{{ .BanReason }}</code>"
+  other: "You have been banned by @{{ .BannedBy }}"
 
 SelectLocation:
   other: |

@@ -506,7 +506,7 @@ NoGames:
   other: "Нет анонсированных игр в ближайшую неделю"
 
 YouAreBanned:
-  other: "Вы забанены @{{ .BannedBy }}. Причина бана: <code>{{ .BanReason }}</code>"
+  other: "Вы забанены @{{ .BannedBy }}"
 
 SelectLocation:
   other: |
