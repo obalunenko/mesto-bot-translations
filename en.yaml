@@ -311,11 +311,19 @@ AnnounceRevoked:
 
 GameJoined:
   other: |
-    You have successfully joined the game of <b>{{ .GameEn }}</b> held on ({{ weekday .StartTime "en"}}) <b>{{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b><a href="{{ .AddressLink }}">{{ .LocationEn }}</a></b>.
+    You have successfully joined the game of <b>{{ .GameEn }}</b>!
+    Date: <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}})</b>
+    Time: <b>{{ .StartTime.Format "15:04" }}</b>
+    Location: <a href="{{ .AddressLink }}"><b>{{ .LocationEn }}</b></a>
+    Duration: {{ div .Duration 60 }} hours
 
 EventJoined:
   other: |
-    You have successfully signed up for <b>{{ .Name }}</b> held on ({{ weekday .StartTime "en"}}) <b>{{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b><a href="{{ .AddressLink }}">{{ .LocationEn }}</a></b>.
+    You have successfully signed up for <b>{{ .Name }}</b>!
+    Date: <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}})</b>
+    Time: <b>{{ .StartTime.Format "15:04" }}</b>
+    Location: <a href="{{ .AddressLink }}"><b>{{ .LocationEn }}</b></a>
+    Duration: {{ div .Duration 60 }} hours
 
 GameDescription:
   other: |

@@ -416,11 +416,19 @@ AnnounceRevoked:
 
 GameJoined:
   other: |
-    Вы успешно присоединились к игре <b>{{ .GameRu }}</b>, проводимой <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b><a href="{{ .AddressLink }}">{{ .LocationRu }}</a></b>.
+    Вы успешно присоединились к игре <b>{{ .GameRu }}</b>!
+    Дата: <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}})</b>
+    Время: <b>{{ .StartTime.Format "15:04" }}</b>
+    Локация: <a href="{{ .AddressLink }}"><b>{{ .LocationRu }}</b></a>
+    Продолжительность: <b>{{ div .Duration 60}} часов</b>
 
 EventJoined:
   other: |
-    Вы успешно присоединились к событию <b>{{ .Name }}</b>, проводимой <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b><a href="{{ .AddressLink }}">{{ .LocationRu }}</a></b>.
+    Вы успешно присоединились к событию <b>{{ .Name }}</b>.
+    Дата: <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}})</b>
+    Время: <b>{{ .StartTime.Format "15:04" }}</b>
+    Локация: <a href="{{ .AddressLink }}"><b>{{ .LocationRu }}</b></a>
+    Продолжительность: <b>{{ div .Duration 60}} часов</b>
 
 AnnouncesNoChanges:
   other: |
