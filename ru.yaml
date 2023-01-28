@@ -424,7 +424,7 @@ GameJoined:
 
 EventJoined:
   other: |
-    Вы успешно присоединились к событию <b>{{ .Name }}</b>.
+    Вы успешно присоединились к событию <b>{{ .Name }}</b>!
     Дата: <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}})</b>
     Время: <b>{{ .StartTime.Format "15:04" }}</b>
     Локация: <a href="{{ .AddressLink }}"><b>{{ .LocationRu }}</b></a>
