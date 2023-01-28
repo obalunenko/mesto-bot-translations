@@ -315,7 +315,7 @@ GameJoined:
     Date: <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}})</b>
     Time: <b>{{ .StartTime.Format "15:04" }}</b>
     Location: <a href="{{ .AddressLink }}"><b>{{ .LocationEn }}</b></a>
-    Duration: {{ div .Duration 60 }} hours
+    Duration: <b>approximately {{ div .Duration 60 }} hours</b>
 
 EventJoined:
   other: |
@@ -323,7 +323,7 @@ EventJoined:
     Date: <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}})</b>
     Time: <b>{{ .StartTime.Format "15:04" }}</b>
     Location: <a href="{{ .AddressLink }}"><b>{{ .LocationEn }}</b></a>
-    Duration: {{ div .Duration 60 }} hours
+    Duration: <b>approximately {{ div .Duration 60 }} hours</b>
 
 GameDescription:
   other: |

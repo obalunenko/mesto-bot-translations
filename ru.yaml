@@ -420,7 +420,7 @@ GameJoined:
     Дата: <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}})</b>
     Время: <b>{{ .StartTime.Format "15:04" }}</b>
     Локация: <a href="{{ .AddressLink }}"><b>{{ .LocationRu }}</b></a>
-    Продолжительность: <b>{{ div .Duration 60}} часов</b>
+    Продолжительность: <b>примерно {{ div .Duration 60}} часов</b>
 
 EventJoined:
   other: |
@@ -428,7 +428,7 @@ EventJoined:
     Дата: <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}})</b>
     Время: <b>{{ .StartTime.Format "15:04" }}</b>
     Локация: <a href="{{ .AddressLink }}"><b>{{ .LocationRu }}</b></a>
-    Продолжительность: <b>{{ div .Duration 60}} часов</b>
+    Продолжительность: <b>примерно {{ div .Duration 60}} часов</b>
 
 AnnouncesNoChanges:
   other: |
