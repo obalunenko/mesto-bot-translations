@@ -1,287 +1,36 @@
-UndefinedCommandError:
-  description: "User entered undefined command"
-  other: "I don't know this command."
-
-AnotherCommandError:
-  description: "User already run another command and must finish it before run another command"
-  other: "You are already running another command. Please complete the command it or cancel it."
-
-NoCommandError:
-  description: "/cancel on no command"
-  other: "No active command to cancel. I wasn't doing anything anyway. Zzzzz..."
-
-InvalidCountError:
-  other: "You have entered an invalid number."
-
-InternalError:
-  description: "Cannot connect to database or to lambdas"
-  other: "An internal error has occured: <code>{{ .Error }}</code>"
-
-TooLongGameNameError:
-  description: "User entered too long game name"
-  other: "The name you have entered is too long. Please enter a correct name."
-
-UndefinedGameError:
-  description: "User entered undefined game"
-  other: "Game is not on the list of available games. Please select an available game."
-
-UndefinedActionError:
-  description: "User selected undefined action"
-  other: "Action not found. Please select a correct action."
-
-InvalidGameError:
-  description: "User selected invalid game"
-  other: "<code>{{ .Game }}</code> is not a valid game. Please select a game again."
-
-FullGame:
-  other: "Sorry, there are no players slots left for this game."
-
-FullEvent:
-  other: "Sorry, this event is already at full capacity."
-
-TooFarDate21Error:
-  description: "User entered invalid date"
-  other: "<code>{{ .Date }}</code> is too far away. Please enter a date within 3 weeks."
-
-InvalidDateError:
-  description: "User entered invalid date"
-  other: "<code>{{ .Date }}</code> is not a valid date. Please enter a date again using the <code>dd.mm</code> format."
-
-TooLateError:
-  other: "The starting time is too late. Please select a starting time before 9:00 PM."
-
-InvalidTimeError:
-  description: "User entered invalid time"
-  other: "Time <code>{{ .Time }}</code> is not valid. Enter time again using <code>HH:MM</code> format, please."
-
-InvalidLocationError:
-  description: "User entered invalid location"
-  other: "<code>{{ .Location }}</code> is not a valid location. Please select a location again."
-
-AreYouSure:
-  other: "Are you sure?"
-
-EnterEventTime:
-  other: "You chose <b>{{ .Weekday }}</b>. Now enter the starting time for the event (<code>HH:MM</code>)"
-
-EnterTime:
-  other: "You chose {{ .Date }} {{ .Weekday }}. Now enter the starting time for the game (<code>HH:MM</code>)"
-
-SelectTime:
-  other: "You chose {{ .Date }} {{ .Weekday }}. Now select the starting time for the game"
-
-SelectNewTime:
-  other: "You chose {{ .Date }} {{ .Weekday }}. Now select the new starting time for the game (<code>HH:MM</code>)"
-
-EnterDate:
-  other: |
-    Please enter the date (<code>dd.mm</code>). Today is <code>{{ now.Format "02.01"}}</code>
-
-SelectDate:
-  other: |
-    Please select the date
-
-EnterNewDate:
-  other: |
-    Please enter the new date (<code>dd.mm</code>). Today is <code>{{ now.Format "02.01"}}</code>
-
-SelectNewDate:
-  other: |
-    Please select the new date
-
-SelectGuestsCountToAdd:
-  other: "Please select the number of guests to add"
-
-SelectGuestsCountToRemove:
-  other: "Please select the number of guests to remove"
-
-NoSeatsInTheGame:
-  other: "Unfortunately, there are no open slots left. Please pick a different time or a different game"
-
-MaxPlayersDecreasedInAnnounce:
-  other: |
-    You successfully decreased maximum count of player to {{ .MaxPlayers }} persons in the game <b>{{ .GameEn }}</b> on {{ .LocationEn }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}}) в {{ .StartTime.Format "15:04" }}.
-
-MaxPlayersIncreasedInAnnounce:
-  other: |
-    You successfully increased maximum count of player to {{ .MaxPlayers }} persons in the game <b>{{ .GameEn }}</b> on {{ .LocationEn }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}}) в {{ .StartTime.Format "15:04" }}.
-
-GuestsAddedToAnnounce:
-  other: |
-    You have successfully added {{ .PlayersCount }} players to the game of <b>{{ .GameEn }}</b> at {{ .LocationEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}.
-
-GuestsAddedToEvent:
-  other: |
-    You have successfully added {{ .ParticipantsCount }} guests to <b>{{ .Name }}</b> at {{ .LocationEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}.
-
-GuestsRemovedFromAnnounce:
-  other: |
-    You have removed {{ .PlayersCount }} players from the game of <b>{{ .GameEn }}</b> at {{ .LocationEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}.
-
-GuestsRemovedFromEvent:
-  other: |
-    You removed {{ .ParticipantsCount }} guests from the event <b>{{ .Name }}</b> at {{ .LocationEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}.
-
-NoGuests:
-  other: |
-    You haven't invited any guests yet.
-
-SelectSubscriptionType:
-  other: |
-    Select subscription type
-
-Join:
-  other: "Join"
-
-Leave:
-  other: "Leave"
-
+About:
+  other: About Mesto
 AddGuests:
   other: "Add guests"
-
-RemoveGuests:
-  other: "Remove guests"
-
 AddGuestsAdmin:
-  other: "Add guests"
-
-RemoveGuestsAdmin:
-  other: "Remove guests"
-
-Subscribe:
-  other: "Subscribe"
-
-Unsubscribe:
-  other: "Unsubscribe"
-
-Promote:
-  other: "Promote"
-
-Demote:
-  other: "Demote"
-
-Ban:
-  other: "Ban"
-
-Unban:
-  other: "Unban"
-
-Like:
-  other: "Like"
-
-Dislike:
-  other: "Dislike"
-
-GTFO:
-  other: "GTFO"
-
-MarkUser:
-  other: "Mark user"
-
-SelectAnnounceToJoin:
-  other: "Please select an announced event to join."
-
-SelectAnnounceToMove:
-  other: "Please select an announced event to move."
-
-SelectAnnounceToLeave:
-  other: "Please select an announced event you would like to leave."
-
-SelectAnnounceToDelete:
-  other: "Please select an announced event to cancel."
-
-SelectIrregularEventToDelete:
-  other: "Please select an event to delete."
-
-SelectIrregularEventToEdit:
-  other: "Please select an event to edit."
-
-SelectAnnounceToAddGuests:
-  other: "Please select an announced event to add guests to."
-
-SelectAnnounceToRemoveGuests:
-  other: "Please select an announced event to remove guests from."
-
-SelectGame:
-  other: "Please select a game."
-
-SelectCommand:
-  other: "Please choose a command."
-
-SelectAction:
-  other: "Please select an action."
-
-Bye:
-  other: "Bye :)"
-
-NotReadyYet:
-  other: "This feature is not ready yet."
-
-GoingToSleep:
-  description: "Before bot stops"
-  other: "Would you like to do anything else? I'm about to go to sleep..."
-
-
-GameInited:
+  other: "Add guests to player"
+Addresses:
+  other: Addresses
+AddressesMsg:
   other: |
-    You have successfully initiated a game of <b>{{ .GameEn }}</b> at <a href="{{ .AddressLink }}">{{ .LocationEn }}</a> on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}.
-
-EventMoved:
-  other: |
-    You have successfully moved <b>{{ .Name }}</b>. The event will take place at {{ .LocationEn }} on {{ weekdayName .Weekday "en"}} at {{ .StartTime.Format "15:04" }}.
-
-GameMoved:
-  other: |
-    You have successfully moved <b>{{ .GameEn }}</b>. The game will take place at {{ .LocationEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}.
-
-MyGames:
+    {{- range $i, $loc := .}}
+    <b>МЕСТО {{ $loc.NameRu }}</b>
+    <a href="{{ $loc.AddressLink }}">{{ index $loc.Address "en" }}</a>
+    Как добраться от метро <a href="{{ $loc.HowToGoLink }}">{{ $loc.NameRu }}</a>
+    {{ end }}
+Admin2CurrentGames:
   other: |
     {{- range $i, $date := . }}
     <b><u>{{ $date.Weekday }} - {{ $date.Date }}</u></b>
     {{- range $j, $announce := $date.Announces }}
-    <b>{{ $announce.Time }} {{ $announce.Emoji }} {{ $announce.GameEn }} ({{ $announce.LocationEn }})</b>
-      {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players:
-      {{- range $k, $player := $announce.Players }}
-      @{{ $player.Username }}{{ if not (eq $player.Guests 0) }} +{{ $player.Guests }}{{ end }}{{ if eq $player.Username $announce.Initiator }} (game initiator){{ end }}
-      {{- end }}
+    <b>{{ $announce.Time }} - {{ $announce.Emoji }} {{ $announce.GameEn }} ({{ $announce.LocationEn }})</b>
+      {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players
     {{- end }}
     {{ end }}
-
-CurrentGames:
+AdminAnnounceInfo:
   other: |
-    {{- range $day, $date := . }}
-    <b><u>{{ $date.Weekday }} - {{ $date.Date }}</u></b>
-    {{- range $j, $announce := $date.Announces }}
-    {{- if lt $announce.PlayersCount $announce.MaxPlayers }}
-    <b>{{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameEn }}</a>{{ else }}{{ $announce.GameEn }}{{ end }} ({{ $announce.LocationEn }})</b>
-      {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players:
-      {{- range $k, $player := $announce.Players }}
-      @{{ $player.Username }}{{ if not (eq $player.Guests 0) }} +{{ $player.Guests }}{{ end }}{{ if eq $player.Username $announce.Initiator }} (game initiator){{ end }}
+    <b><u>{{ .StartTime.Format "02.01.2006 15:04" }}</u></b>
+    {{ .Emoji }}<b>{{ .GameEn }} ({{ .LocationEn }})</b>
+      Initiator: @{{ .Initiator }}
+      {{ .PlayersCount }}/{{ .MaxPlayers }} players:
+      {{- range $k, $player := .Players }}
+      @{{ $player.Username }}{{ if not (eq $player.Guests 0) }} +{{ $player.Guests }}{{ end }}
       {{- end }}
-    {{- end }}
-    {{- end }}
-    {{ end }}
-
-Announcement:
-  other: |
-    Открытые на текущий момент игры:
-    {{ range $i, $date := . }}
-    {{- if $date.Announces }}
-    {{- $length := len $date.Announces }}{{ if gt $length 0}}
-    <b>{{ $date.Weekday }} - {{ $date.Date }}</b>
-    {{- range $j, $announce := $date.Announces }}
-    {{- if lt $announce.PlayersCount $announce.MaxPlayers }}
-    {{ $announce.Time }} {{ $announce.Emoji }} {{ $announce.GameEn }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков) <b>({{ $announce.LocationEn }})</b>
-    {{- end }}
-    {{- end }}
-    {{- end }}
-    {{- end }}
-    {{ end }}
-    Записываться на игры <a href="https://docs.google.com/spreadsheets/d/1R_9X4pbxbKhkOVZr8sFtxumGpcsRcwBo92lA5f_0QFk/edit?usp=sharing">ТУТ</a>
-    Sign up <a href="https://docs.google.com/spreadsheets/d/1R_9X4pbxbKhkOVZr8sFtxumGpcsRcwBo92lA5f_0QFk/edit#gid=2123882920">HERE</a>
-    Находимся: <a href="https://www.google.com/maps/place/MESTO/@41.7123272,44.8034361,16.25z/data=!4m5!3m4!1s0x0:0xebb52ae2df885eb5!8m2!3d41.7078998!4d44.7976618?hl=ru">Марджанишвили</a> и <a href="https://www.google.com/maps/place/165-179,+165+Shalva+Nutsubidze+St,+T'bilisi/@41.7266447,44.7281625,17z/data=!3m1!4b1!4m5!3m4!1s0x40447309639f6529:0x913174e679eb1559!8m2!3d41.7266447!4d44.7281625?hl=en">Важа-Пшавела</a>
-    Location (English club): <a href="https://www.google.com/maps/place/MESTO/@41.7123272,44.8034361,16.25z/data=!4m5!3m4!1s0x0:0xebb52ae2df885eb5!8m2!3d41.7078998!4d44.7976618?hl=ru">Marjanishvili</a>
-
 AdminCurrentGames:
   other: |
     {{- range $i, $location := . }}
@@ -296,35 +45,337 @@ AdminCurrentGames:
     {{- end }}
     {{ end }}
     {{- end }}
-
-GameLeft:
+AdminEnterUsernameToAddGuests:
+  other: "Please enter the username you'd like to add guests to."
+AdminEnterUsernameToJoin:
+  other: "Enter the username that you would like to add to a game or event."
+AdminEnterUsernameToLeave:
+  other: "Enter the username that you would like to remove from a game or event."
+AdminEnterUsernameToRemoveGuests:
+  other: "Please enter the username you'd like to remove guests from."
+AdminEventInfo:
   other: |
-    You left <b>{{ .GameEn }}</b> held on ({{ weekday .StartTime "en"}}) <b>{{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
-
-EventLeft:
+    <b><u>{{ .StartTime.Format "02.01.2006 15:04" }}</u></b>
+    {{ .Emoji }}<b>{{ .Name }} ({{ .LocationEn }})</b>
+      {{- if .MaxParticipants }}{{ $maxParticipants := derefUint .MaxParticipants }}
+      {{ .ParticipantsCount }}/{{ $maxParticipants }} participants:
+      {{- range $k, $participant := .Participants }}
+      @{{ $participant.Username }}{{ if not (eq $participant.Guests 0) }} +{{ $participant.Guests }}{{ end }}
+      {{- end }}
+      {{- end }}
+AdminEventJoined:
   other: |
-    You left <b>{{ .Name }}</b> held on ({{ weekday .StartTime "en"}}) <b>{{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
-
+    You have successfully added @{{ .User }} to <b>{{ .Event.Name }}</b>, held on <b>({{ weekday .Event.StartTime "en"}}) {{ .Event.StartTime.Format "02.01.2006" }} at {{ .Event.StartTime.Format "15:04" }}</b> at <b>{{ .Event.LocationEn }}</b>.
+AdminEventLeft:
+  other: |
+    You have removed @{{ .User }} from <b>{{ .Event.Name }}</b>, held on <b>({{ weekday .Event.StartTime "en"}} {{ .Event.StartTime.Format "02.01.2006" }} ) at {{ .Event.StartTime.Format "15:04" }}</b> at <b>{{ .Event.LocationEn }}</b>.
+AdminGameJoined:
+  other: |
+    You have successfully added @{{ .User }} to <b>{{ .Game.GameEn }}</b>, held on <b>{{ .Game.StartTime.Format "02.01.2006" }} ({{ weekday .Game.StartTime "en"}}) at {{ .Game.StartTime.Format "15:04" }}</b> at <b>{{ .Game.LocationEn }}</b>.
+AdminGameLeft:
+  other: |
+    You have removed @{{ .User }} from <b>{{ .Game.GameEn }}</b>, held on <b>{{ .Game.StartTime.Format "02.01.2006" }} ({{ weekday .Game.StartTime "en"}}) at {{ .Game.StartTime.Format "15:04" }}</b> at <b>{{ .Game.LocationEn }}</b>.
+AdminIrregularEventInfo:
+  other: |
+    <b><u>{{ .StartTime.Format "02.01.2006 15:04" }}</u></b>
+    {{ .Emoji }}<b>{{ .Name }} ({{ .LocationEn }})</b>
+      {{- if .IsCancelled }}
+      <b>Cancelled</b>
+      {{ end }}
+      Initiator: @{{ .Initiator }}
+      Tables count: {{ .Tables }}
+      Duration: {{ .Duration }} minutes
+      {{- if .Registration }}
+      Open registration
+      {{- else }}
+      Private registration
+      {{- end }}
+      {{ .ParticipantsCount }}/{{ .MaxParticipants }} participants:
+      {{- range $k, $participant := .Participants }}
+      @{{ $participant.Username }}{{ if not (eq $participant.Guests 0) }} +{{ $participant.Guests }}{{ end }}
+      {{- end }}
+      Notes: <code>{{ .Notes }}</code>
+      Link:  {{ .ChatLink }}
+AdminIrregularEventJoined:
+  other: |
+    You have successfully signed up @{{ .User }} for <b>{{ .Name }}</b> held on ({{ weekday .StartTime "en"}}) <b>{{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
+AdminIrregularEventLeft:
+  other: |
+    You have removed @{{ .User }} from <b>{{ .Event.Name }}</b>, held on <b>({{ weekday .Event.StartTime "en"}} {{ .Event.StartTime.Format "02.01.2006" }} ) at {{ .Event.StartTime.Format "15:04" }}</b> at <b>{{ .Event.LocationEn }}</b>.
+AdminJoinEventNotification:
+  other: You have been added to the <b>{{ .Name }}</b> event, held on <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
+AdminJoinGameNotification:
+  other: You have been added to the game of <b>{{ .GameEn }}</b>, held on <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
+AdminJoinIrregularEventNotification:
+  other: You have been added to the <b>{{ .Name }}</b> event, held on <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
+AdminLeaveEventNotification:
+  other: You have been removed from the <b>{{ .Name }}</b> event, held on <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
+AdminLeaveGameNotification:
+  other: You have been removed from the game of <b>{{ .GameEn }}</b>, held on <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
+AdminLeaveIrregularEventNotification:
+  other: You have been removed from the <b>{{ .Name }}</b> event, held on <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
+AdminSelectAnnounce:
+  other: "Please select an announced event."
+AdminSelectAnnounceToAddGuests:
+  other: "Please select an announced event to add user guests to."
+AdminSelectAnnounceToJoin:
+  other: "Please select an announced event to add a user to."
+AdminSelectAnnounceToLeave:
+  other: "Please select an announced event to remove a user from."
+AdminSelectAnnounceToRemoveGuests:
+  other: "Please select an announced event to remove user guests from."
+AnnounceDeleted:
+  other: |
+    The game of <b>{{ .GameEn }}</b> on ({{ weekday .StartTime "en"}}) <b>{{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b> has been cancelled by @{{ .Initiator }}
 AnnounceRevoked:
   other: |
     The game of <b>{{ .GameEn }}</b> held on ({{ weekday .StartTime "en"}}) <b>{{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b> has been cancelled.
-
-GameJoined:
+Announcement:
   other: |
-    You have successfully joined the game of <b>{{ .GameEn }}</b>!
-    Date: <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}})</b>
-    Time: <b>{{ .StartTime.Format "15:04" }}</b>
-    Location: <a href="{{ .AddressLink }}"><b>{{ .LocationEn }}</b></a>
-    Duration: <b>approximately {{ div .Duration 60 }} hours</b>
+    Games currently open:
+    {{ range $i, $date := . }}
+    {{- if $date.Announces }}
+    {{- $length := len $date.Announces }}{{ if gt $length 0}}
+    <b>{{ $date.Weekday }} - {{ $date.Date }}</b>
+    {{- range $j, $announce := $date.Announces }}
+    {{- if lt $announce.PlayersCount $announce.MaxPlayers }}
+    {{ $announce.Time }} {{ $announce.Emoji }} {{ $announce.GameEn }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков) <b>({{ $announce.LocationEn }})</b>
+    {{- end }}
+    {{- end }}
+    {{- end }}
+    {{- end }}
+    {{ end }}
+    Sign up <a href="https://docs.google.com/spreadsheets/d/1R_9X4pbxbKhkOVZr8sFtxumGpcsRcwBo92lA5f_0QFk/edit#gid=2123882920">HERE</a>
+    Location: <a href="https://www.google.com/maps/place/MESTO/@41.7123272,44.8034361,16.25z/data=!4m5!3m4!1s0x0:0xebb52ae2df885eb5!8m2!3d41.7078998!4d44.7976618?hl=en">Marjanishvili</a> and <a href="https://www.google.com/maps/place/165-179,+165+Shalva+Nutsubidze+St,+T'bilisi/@41.7266447,44.7281625,17z/data=!3m1!4b1!4m5!3m4!1s0x40447309639f6529:0x913174e679eb1559!8m2!3d41.7266447!4d44.7281625?hl=en">Vazha-Pshavela</a>
+AnnouncesNoChanges:
+  other: |
+    No changes were made.
+AnotherCommandError:
+  description: "User already run another command and must finish it before run another command"
+  other: "You are already running another command. Please complete the command it or cancel it."
+AreYouSure:
+  other: "Are you sure?"
+Ban:
+  other: "Ban"
+Banned:
+  other: "Banned"
+Bye:
+  other: "Bye :)"
+CancelEvent:
+  other: |
+    Cancel the event
+CancelRegularEvent:
+  other: "Cancel weekly activity"
+CannotDecrease:
+  other: |
+    Cannot decrease maximum players count.
+ChangeDuration:
+  other: |
+    Duration
+ChangeLink:
+  other: |
+    URL
+ChangeLocation:
+  other: |
+    Location
+ChangeMaxParticipants:
+  other: |
+    Maximum number of participants
+ChangeName:
+  other: |
+    Event name
+ChangeNotes:
+  other: |
+    Notes
+ChangeStartTime:
+  other: |
+    Event start date
+ChangeTables:
+  other: |
+    Number of tables
+CloseRegistration:
+  other: |
+    Close registration
+ClosedLocation:
+  other: |
+    This time slot is outside our operating hours. Please choose a different starting time.
+Contacts:
+  other: Contacts
+ContactsMsg:
+  other: |
+    Our Telegram chat: https://t.me/mesto_games
 
+    Administrators:
+    {{- range $i, $loc := .}}
+    MESTO {{ $loc.NameEn }} – @{{ range $index, $admin := $loc.Admins }}{{if $index}} @{{end}}{{$admin}}{{end}}
+    {{- end }}
+CurrentGames:
+  other: |
+    {{- range $day, $date := . }}
+    <b><u>{{ $date.Weekday }} - {{ $date.Date }}</u></b>
+    {{- range $j, $announce := $date.Announces }}
+    {{- if lt $announce.PlayersCount $announce.MaxPlayers }}
+    <b>{{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameEn }}</a>{{ else }}{{ $announce.GameEn }}{{ end }} ({{ $announce.LocationEn }})</b>
+      {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players:
+      {{- range $k, $player := $announce.Players }}
+      @{{ $player.Username }}{{ if not (eq $player.Guests 0) }} +{{ $player.Guests }}{{ end }}{{ if eq $player.Username $announce.Initiator }} (game initiator){{ end }}
+      {{- end }}
+    {{- end }}
+    {{- end }}
+    {{ end }}
+DayNotification:
+  other: Notify the day before
+DeleteAnnounceNotification:
+  other: |
+    User @{{ .Initiator }} <u>has cancelled</u> the game of <b>{{ .GameEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }}  at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
+DeleteGame:
+  other: "Delete game"
+DeleteIrregularEvent:
+  other: "Delete event"
+DeleteIrregularEventNotification:
+  other: |
+    The event of <b>{{ .Name }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }}  at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b><u>has been cancelled</u> .
+Demote:
+  other: "Demote"
+Dislike:
+  other: "Dislike"
+EditIrregularEvent:
+  other: "Edit event"
+EditIrregularEventNotification:
+  other: <b>{{ .Name }}</b> event, held on <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b> has been changed. See /my_games for details
+EmailIsSet:
+  other: Email <code>{{ . }}</code> is successfully set. Now you will be notified by Google.Calendar
+EmailIsUnset:
+  other: Email is successfully unset. Now you won't be notified by Google.Calendar
+EnterBanReason:
+  other: "Specify the ban reason."
+EnterDate:
+  other: |
+    Please enter the date (<code>dd.mm</code>). Today is <code>{{ now.Format "02.01"}}</code>
+EnterEmail:
+  other: Please enter email
+EnterEventDate:
+  other: |
+    Enter event date (<code>dd.mm</code>). Today is <code>{{ now.Format "02.01"}}</code>
+EnterEventDuration:
+  other: |
+    Enter event duration in minutes
+EnterEventInitiator:
+  other: |
+    Enter event initiator username
+EnterEventName:
+  other: |
+    Enter event name
+EnterEventTime:
+  other: "You chose <b>{{ .Weekday }}</b>. Now enter the starting time for the event (<code>HH:MM</code>)"
+EnterFinishDate:
+  other: "Please enter finish date (<code>dd.mm.yyyy</code>). Today is <code>{{ now.Format \"02.01.2006\"}}</code> \n"
+EnterNewDate:
+  other: |
+    Please enter the new date (<code>dd.mm</code>). Today is <code>{{ now.Format "02.01"}}</code>
+EnterNewEventDuration:
+  other: |
+    Please enter the new duration of the event <b>{{ .Name }}</b> in minutes
+EnterNewEventLink:
+  other: |
+    Please enter the new link of the <b>{{ .Name }}</b> event
+EnterNewEventMaxParticipants:
+  other: |
+    Please enter the new maximum number of participants in the event <b>{{ .Name }}</b>
+EnterNewEventName:
+  other: |
+    Please enter the new name of the event <b>{{ .Name }}</b>
+EnterNewEventNotes:
+  other: |
+    Please enter new notes for the event <b>{{ .Name }}</b>
+EnterNewEventStartTime:
+  other: |
+    Please enter the new start date of the event <b>{{ .Name }}</b> in the following format: <code>dd.mm.yyyy HH:MM</code>
+EnterNewEventTablesCount:
+  other: |
+    Please enter the new number of tables
+EnterNotes:
+  other: |
+    Please enter additional notes for the event
+EnterParticipantsCount:
+  other: |
+    Please enter maximum event participants count
+EnterStartDate:
+  other: |
+    Please enter the start date (<code>dd.mm.yyyy</code>). Today is <code>{{ now.Format \"02.01.2006\"}}</code> \n"
+EnterSubscriptionDate:
+  other: |
+    Enter date of buying subscription (<code>dd.mm.yyyy</code>). Today is <code>{{ now.Format "02.01.2006"}}</code>
+EnterTableCount:
+  other: |
+    Enter required table count
+EnterTime:
+  other: "You chose {{ .Date }} {{ .Weekday }}. Now enter the starting time for the game (<code>HH:MM</code>)"
+EnterUsername:
+  other: "Please enter username."
+EnterUsernameToBan:
+  other: "Please enter username to ban."
+EnterUsernameToGtfo:
+  other: "Please enter the username you wish to GTFO."
+EnterUsernameToMark:
+  other: "Please enter the username you wish to mark"
+EnterUsernameToPromote:
+  other: "Please enter a username to promote."
+EventCancelled:
+  other: |
+    The event <b>{{ .Name }}</b> cancelled
+EventDurationChanged:
+  other: |
+    The duration of the event <b>{{ .Name }}</b> was changed to <b>{{ .Duration }}</b> minutes
+EventInfo:
+  other: "Event info"
 EventJoined:
   other: |
-    You have successfully signed up for <b>{{ .Name }}</b>!
-    Date: <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}})</b>
+    You have successfully joined the <b>{{ .Name }}</b> event!
+    Date: <b>({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }}</b>
     Time: <b>{{ .StartTime.Format "15:04" }}</b>
-    Location: <a href="{{ .AddressLink }}"><b>{{ .LocationEn }}</b></a>
-    Duration: <b>approximately {{ div .Duration 60 }} hours</b>
-
+    Location: <b>{{ .LocationEn }}</b>
+    Duration: <b>approximately {{ div .Duration 60}} hours</b>
+EventLeft:
+  other: |
+    You left <b>{{ .Name }}</b> held on ({{ weekday .StartTime "en"}}) <b>{{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
+EventLinkChanged:
+  other: |
+    {{- if not (eq .ChatLink "") }}
+    Event link has been changed to <b><a href="{{ .ChatLink }}">{{ .Name }}</a></b>
+    {{- else }}
+    Event link has been deleted
+    {{- end }}
+EventLocationChanged:
+  other: |
+    Event location <b>{{ .Name }}</b> was changed to <b>{{ .LocationEn }}</b>
+EventMaxParticipantsChanged:
+  other: |
+    The maximum number of participants was changed to <b>{{ .MaxParticipants }}</b>
+EventMoved:
+  other: |
+    You have successfully moved <b>{{ .Name }}</b>. The event will take place at {{ .LocationEn }} on {{ weekdayName .Weekday "en"}} at {{ .StartTime.Format "15:04" }}.
+EventNameChanged:
+  other: |
+    Event name was changed to <b>{{ .Name }}</b>
+EventNotesChanged:
+  other: |
+    Event notes <b>{{ .Name }}</b> changed
+EventResumed:
+  other: |
+    The event <b>{{ .Name }}</b> resumed
+EventStartTimeChanged:
+  other: |
+    Event start time <b>{{ .Name }}</b> was changed to <b>{{ .StartTime.Format "02.01.2006 15:04" }}</b>
+EventTablesCountChanged:
+  other: |
+    The number of required tables was changed to <b>{{ .Tables }}</b>
+FullEvent:
+  other: "Sorry, this event is already at full capacity."
+FullGame:
+  other: "Sorry, there are no players slots left for this game."
+GTFO:
+  other: "GTFO"
 GameDescription:
   other: |
     {{- if .BGGLink }}{{ $link := deref .BGGLink }}{{ if not (eq $link "")}}
@@ -358,7 +409,116 @@ GameDescription:
     {{ if .Tags }}
     {{- range $i, $tag := .Tags}}#{{ $tag }} {{ end }}
     {{- end }}
+GameInited:
+  other: |
+    You have successfully initiated a game of <b>{{ .GameEn }}</b> at <a href="{{ .AddressLink }}">{{ .LocationEn }}</a> on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}.
+GameJoined:
+  other: |
+    You have successfully joined for a game of <b>{{ .GameEn }}</b>!
+    Date: <b>({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }}</b>
+    Time: <b>{{ .StartTime.Format "15:04" }}</b>
+    Location: <b>{{ .LocationEn }}</b>
+    Duration: <b>approximately {{ div .Duration 60}} hours</b>
+GameLeft:
+  other: |
+    You left <b>{{ .GameEn }}</b> held on ({{ weekday .StartTime "en"}}) <b>{{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
+GameMoved:
+  other: |
+    You have successfully moved <b>{{ .GameEn }}</b>. The game will take place at {{ .LocationEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}.
+Games:
+  other: "Games"
+GoingToSleep:
+  description: "Before bot stops"
+  other: "I'm about to go to sleep..."
+GuestsAddedToAnnounce:
+  other: |
+    You have successfully added {{ .PlayersCount }} players to the game of <b>{{ .GameEn }}</b> at {{ .LocationEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}.
+GuestsAddedToEvent:
+  other: |
+    You have successfully added {{ .ParticipantsCount }} guests to <b>{{ .Name }}</b> at {{ .LocationEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}.
+GuestsRemovedFromAnnounce:
+  other: |
+    You have removed {{ .PlayersCount }} players from the game of <b>{{ .GameEn }}</b> at {{ .LocationEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}.
+GuestsRemovedFromEvent:
+  other: |
+    You removed {{ .ParticipantsCount }} guests from the event <b>{{ .Name }}</b> at {{ .LocationEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}.
+HourNotification:
+  other: Notify 1 hour before
+InitGameNotification:
+  other: |
+    User @{{ .Initiator }} has announced a game of <b>{{ .GameEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }}  at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
+InterestingGames:
+  other: |
+    Top 10 games according to players
+    <code>Name                      | Subscribed | Announce count</code>
+    {{- range $i, $line := . }}
+    <code>{{ $line }}</code>
+    {{- end }}
+InterestingGamesCaption:
+  other: "Top 10 games"
+InternalError:
+  description: "Cannot connect to database or to lambdas"
+  other: "An internal error has occured: <code>{{ .Error }}</code>"
+InvalidCountError:
+  other: "You have entered an invalid number."
+InvalidDateError:
+  description: "User entered invalid date"
+  other: "<code>{{ .Date }}</code> is not a valid date. Please enter a date again using the <code>dd.mm</code> format."
+InvalidEmail:
+  other: |
+    Invalid email <code>{{ . }}</code>
+InvalidGameError:
+  description: "User selected invalid game"
+  other: "<code>{{ .Game }}</code> is not a valid game. Please select a game again."
+InvalidLocationError:
+  description: "User entered invalid location"
+  other: "<code>{{ .Location }}</code> is not a valid location. Please select a location again."
+InvalidTimeError:
+  description: "User entered invalid time"
+  other: "Time <code>{{ .Time }}</code> is not valid. Enter time again using <code>HH:MM</code> format, please."
+IrregularEventCancelNotification:
+  other: <b>{{ .Name }}</b> event has been cancelled
+IrregularEventChangedLocationNotification:
+  other: <b>{{ .Name }}</b> event has been moved to <b>{{ .LocationEn }}</b>
+IrregularEventChangedTimeNotification:
+  other: <b>{{ .Name }}</b> event will take place at <b>{{ .StartTime.Format "15:04 02.01.2006" }}</b>
+IrregularEventCreated:
+  other: |
+    Event <b>{{ .Name }}</b> has been created successfully.
+IrregularEventDeleted:
+  other: |
+    The event of <b>{{ .Name }}</b> on ({{ weekday .StartTime "en"}}) <b>{{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b> has been deleted.
+IrregularEventResumeNotification:
+  other: <b>{{ .Name }}</b> event has been resumed
+IrregularEvents:
+  other: "One-time events"
+IrregularEventsNoChanges:
+  other: |
+    No changes were made.
+Join:
+  other: "Join"
+JoinGame:
+  other: "Join user to a game"
+LastVisitNotification:
+  other: "The  user @{{ .Username }} has just expired"
+LastVisits:
+  other: |
+    Last visits for 8 days ({{ .Location }}):
+    {{- range $i, $date := .Visits }}
+    <b><u>{{ $date.Weekday }} - {{ $date.Date.Format "02.01.2006" }}</u></b>
+    {{- range $j, $username := $date.Visitors }}
+    - @{{ $username }}
+    {{- end }}
 
+    {{- end }}
+LastVisitsCaption:
+  other: Last visits
+Leave:
+  other: "Leave"
+Like:
+  other: "Like"
+LinkIsNotValid:
+  other: "This QR-code is not valid"
 ListGames:
   other: |
     <code>
@@ -366,240 +526,312 @@ ListGames:
     {{ $game.NameEn }}
     {{- end }}
     </code>
-
-Next:
-  other: "Next >"
-
-Previous:
-  other: "< Previous"
-
-Start:
+MarkUser:
+  other: "Mark user"
+MaxPlayersDecreasedInAnnounce:
   other: |
-    The list of available commands will pop up automatically after you type "/".
-
-AnnouncesNoChanges:
+    You successfully decreased maximum count of player to {{ .MaxPlayers }} persons in the game <b>{{ .GameEn }}</b> on {{ .LocationEn }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}}) в {{ .StartTime.Format "15:04" }}.
+MaxPlayersIncreasedInAnnounce:
   other: |
-    No changes were made.
-
-IrregularEventsNoChanges:
-  other: |
-    No changes were made.
-
-NoAnnounces:
-  other: "You haven't signed up for any games yet."
-
-NoAnnouncesToDelete:
-  other: "You haven't created any games yet."
-
-NoAnnouncesToJoin:
-  other: "There are no available games to join."
-
-AnnounceDeleted:
-  other: |
-    The game of <b>{{ .GameEn }}</b> on ({{ weekday .StartTime "en"}}) <b>{{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b> has been cancelled by @{{ .Initiator }}
-
-IrregularEventDeleted:
-  other: |
-    The event of <b>{{ .Name }}</b> on ({{ weekday .StartTime "en"}}) <b>{{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b> has been deleted.
-
-NoMyGames:
-  other: "You have not joined to any game yet"
-
-NoGames:
-  other: "There are no games scheduled for this week yet"
-
-YouAreBanned:
-  other: "You have been banned by @{{ .BannedBy }}"
-
-SelectLocation:
-  other: |
-    Please select location.
-
-UseInlineKeyboard:
-  other: |
-    Please use the inline keyboard.
-
-TimeIntersection:
-  other: |
-    Somebody already plays this game at this time.
-
-ClosedLocation:
-  other: |
-    This time slot is outside our operating hours. Please choose a different starting time.
-
-PlaceIntersection:
-  other: |
-    There are no vacant tables available at this time.
-
-Subscribed:
-  other: "You are now receiving updates about upcoming <b>{{ .NameEn }}</b> games. If someone announces a game, you will get a notification."
-
-Unsubscribed:
-  other: "You are no longer receiving updates about <b>{{ .NameEn }}</b>."
-
-SubscribedGames:
-  other: |
-    <code>{{- range $i, $game := .}}
-    {{ $game.NameEn }}
-    {{- end }}</code>
-
-NoSubscribedGames:
-  other: You are not receiving updates about any games yet.
-
-NoSubscriptions:
-  other: No subscriptions yet.
-
-NoSubscription:
-  other: Вы пока не покупали абонемент
-
-YesAnswer:
-  other: "Yes"
-
-NoAnswer:
-  other: "No"
-
-InitGameNotification:
-  other: |
-    User @{{ .Initiator }} has announced a game of <b>{{ .GameEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }}  at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
-
-DeleteAnnounceNotification:
-  other: |
-    User @{{ .Initiator }} <u>has cancelled</u> the game of <b>{{ .GameEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }}  at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
-
-DeleteIrregularEventNotification:
-  other: |
-    The event of <b>{{ .Name }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }}  at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b><u>has been cancelled</u> .
-
-MoveGameNotification:
-  other: |
-    User @{{ .Initiator }} <u>has moved</u> a game of <b>{{ .GameEn }}</b>.
-    New time: ({{ weekday .StartTime "en"}}) <b>{{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b>.
-    New Location: <b>{{ .LocationEn }}</b>.
-
+    You successfully increased maximum count of player to {{ .MaxPlayers }} persons in the game <b>{{ .GameEn }}</b> on {{ .LocationEn }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}}) в {{ .StartTime.Format "15:04" }}.
 MoveEventNotification:
   other: |
     The event <b>{{ .Name }}</b> <u>has been moved</u>.
     New time: <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}}) at {{ .StartTime.Format "15:04" }}</b>.
     New Location: <b>{{ .LocationEn }}</b>.
-
+MoveGame:
+  other: "Move a game"
+MoveGameNotification:
+  other: |
+    User @{{ .Initiator }} <u>has moved</u> a game of <b>{{ .GameEn }}</b>.
+    New time: ({{ weekday .StartTime "en"}}) <b>{{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b>.
+    New Location: <b>{{ .LocationEn }}</b>.
+MoveRegularEvent:
+  other: "Move weekly activity"
+MyGames:
+  other: |
+    {{- range $i, $date := . }}
+    <b><u>{{ $date.Weekday }} - {{ $date.Date }}</u></b>
+    {{- range $j, $announce := $date.Announces }}
+    <b>{{ $announce.Time }} {{ $announce.Emoji }} {{ $announce.GameEn }} ({{ $announce.LocationEn }})</b>
+      {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players:
+      {{- range $k, $player := $announce.Players }}
+      @{{ $player.Username }}{{ if not (eq $player.Guests 0) }} +{{ $player.Guests }}{{ end }}{{ if eq $player.Username $announce.Initiator }} (game initiator){{ end }}
+      {{- end }}
+    {{- end }}
+    {{ end }}
+MyMembership:
+  other: |
+    <b>{{ if eq .Kind "unlimited" }}Unlimited {{ end }}Subscription{{ if not (eq .Kind "unlimited") }} on {{ .VisitsNumber }} visits{{ end }}</b>
+    Valid from {{ .StartDate.Format "02.01.2006" }} to {{ .FinishDate.Format "02.01.2006" }}.
+    Visits: {{ len .VisitsList }}{{ if not (eq .Kind "unlimited") }}/{{ .VisitsNumber }}{{ end }}
+    {{- range $i, $date := .VisitsList }}
+    - <code>{{ $date.Format "02.01.2006" }}</code>
+    {{- end }}
 NewPlaceInAnnounceNotification:
   other: |
     New spot has just become available for a game: <b>{{ .GameEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> on <b>{{ .LocationEn }}</b>.
-
-# Admin part
-
-ShowBanned:
+Next:
+  other: "Next >"
+NoAnnounces:
+  other: "You haven't signed up for any games yet."
+NoAnnouncesToDelete:
+  other: "You haven't created any games yet."
+NoAnnouncesToJoin:
+  other: "There are no available games to join."
+NoAnswer:
+  other: "No"
+NoAvailableTimeSlots:
+  other: No available time slots on this day.
+NoBannedUsers:
   other: |
-    {{- range $i, $user := . }}
-    @{{ .Username }} - {{ .BanReason }}. Banned by @{{ .BannedBy }}
-    {{- end }}
+    Nobody has been banned yet.
+NoCommandError:
+  description: "/cancel on no command"
+  other: "No active command to cancel. I wasn't doing anything anyway. Zzzzz..."
+NoEventsToCancel:
+  other: "No events to cancel."
+NoEventsToMove:
+  other: "No events to move."
+NoEventsToResume:
+  other: "No events to restore."
+NoGames:
+  other: "There are no games scheduled for this week yet"
+NoGuests:
+  other: |
+    You haven't invited any guests yet.
+NoMyGames:
+  other: "You have not joined to any game yet"
+NoNotification:
+  other: Disable notifications
+NoSeatsInTheGame:
+  other: "Unfortunately, there are no open slots left. Please pick a different time or a different game"
+NoSubscribedGames:
+  other: You are not receiving updates about any games yet.
+NoSubscription:
+  other: You haven't bought a subscription yet
+NoSubscriptions:
+  other: No subscriptions yet
+NoVisits:
+  other: "There have been no visits to the <b>{{ . }}</b> in the last 8 days"
+NotReadyYet:
+  other: "This feature is not ready yet."
+NotificationsUpdated:
+  other: Notification settings updated
+OpenRegistration:
+  other: |
+    Open registration
+PlaceIntersection:
+  other: |
+    There are no vacant tables available at this time.
+PlayersDown:
+  other: "Reduce the max number of players"
+PlayersUp:
+  other: "Increase the max number of players"
+Previous:
+  other: "< Previous"
+Prices:
+  other: Prices
+PricesMsg:
+  other: |
+    🎲 Game evening / day on weekdays - 20 GEL, on weekends - 25 GEL. Subscription for 5 visits - 90 GEL. Unlimited subscription for a month - 130 GEL.
+    If you brought a game that the company has picked up on, then you play for free
 
+    💻 Coworking - 10 GEL / hour, 25 GEL / day, 300 GEL / month
+Promote:
+  other: "Promote"
+QR:
+  other: QR-код для списывания посещений
+RegistrationClosed:
+  other: |
+    The registration for <b>{{ .Name }}</b> is closed
+RegistrationOpened:
+  other: |
+    The registration for <b>{{ .Name }}</b> is open
+RegularEvents:
+  other: "Weekly activities"
+Reminder:
+  other: "We'll be waiting for you at <b>{{ .StartTime.Format \"02.01.2006 15:04\" }}</b> - <b>{{ .GameEn }}</b>, location - <b>{{ .LocationEn }}</b> \n\nSee you!\n"
+Remove:
+  other: "Remove from a game (along with the guests)"
+RemoveGuests:
+  other: "Remove guests"
+RemoveGuestsAdmin:
+  other: "Remove guests"
+RestoreRegularEvent:
+  other: "Restore cancelled weekly activity"
+ResumeEvent:
+  other: |
+    Resume the event
+SameAnnounceError:
+  other: This game is already scheduled at the same time in this location
+SelectAction:
+  other: |
+    Please select what you would like to change about this event
+SelectAction:
+  other: |
+    Please select what you would like to change about this event
+SelectAnnounceToAddGuests:
+  other: "Please select an announced event to add guests to."
+SelectAnnounceToDelete:
+  other: "Please select an announced event to cancel."
+SelectAnnounceToJoin:
+  other: "Please select an announced event to join."
+SelectAnnounceToLeave:
+  other: "Please select an announced event you would like to leave."
+SelectAnnounceToMove:
+  other: "Please select an announced event to move."
+SelectAnnounceToRemoveGuests:
+  other: "Please select an announced event to remove guests from."
+SelectCommand:
+  other: "Please choose a command."
+SelectDate:
+  other: |
+    Please select the date
+SelectEventDate:
+  other: |
+    Select event date
+SelectEventToCancel:
+  other: "Please select an event to cancel"
+SelectEventToMove:
+  other: "Please select an event you'd like to move"
+SelectEventToResume:
+  other: "Please select an event to restore"
+SelectGame:
+  other: "Please select a game"
+SelectGuestsCountToAdd:
+  other: "Please select the number of guests to add"
+SelectGuestsCountToRemove:
+  other: "Please select the number of guests to remove"
+SelectIrregularEventToDelete:
+  other: "Please select an event to delete"
+SelectIrregularEventToEdit:
+  other: "Please select an event to edit"
+SelectLocation:
+  other: |
+    Please select location.
+SelectMaxPlayersCount:
+  other: Please select, on how many persons change maximum players count, please.
+SelectNewDate:
+  other: |
+    Please select the new date
+SelectNewEventLocation:
+  other: |
+    Choose the new location of the event <b>{{ .Name }}</b>
+SelectNewTime:
+  other: "You chose {{ .Date }} {{ .Weekday }}. Now select the new starting time for the game (<code>HH:MM</code>)"
+SelectNewWeekday:
+  other: Select new weekday.
+SelectNotificationType:
+  other: Please, select the type of notifications
+SelectRegistration:
+  other: |
+    Should this event have open registration?
+SelectSubscriptionType:
+  other: |
+    Select subscription type
+SelectTime:
+  other: "You chose <b>{{ .Date }} {{ .Weekday }}</b>. Now select the starting time for the game"
+SelectUsernameToDemote:
+  other: "Select a username to demote."
+SelectUsernameToUnban:
+  other: "Select a username to unban."
+SellSubscription:
+  other: "Sell a membership"
 ShowAdmins:
   other: |
     {{- range $i, $user := . }}
     @{{ .Username }}
     {{- end }}
-
-NoBannedUsers:
+# Admin part
+ShowBanned:
   other: |
-    Nobody has been banned yet.
-
-GameJoined:
+    {{- range $i, $user := . }}
+    @{{ .Username }} - {{ .BanReason }}. Banned by @{{ .BannedBy }}
+    {{- end }}
+SignUp:
+  other: Registration
+Start:
   other: |
-    You have successfully joined @{{ .Initiator }} for a game of <b>{{ .GameEn }}</b> held on <b>({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
-
-EventJoined:
+    The list of available commands will pop up automatically after you type "/".
+Statistics:
   other: |
-    You have successfully joined the following event: <b>{{ .Name }}</b> held on <b>({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
+    <b>Count of visits per month. Location – {{ .Location }}</b>
 
-YouAreNotAdmin:
-  other: "You are not an admin."
+    Count of visits - {{ .Total }}:
+    {{ .UnlimitedSubscriptions }} – unlimited subscriptions
+    {{ .LimitedSubscriptions }} – subscriptions for visits
+    {{ .GameOwners }} – with own game
+    {{ .StandardPrice.Total }} – standard price:
+      {{ .StandardPrice.OnWorkday }} – workdays
+      {{ .StandardPrice.OnWeekend }} – weekends
 
-EnterUsername:
-  other: "Enter username."
+    Count of visits - {{ .Total }}:
+      {{ .OnWorkday }} - workdays
+      {{ .OnWeekend }} - weekends
 
-AdminEnterUsernameToAddGuests:
-  other: "Please enter the username you'd like to add guests to."
-
-AdminEnterUsernameToRemoveGuests:
-  other: "Please enter the username you'd like to remove guests from."
-
-SelectUsernameToUnban:
-  other: "Select a username to unban."
-
-EnterUsernameToBan:
-  other: "Enter username to ban."
-
-EnterBanReason:
-  other: "Specify the ban reason."
-
+    Count of visits - {{ .Total }}:
+      {{ .GamesCount }} - games
+      {{ .EventsCount }} - events
+Subscribe:
+  other: "Subscribe"
+Subscribed:
+  other: "You are now receiving updates about upcoming <b>{{ .NameEn }}</b> games. If someone announces a game, you will get a notification."
+SubscribedGames:
+  other: |
+    <code>{{- range $i, $game := .}}
+    {{ $game.NameEn }}
+    {{- end }}</code>
+SubscriptionSold:
+  other: "A {{ .Duration }} day membership has been sold to @{{ .User }}"
+Subscriptions:
+  other: |
+    Today is <code>{{ now.Format "02.01.2006" }}</code>
+    <code>Username    |        Period         | Left</code>
+    {{- range $i, $sub := . }}
+    <code>@{{ $sub.Username }} | {{ .PurchaseDate.Format "02.01.2006" }}-{{ .FinishDate.Format "02.01.2006" }} | {{ daysLeft .PurchaseDate .Duration }} days / {{ if not (eq .Kind "unlimited") }}{{ .VisitsLeft }} visits{{ else }}Unlimited{{ end }}</code>
+    {{- end }}
+ThreeHoursNotification:
+  other: Notify 3 hours before
+TimeIntersection:
+  other: |
+    Somebody already plays this game at this time.
+TooEarly:
+  other: Entered time is before current time.
+TooFarDate21Error:
+  description: "User entered invalid date"
+  other: "<code>{{ .Date }}</code> is too far away. Please enter a date within 3 weeks."
+TooLateError:
+  other: "The starting time is too late. Please select a starting time before 9:00 PM."
+TooLongGameNameError:
+  description: "User entered too long game name"
+  other: "The name you have entered is too long. Please enter a correct name."
+Unban:
+  other: "Unban"
+UndefinedActionError:
+  description: "User selected undefined action"
+  other: "Action not found. Please select a correct action."
+UndefinedCommandError:
+  description: "User entered undefined command"
+  other: "I don't know this command."
+UndefinedGameError:
+  description: "User entered undefined game"
+  other: "Game is not on the list of available games. Please select an available game."
+Unsubscribe:
+  other: "Unsubscribe"
+Unsubscribed:
+  other: "You are no longer receiving updates about <b>{{ .NameEn }}</b>."
+UseInlineKeyboard:
+  other: |
+    Please use the inline keyboard.
 UserBanned:
   other: "User @{{ . }} has been banned"
-
-UserUnbanned:
-  other: "User @{{ . }} has been unbanned"
-
-EnterUsernameToPromote:
-  other: "Enter a username to promote."
-
-SelectUsernameToDemote:
-  other: "Select a username to demote."
-
-UserPromoted:
-  other: "User @{{ . }} has been promoted."
-
 UserDemoted:
   other: "User @{{ . }} has been demoted."
-
-YouJoinedUserToGame:
-  other: |
-    You have successfully added the user to the game of <b>{{ .GameEn }}</b> held on <b>({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
-
-AdminEnterUsernameToJoin:
-  other: "Enter the username that you would like to add to a game or event."
-
-AdminEnterUsernameToLeave:
-  other: "Enter the username that you would like to remove from a game or event."
-
-AdminSelectAnnounce:
-  other: "Please select an announced event."
-
-AdminSelectAnnounceToJoin:
-  other: "Select an announced event to add a user to."
-
-AdminSelectAnnounceToLeave:
-  other: "Select an announced event to remove a user from."
-
-AdminSelectAnnounceToAddGuests:
-  other: "Select an announced event to add user guests to."
-
-AdminSelectAnnounceToRemoveGuests:
-  other: "Select an announced event to remove user guests from."
-
-SelectEventToCancel:
-  other: "Select an event to cancel."
-
-SelectEventToResume:
-  other: "Select an event to restore."
-
-SelectEventToMove:
-  other: "Select an event you'd like to move."
-
-EventCancelled:
-  other: "The event has been cancelled."
-
-EventResumed:
-  other: "The event has been restored."
-
-NoEventsToCancel:
-  other: "No events to cancel."
-
-NoEventsToResume:
-  other: "No events to restore."
-
-NoEventsToMove:
-  other: "No events to move."
-
+UserDisliked:
+  other: "User @{{ . }} has received -1 to reputation"
+UserGTFOed:
+  other: "User has been GTFOd."
 UserInfo:
   other: |
     @{{ .Username }}
@@ -614,6 +846,10 @@ UserInfo:
     {{- end }}
     {{- if not (eq .SubscribedBy "") }}
     Purchased a membership on {{ .SubscriptionDate.Format "02.01.2006" }} for {{ .SubscriptionDuration }} days from @{{ .SubscribedBy }}.
+    Visits for current subscription: {{ .VisitsLastSubscription }}
+    {{- range $i, $date := .VisitsListLastSubscription }}
+    - <code>{{ $date.Format "02.01.2006" }}</code>
+    {{- end }}
     {{- end }}
     {{- if .Attendance }}
     Plans to attend:
@@ -627,400 +863,25 @@ UserInfo:
     - <code>{{ $game.NameEn }}</code>
     {{- end }}
     {{- end }}
-
-AdminAnnounceInfo:
-  other: |
-    <b><u>{{ .StartTime.Format "02.01.2006 15:04" }}</u></b>
-    {{ .Emoji }}<b>{{ .GameEn }} ({{ .LocationEn }})</b>
-      Initiator: @{{ .Initiator }}
-      {{ .PlayersCount }}/{{ .MaxPlayers }} players:
-      {{- range $k, $player := .Players }}
-      @{{ $player.Username }}{{ if not (eq $player.Guests 0) }} +{{ $player.Guests }}{{ end }}
-      {{- end }}
-
-AdminEventInfo:
-  other: |
-    <b><u>{{ .StartTime.Format "02.01.2006 15:04" }}</u></b>
-    {{ .Emoji }}<b>{{ .Name }} ({{ .LocationEn }})</b>
-      {{ .ParticipantsCount }}/{{ .MaxParticipants }} participants:
-      {{- range $k, $participant := .Participants }}
-      @{{ $participant.Username }}{{ if not (eq $participant.Guests 0) }} +{{ $participant.Guests }}{{ end }}
-      {{- end }}
-
-EnterUsernameToGtfo:
-  other: "Enter the username you wish to GTFO."
-
-UserGTFOed:
-  other: "User has been GTFOd."
-
-SubscriptionSold:
-  other: "A {{ .Duration }} day membership has been sold to @{{ .User }}"
-
-AdminGameJoined:
-  other: |
-    You have successfully added @{{ .User }} to <b>{{ .Game.GameEn }}</b>, held on <b>{{ .Game.StartTime.Format "02.01.2006" }} ({{ weekday .Game.StartTime "en"}}) at {{ .Game.StartTime.Format "15:04" }}</b> at <b>{{ .Game.LocationEn }}</b>.
-
-AdminGameLeft:
-  other: |
-    You have removed @{{ .User }} from <b>{{ .Game.GameEn }}</b>, held on <b>{{ .Game.StartTime.Format "02.01.2006" }} ({{ weekday .Game.StartTime "en"}}) at {{ .Game.StartTime.Format "15:04" }}</b> at <b>{{ .Game.LocationEn }}</b>.
-
-AdminEventJoined:
-  other: |
-    You have successfully added @{{ .User }} to <b>{{ .Event.Name }}</b>, held on <b>({{ weekday .Event.StartTime "en"}}) {{ .Event.StartTime.Format "02.01.2006" }} at {{ .Event.StartTime.Format "15:04" }}</b> at <b>{{ .Event.LocationEn }}</b>.
-
-AdminEventLeft:
-  other: |
-    You have removed @{{ .User }} from <b>{{ .Event.Name }}</b>, held on <b>({{ weekday .Event.StartTime "en"}} {{ .Event.StartTime.Format "02.01.2006" }} ) at {{ .Event.StartTime.Format "15:04" }}</b> at <b>{{ .Event.LocationEn }}</b>.
-
-
-EnterSubscriptionDate:
-  other: |
-    Enter date of buying subscription (<code>dd.mm.yyyy</code>). Today is <code>{{ now.Format "02.01.2006"}}</code>
-
-Subscriptions:
-  other: |
-    Today is <code>{{ now.Format "02.01.2006" }}</code>
-    {{- range $i, $sub := . }}
-    @{{ $sub.Username }} - Begins: {{ .PurchaseDate.Format "02.01.2006" }}, ends: {{ .FinishDate.Format "02.01.2006" }}. <code>{{ daysLeft .PurchaseDate .Duration }}</code> days left
-    {{- end }}
-
-CannotDecrease:
-  other: |
-    Cannot decrease maximum players count.
-
-SelectMaxPlayersCount: 
-  other: Select, on how many persons change maximum players count, please.
-
-TooEarly:
-  other: Entered time is before current time.
-
-SelectNewWeekday:
-  other: Select new weekday.
-
-EnterEmail:
-  other: Please enter email
-
-InvalidEmail:
-  other: |
-    Invalid email <code>{{ . }}</code>
-
-EmailIsSet:
-  other: Email <code>{{ . }}</code> is successfully set. Now you will be notified by Google.Calendar
-
-EmailIsUnset:
-  other: Email is successfully unset. Now you won't be notified by Google.Calendar
-
-EnterEventName:
-  other: |
-    Enter event name
-
-EnterEventDate:
-  other: |
-    Enter event date (<code>dd.mm</code>). Today is <code>{{ now.Format "02.01"}}</code>
-
-SelectEventDate:
-  other: |
-    Select event date
-
-EnterEventDuration:
-  other: |
-    Enter event duration in minutes
-
-EnterEventInitiator:
-  other: |
-    Enter event initiator username
-
-EnterParticipantsCount:
-  other: |
-    Enter maximum event participants count
-
-EnterTableCount:
-  other: |
-    Enter required table count
-
-SelectRegistration:
-  other: |
-    Should this event have open registration?
-
-EnterNotes:
-  other: |
-    Enter additional notes for the event
-
-IrregularEventCreated:
-  other: |
-    Event <b>{{ .Name }}</b> has been created successfully.
-
-AdminIrregularEventJoined:
-  other: |
-    You have successfully signed up for <b>{{ .Name }}</b> held on ({{ weekday .StartTime "en"}}) <b>{{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
-
-AdminIrregularEventLeft:
-  other: |
-    You have removed @{{ .User }} from <b>{{ .Event.Name }}</b>, held on <b>({{ weekday .Event.StartTime "en"}} {{ .Event.StartTime.Format "02.01.2006" }} ) at {{ .Event.StartTime.Format "15:04" }}</b> at <b>{{ .Event.LocationEn }}</b>.
-
-AdminIrregularEventInfo:
-  other: |
-    <b><u>{{ .StartTime.Format "02.01.2006 15:04" }}</u></b>
-    {{ .Emoji }}<b>{{ .Name }} ({{ .LocationEn }})</b>
-      {{- if .IsCancelled }}
-      <b>Cancelled</b>
-      {{ end }}
-      Initiator: @{{ .Initiator }}
-      Tables count: {{ .Tables }}
-      Duration: {{ .Duration }} minutes
-      {{- if .Registration }}
-      Open registration
-      {{- else }}
-      Private registration
-      {{- end }}
-      {{ .ParticipantsCount }}/{{ .MaxParticipants }} participants:
-      {{- range $k, $participant := .Participants }}
-      @{{ $participant.Username }}{{ if not (eq $participant.Guests 0) }} +{{ $participant.Guests }}{{ end }}
-      {{- end }}
-
-ChangeName:
-  other: |
-    Event name
-
-ChangeStartTime:
-  other: |
-    Event start date
-
-ChangeDuration:
-  other: |
-    Duration
-
-ChangeTables:
-  other: |
-    Number of tables
-
-ChangeMaxParticipants:
-  other: |
-    Maximum number of participants
-
-ChangeLocation:
-  other: |
-    Location
-
-ChangeNotes:
-  other: |
-    Notes
-
-CloseRegistration:
-  other: |
-    Close registration
-
-OpenRegistration:
-  other: |
-    Open registration
-
-ResumeEvent:
-  other: |
-    Resume the event
-
-CancelEvent:
-  other: |
-    Cancel the event
-
-SelectAction:
-  other: |
-    Please, select what you would like to change about this event
-
-EnterNewEventName:
-  other: |
-    Enter the new name of the event <b>{{ .Name }}</b>
-
-EnterNewEventStartTime:
-  other: |
-    Enter the new start date of the event <b>{{ .Name }}</b> in the following format: <code>dd.mm.yyyy HH:MM</code>
-
-EnterNewEventDuration:
-  other: |
-    Enter the new duration of the event <b>{{ .Name }}</b> in minutes
-
-EnterNewEventTablesCount:
-  other: |
-    Enter the new number of tables
-
-EnterNewEventMaxParticipants:
-  other: |
-    Enter the new maximum number of participants in the event <b>{{ .Name }}</b>
-
-SelectNewEventLocation:
-  other: |
-    Choose the new location of the event <b>{{ .Name }}</b>
-
-EnterNewEventNotes:
-  other: |
-    Enter new notes for the event <b>{{ .Name }}</b>
-
-RegistrationOpened:
-  other: |
-    The registration for <b>{{ .Name }}</b> is open
-
-RegistrationClosed:
-  other: |
-    The registration for <b>{{ .Name }}</b> is closed
-
-EventCancelled:
-  other: |
-    The event <b>{{ .Name }}</b> cancelled
-
-EventResumed:
-  other: |
-    The event <b>{{ .Name }}</b> resumed
-
-EventNameChanged:
-  other: |
-    Event name was changed to <b>{{ .Name }}</b>
-
-EventStartTimeChanged:
-  other: |
-    Event start time <b>{{ .Name }}</b> was changed to <b>{{ .StartTime.Format "02.01.2006 15:04" }}</b>
-
-EventDurationChanged:
-  other: |
-    The duration of the event <b>{{ .Name }}</b> was changed to <b>{{ .Duration }}</b> minutes
-
-EventLocationChanged:
-  other: |
-    Event location <b>{{ .Name }}</b> was changed to <b>{{ .LocationEn }}</b>
-
-EventTablesCountChanged:
-  other: |
-    The number of required tables was changed to <b>{{ .Tables }}</b>
-
-EventMaxParticipantsChanged:
-  other: |
-    The maximum number of participants was changed to <b>{{ .MaxParticipants }}</b>
-
-EventNotesChanged:
-  other: |
-    Event notes <b>{{ .Name }}</b> changed
-
-NoAvailableTimeSlots:
-  other: No available time slots on this day.
-
-SameAnnounceError:
-  other: This game is already scheduled at the same time in this location
-
-Reminder:
-  other: |
-    We'll be waiting for you at <b>{{ .StartTime.Format "02.01.2006 15:04" }}</b> - <b>{{ .GameEn }}</b>, location - <b>{{ .LocationEn }}</b> 
-
-    See you!
-
-SelectNotificationType:
-  other: Please, select the type of notifications
-
-NoNotification:
-  other: Disable notifications
-
-HourNotification:
-  other: Notify 1 hour before
-
-ThreeHoursNotification:
-  other: Notify 3 hours before
-
-DayNotification:
-  other: Notify the day before
-
-NotificationsUpdated:
-  other: Notification settings updated
-
-EditIrregularEventNotification:
-  other: Событие <b>{{ .Name }}</b>, проводимое на <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b> было изменено. Посмотрите /my для получения подробной информации
-
-AdminJoinGameNotification:
-  other: Вас добавили в игру <b>{{ .GameEn }}</b>, проводимую на <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
-
-AdminJoinEventNotification:
-  other: Вас добавили к событию <b>{{ .Name }}</b>, проводимому на <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
-
-AdminJoinIrregularEventNotification:
-  other: Вас добавили к событию <b>{{ .Name }}</b>, проводимому на <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
-
-AdminLeaveGameNotification:
-  other: Вас удалили из игры <b>{{ .GameEn }}</b>, проводимую на <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
-
-AdminLeaveEventNotification:
-  other: Вас удалили с события <b>{{ .Name }}</b>, проводимого на <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
-
-AdminLeaveIrregularEventNotification:
-  other: Вас удалили с события <b>{{ .Name }}</b>, проводимого на <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
-
-IrregularEventChangedLocationNotification:
-  other: Событие <b>{{ .Name }}</b> было перемещено на <b>{{ .LocationEn }}</b>
-
-IrregularEventChangedTimeNotification:
-  other: Событие <b>{{ .Name }}</b> произойдёт в <b>{{ .StartTime.Format "15:04 02.01.2006" }}</b>
-
-IrregularEventCancelNotification:
-  other: Событие <b>{{ .Name }}</b> было отменено
-
-IrregularEventResumeNotification:
-  other: Событие <b>{{ .Name }}</b> было возобновлено
-
-EnterUsernameToMark:
-  other: "Введите имя пользователя, которого хотели бы отметить"
-
+UserInfoCaption:
+  other: "User information"
+UserLiked:
+  other: "User @{{ . }} has +1 to reputation"
 UserMarked:
   other: |
-    Пользователь @{{ .User }} отмечен. {{ if .Last }}Его/её абонемент закончился{{ end}}
-
+    User @{{ .User }} has been marked. {{ if .Last }}His/her membership has expired{{ end}}
+UserPromoted:
+  other: "User @{{ . }} has been promoted."
+UserUnbanned:
+  other: "User @{{ . }} has been unbanned"
 VisitCounted:
   other: "Your visit counted"
-
-LinkIsNotValid:
-  other: "This QR-code is not valid"
-
-LastVisitNotification:
-  other: "У пользователя @{{ .Username }} только что закончился абонемент"
-
-QR:
-  other: QR-код для списывания посещений
-
-MyMembership:
+YesAnswer:
+  other: "Yes"
+YouAreBanned:
+  other: "You have been banned by @{{ .BannedBy }}"
+YouAreNotAdmin:
+  other: "You are not an admin."
+YouJoinedUserToGame:
   other: |
-    <b>{{ if eq .Kind "unlimited" }}Безлимитный {{ end }}Абонемент{{ if not (eq .Kind "unlimited") }} на {{ .VisitsNumber }} посещений{{ end }}</b>
-    Действителен с {{ .StartDate.Format "02.01.2006" }} по {{ .FinishDate.Format "02.01.2006" }}.
-    Посещений: {{ len .VisitsList }}{{ if not (eq .Kind "unlimited") }}/{{ .VisitsNumber }}{{ end }}
-    {{- range $i, $date := .VisitsList }}
-    - <code>{{ $date.Format "02.01.2006" }}</code>
-    {{- end }}
-
-About:
-  other: About Mesto
-
-Addresses:
-  other: Addresses
-
-Prices:
-  other: Prices
-
-Contacts:
-  other: Contacts
-
-ContactsMsg:
-  other: |
-    Наш чат в Telegram: https://t.me/mesto_games
-
-    Администраторы:
-    {{- range $i, $loc := .}}
-    МЕСТО {{ $loc.NameRu }} – @{{ range $index, $admin := $loc.Admins }}{{if $index}} @{{end}}{{$admin}}{{end}}
-    {{- end }}
-
-PricesMsg:
-  other: |
-    🎲 Игровой вечер / день в <b>будни – 20 лари</b>, в <b>выходные - 25 лари</b>. Абонемент на 5 посещений - <b>90 лари</b>. Безлимитный абонемент на месяц - <b>130 лари</b>.
-    Если вы принесли игру, на которую набралась компания, то вы играете бесплатно
-
-    💻 Коворкинг – <b>10 лари / час, 25 лари / день, 300 лари / месяц</b>.
-
-AddressesMsg:
-  other: |
-    {{- range $i, $loc := .}}
-    <b>МЕСТО {{ $loc.NameRu }}</b>
-    <a href="{{ $loc.AddressLink }}">{{ index $loc.Address "en" }}</a>
-    Как добраться от метро <a href="{{ $loc.HowToGoLink }}">{{ $loc.NameRu }}</a>
-    {{ end }}
+    You have successfully added the user to the game of <b>{{ .GameEn }}</b> held on <b>({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
