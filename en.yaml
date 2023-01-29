@@ -108,12 +108,29 @@ AdminJoinGameNotification:
   other: You have been added to the game of <b>{{ .GameEn }}</b>, held on <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
 AdminJoinIrregularEventNotification:
   other: You have been added to the <b>{{ .Name }}</b> event, held on <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
+AdminLastGames:
+  other: |
+    {{- range $i, $location := . }}
+    <b><u>{{ $location.LocationEn }}</u></b>
+    {{- range $j, $day := $location.Announces }}
+    <b>{{ $day.Weekday }} - {{ $day.Date }}</b>
+    {{- range $j, $announce := $day.Announces }}
+    <b>{{ $announce.Time }} - {{ $announce.Emoji }} {{ $announce.GameEn }}</b>
+      {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players:
+      {{- range $k, $player := $announce.Players }}
+      @{{ $player.Username }}{{ if not (eq $player.Guests 0) }} +{{ $player.Guests }}{{ end }}{{ if eq $player.Username $announce.Initiator }} (game initiator){{ end }}
+      {{- end }}
+    {{- end }}
+    {{ end }}
+    {{- end }}
 AdminLeaveEventNotification:
   other: You have been removed from the <b>{{ .Name }}</b> event, held on <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
 AdminLeaveGameNotification:
   other: You have been removed from the game of <b>{{ .GameEn }}</b>, held on <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
 AdminLeaveIrregularEventNotification:
   other: You have been removed from the <b>{{ .Name }}</b> event, held on <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
+Admins:
+  other: "Administrators"
 AdminSelectAnnounce:
   other: "Please select an announced event."
 AdminSelectAnnounceToAddGuests:
@@ -209,6 +226,10 @@ ContactsMsg:
     {{- range $i, $loc := .}}
     MESTO {{ $loc.NameEn }} – @{{ range $index, $admin := $loc.Admins }}{{if $index}} @{{end}}{{$admin}}{{end}}
     {{- end }}
+CreateGame:
+  other: "Create game"
+CreateIrregularEvent:
+  other: "Create event"
 CurrentGames:
   other: |
     {{- range $day, $date := . }}
@@ -270,6 +291,8 @@ EnterEventTime:
   other: "You chose <b>{{ .Weekday }}</b>. Now enter the starting time for the event (<code>HH:MM</code>)"
 EnterFinishDate:
   other: "Please enter finish date (<code>dd.mm.yyyy</code>). Today is <code>{{ now.Format \"02.01.2006\"}}</code> \n"
+EnterLink:
+  other: Please enter event link
 EnterNewDate:
   other: |
     Please enter the new date (<code>dd.mm</code>). Today is <code>{{ now.Format "02.01"}}</code>
@@ -499,6 +522,8 @@ Join:
   other: "Join"
 JoinGame:
   other: "Join user to a game"
+LastGamesCaption:
+  other: Last games
 LastVisitNotification:
   other: "The  user @{{ .Username }} has just expired"
 LastVisits:
@@ -824,6 +849,8 @@ Unsubscribed:
 UseInlineKeyboard:
   other: |
     Please use the inline keyboard.
+UserAlreadyMarked:
+  other: "User @{{ . }} has already been marked today"
 UserBanned:
   other: "User @{{ . }} has been banned"
 UserDemoted:
@@ -874,6 +901,12 @@ UserPromoted:
   other: "User @{{ . }} has been promoted."
 UserUnbanned:
   other: "User @{{ . }} has been unbanned"
+Users:
+  other: |
+    Users
+    {{ range $i, $username := . }}
+    @{{ $username }}
+    {{- end }}
 VisitCounted:
   other: "Your visit counted"
 YesAnswer:
