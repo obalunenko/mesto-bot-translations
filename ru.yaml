@@ -232,6 +232,18 @@ CreateGame:
   other: "Создать игру"
 CreateIrregularEvent:
   other: "Создать событие"
+FullCurrentGames:
+  other: |
+    {{- range $i, $date := . }}
+    <b><u>{{ $date.Weekday }} - {{ $date.Date }}</u></b>
+    {{- range $j, $announce := $date.Announces }}
+    <b>{{ $announce.Time }} - {{ $announce.Emoji }} {{ if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }} ({{ $announce.LocationRu }})</b>
+      {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков:
+      {{- range $k, $player := $announce.Players }}
+      @{{ $player.Username }}{{ if not (eq $player.Guests 0) }} +{{ $player.Guests }}{{ end }}{{ if eq $player.Username $announce.Initiator }} (инициатор игры){{ end }}
+      {{- end }}
+    {{- end }}
+    {{ end }}
 CurrentGames:
   other: |
     {{- range $i, $date := . }}
@@ -628,6 +640,16 @@ NoGuests:
     Вы ещё никого не пригласили
 NoMyGames:
   other: "Вы пока не присоединились ни к одной игре"
+Notifications:
+  other: Уведомления
+DisableFullSchedule:
+  other: Включить сокращенное расписание
+EnableFullSchedule:
+  other: Включить полное расписание
+FullScheduleDisabled:
+  other: Сокращённое расписание включено
+FullScheduleEnabled:
+  other: Полное расписание включено
 NoNotification:
   other: Отключить уведомления
 NoSeatsInTheGame:
@@ -753,6 +775,9 @@ SelectNotificationType:
 SelectRegistration:
   other: |
     У события открытая регистрация?
+SelectSettingsToChange:
+  other: |
+    Пожалуйста, выберите настройку, которую хотели бы поменять
 SelectSubscriptionType:
   other: |
     Выберите тип абонемента

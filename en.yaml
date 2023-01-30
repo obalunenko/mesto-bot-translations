@@ -230,6 +230,18 @@ CreateGame:
   other: "Create game"
 CreateIrregularEvent:
   other: "Create event"
+FullCurrentGames:
+  other: |
+    {{- range $day, $date := . }}
+    <b><u>{{ $date.Weekday }} - {{ $date.Date }}</u></b>
+    {{- range $j, $announce := $date.Announces }}
+    <b>{{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameEn }}</a>{{ else }}{{ $announce.GameEn }}{{ end }} ({{ $announce.LocationEn }})</b>
+      {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players:
+      {{- range $k, $player := $announce.Players }}
+      @{{ $player.Username }}{{ if not (eq $player.Guests 0) }} +{{ $player.Guests }}{{ end }}{{ if eq $player.Username $announce.Initiator }} (game initiator){{ end }}
+      {{- end }}
+    {{- end }}
+    {{ end }}
 CurrentGames:
   other: |
     {{- range $day, $date := . }}
@@ -627,6 +639,16 @@ NoGuests:
     You haven't invited any guests yet.
 NoMyGames:
   other: "You have not joined to any game yet"
+Notifications:
+  other: Notifications
+DisableFullSchedule:
+  other: Enable Shortened Schedule
+EnableFullSchedule:
+  other: Enable Full Schedule
+FullScheduleDisabled:
+  other: Shortened schedule has been enabled
+FullScheduleEnabled:
+  other: Full schedule has been enabled
 NoNotification:
   other: Disable notifications
 NoSeatsInTheGame:
@@ -752,6 +774,9 @@ SelectNotificationType:
 SelectRegistration:
   other: |
     Should this event have open registration?
+SelectSettingsToChange:
+  other: |
+    Please select setting you would like to change
 SelectSubscriptionType:
   other: |
     Select subscription type
