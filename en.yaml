@@ -9,9 +9,9 @@ Addresses:
 AddressesMsg:
   other: |
     {{- range $i, $loc := .}}
-    <b>МЕСТО {{ $loc.NameRu }}</b>
+    <b>MESTO {{ $loc.NameEn }}</b>
     <a href="{{ $loc.AddressLink }}">{{ index $loc.Address "en" }}</a>
-    Как добраться от метро <a href="{{ $loc.HowToGoLink }}">{{ $loc.NameRu }}</a>
+    How to get to from m/s <a href="{{ $loc.HowToGoLink }}">{{ $loc.NameEn }}</a>
     {{ end }}
 Admin2CurrentGames:
   other: |
@@ -436,7 +436,7 @@ GameDescription:
     {{- end }}
     {{- end }}
     {{ if .Addons }}
-    Addons:
+    Expansions:
     {{- range $i, $addon := .Addons}}
     - {{ $addon }}
     {{- end }}
