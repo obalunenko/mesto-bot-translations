@@ -11,7 +11,7 @@ AddressesMsg:
     {{- range $i, $loc := .}}
     <b>MESTO {{ $loc.NameEn }}</b>
     <a href="{{ $loc.AddressLink }}">{{ index $loc.Address "en" }}</a>
-    How to get to from m/s <a href="{{ $loc.HowToGoLink }}">{{ $loc.NameEn }}</a>
+    How to reach from m/s <a href="{{ $loc.HowToGoLink }}">{{ $loc.NameEn }}</a>
     {{ end }}
 Admin2CurrentGames:
   other: |
