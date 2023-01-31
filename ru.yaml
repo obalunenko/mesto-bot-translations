@@ -930,7 +930,7 @@ UserUnbanned:
   other: "Пользователь @{{ . }} разбанен"
 Users:
   other: |
-    Пользователи
+    Пользователи ({{ len . }})
     {{ range $i, $username := . }}
     @{{ $username }}
     {{- end }}

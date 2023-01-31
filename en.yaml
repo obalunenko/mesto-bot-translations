@@ -928,7 +928,7 @@ UserUnbanned:
   other: "User @{{ . }} has been unbanned"
 Users:
   other: |
-    Users
+    Users ({{ len . }})
     {{ range $i, $username := . }}
     @{{ $username }}
     {{- end }}
