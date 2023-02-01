@@ -490,7 +490,7 @@ InterestingGames:
     <code>{{ $line }}</code>
     {{- end }}
 InterestingGamesCaption:
-  other: "Top 10 games"
+  other: "Top 20 games"
 InternalError:
   description: "Cannot connect to database or to lambdas"
   other: "An internal error has occured: <code>{{ .Error }}</code>"
