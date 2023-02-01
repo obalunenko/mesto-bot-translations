@@ -484,7 +484,7 @@ InitGameNotification:
     Пользователь @{{ .Initiator }} анонсировал игру <b>{{ .GameRu }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.
 InterestingGames:
   other: |
-    Топ-10 игр по мнению игроков
+    Топ-20 игр по мнению игроков
     <code>Название                       | Подписались | Было анонсировано | Посетителей </code>
     {{- range $i, $line := . }}
     <code>{{ $line }}</code>

@@ -484,7 +484,7 @@ InitGameNotification:
     User @{{ .Initiator }} has announced a game of <b>{{ .GameEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }}  at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
 InterestingGames:
   other: |
-    Top 10 games according to players
+    Top 20 games according to players
     <code>Name                       | Subscribed | Announce count | Attendee </code>
     {{- range $i, $line := . }}
     <code>{{ $line }}</code>
