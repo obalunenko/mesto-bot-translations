@@ -485,7 +485,7 @@ InitGameNotification:
 InterestingGames:
   other: |
     Top 10 games according to players
-    <code>Name                      | Subscribed | Announce count</code>
+    <code>Name                       | Subscribed | Announce count | Attendee </code>
     {{- range $i, $line := . }}
     <code>{{ $line }}</code>
     {{- end }}
