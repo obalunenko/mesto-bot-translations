@@ -441,6 +441,12 @@ GameDescription:
     - {{ $addon }}
     {{- end }}
     {{- end }}
+    {{ if .Videos }}
+    Видео:
+    {{- range $i, $video := .Videos}}
+    - {{ $video }}
+    {{- end }}
+    {{- end }}
     {{ if .Tags }}
     {{- range $i, $tag := .Tags}}#{{ $tag }} {{ end }}
     {{- end }}
