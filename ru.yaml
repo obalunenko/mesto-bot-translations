@@ -149,23 +149,25 @@ AnnounceRevoked:
     Игра <b>{{ .GameRu }}</b>, проводимая в <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b> отменена.
 Announcement:
   other: |
-    Открытые на текущий момент игры:
+    Запись на игры: <b>@mesto123_bot</b>
     {{ range $i, $date := . }}
     {{- if $date.Announces }}
     {{- $length := len $date.Announces }}{{ if gt $length 0}}
     <b>{{ $date.Weekday }} - {{ $date.Date }}</b>
     {{- range $j, $announce := $date.Announces }}
     {{- if lt $announce.PlayersCount $announce.MaxPlayers }}
-    {{ $announce.Time }} {{ $announce.Emoji }} {{ $announce.GameRu }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков) <b>({{ $announce.LocationRu }})</b>
+    {{- if not (eq $announce.Type "irregular") }}
+    {{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.BGGLink "") }}<a href="{{ $announce.BGGLink }}">{{ $announce.GameRu }}</a>{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков) <b>({{ $announce.LocationRu }})</b>
+    {{- else }}
+    {{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.BGGLink "") }}<a href="{{ $announce.BGGLink }}">{{ $announce.GameRu }}</a>{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }} ({{ $announce.PlayersCount }} участников) <b>({{ $announce.LocationRu }})</b>
+    {{- end }}
     {{- end }}
     {{- end }}
     {{- end }}
     {{- end }}
     {{ end }}
-    Запись на игры: @mesto123_bot
-    Sign up: @mesto123_bot
-    Находимся: <a href="https://www.google.com/maps/place/MESTO+Board+Game+Club+%26+Coworking+Space/@41.7079064,44.7953917,17z/data=!3m1!4b1!4m5!3m4!1s0x40440d1a77c968a5:0xebb52ae2df885eb5!8m2!3d41.7079024!4d44.7975804?hl=en-GB">Марджанишвили</a> и <a href="https://www.google.com/maps/place/MESTO+Board+Game+Club+%26+Coworking+Space/@41.7266447,44.7281625,15z/data=!4m2!3m1!1s0x0:0xa6160a3dd5028235?sa=X&hl=en-GB&ved=2ahUKEwiyqsmprrP8AhVz8DgGHTXaBjYQ_BJ6BAhiECE">Важа-Пшавела</a>
-    Location (English club): <a href="https://www.google.com/maps/place/MESTO+Board+Game+Club+%26+Coworking+Space/@41.7079064,44.7953917,17z/data=!3m1!4b1!4m5!3m4!1s0x40440d1a77c968a5:0xebb52ae2df885eb5!8m2!3d41.7079024!4d44.7975804?hl=en-GB">Marjanishvili</a>
+    Адреса: <a href="https://www.google.com/maps/place/MESTO+Board+Game+Club+%26+Coworking+Space/@41.7079064,44.7953917,17z/data=!3m1!4b1!4m5!3m4!1s0x40440d1a77c968a5:0xebb52ae2df885eb5!8m2!3d41.7079024!4d44.7975804?hl=en-GB">Марджанишвили</a> и <a href="https://www.google.com/maps/place/MESTO+Board+Game+Club+%26+Coworking+Space/@41.7266447,44.7281625,15z/data=!4m2!3m1!1s0x0:0xa6160a3dd5028235?sa=X&hl=en-GB&ved=2ahUKEwiyqsmprrP8AhVz8DgGHTXaBjYQ_BJ6BAhiECE">Важа-Пшавела</a>
+
 AnnouncesNoChanges:
   other: |
     Анонсы оставлены без изменения.
@@ -237,10 +239,11 @@ FullCurrentGames:
     {{- range $i, $date := . }}
     <b><u>{{ $date.Weekday }} - {{ $date.Date }}</u></b>
     {{- range $j, $announce := $date.Announces }}
-    <b>{{ $announce.Time }} - {{ $announce.Emoji }} {{ if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }} ({{ $announce.LocationRu }})</b>
-      {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков:
+    <b>{{ $announce.Time }} - {{ $announce.Emoji }} {{ if not (eq $announce.BGGLink "") }}<a href="{{ $announce.BGGLink }}">{{ $announce.GameRu }}</a>{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }} ({{ $announce.LocationRu }})</b>
+      {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков{{- if and (eq $announce.Type "game") $announce.Players }}:
       {{- range $k, $player := $announce.Players }}
       @{{ $player.Username }}{{ if not (eq $player.Guests 0) }} +{{ $player.Guests }}{{ end }}{{ if eq $player.Username $announce.Initiator }} (инициатор игры){{ end }}
+      {{- end }}
       {{- end }}
     {{- end }}
     {{ end }}
@@ -250,10 +253,11 @@ CurrentGames:
     <b><u>{{ $date.Weekday }} - {{ $date.Date }}</u></b>
     {{- range $j, $announce := $date.Announces }}
     {{- if lt $announce.PlayersCount $announce.MaxPlayers }}
-    <b>{{ $announce.Time }} - {{ $announce.Emoji }} {{ if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }} ({{ $announce.LocationRu }})</b>
-      {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков:
+    <b>{{ $announce.Time }} - {{ $announce.Emoji }} {{ if not (eq $announce.BGGLink "") }}<a href="{{ $announce.BGGLink }}">{{ $announce.GameRu }}</a>{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }} ({{ $announce.LocationRu }})</b>
+      {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков{{- if and (eq $announce.Type "game") $announce.Players }}:
       {{- range $k, $player := $announce.Players }}
       @{{ $player.Username }}{{ if not (eq $player.Guests 0) }} +{{ $player.Guests }}{{ end }}{{ if eq $player.Username $announce.Initiator }} (инициатор игры){{ end }}
+      {{- end }}
       {{- end }}
     {{- end }}
     {{- end }}
@@ -537,7 +541,7 @@ IrregularEventsNoChanges:
   other: |
     События оставлены без изменения.
 Join:
-  other: "Присоединиться"
+  other: "Записаться"
 JoinGame:
   other: "Записать"
 LastGamesCaption:
@@ -558,6 +562,10 @@ LastVisitsCaption:
   other: Последние посещения
 Leave:
   other: "Покинуть"
+Move:
+  other: "Перенести игру"
+Delete:
+  other: "Отменить игру"
 Like:
   other: "Повысить репутацию"
 LinkIsNotValid:
@@ -649,9 +657,13 @@ NoMyGames:
 Notifications:
   other: Уведомления
 DisableFullSchedule:
-  other: Включить сокращенное расписание
+  other: Не показывать заполненные игры
 EnableFullSchedule:
-  other: Включить полное расписание
+  other: Показывать заполненные игры
+ShowPlayersDisabled:
+  other: Теперь в общем расписании не будет показываться список игроков
+ShowPlayersEnabled:
+  other: Теперь в общем расписании будет показываться список игроков
 FullScheduleDisabled:
   other: Сокращённое расписание включено
 FullScheduleEnabled:
@@ -688,9 +700,10 @@ Prices:
   other: Цены
 PricesMsg:
   other: |
-    🎲 Игровой вечер / день в <b>будни – 20 лари</b>, в <b>выходные - 25 лари</b>. Абонемент на 5 посещений - <b>90 лари</b>. Безлимитный абонемент на месяц - <b>130 лари</b>.\nЕсли вы принесли игру, на которую набралась компания, то вы играете бесплатно.
+    🎲 Игровой вечер / день в <b>будни – 20 лари</b>, в <b>выходные - 25 лари</b>. Абонемент на 5 посещений - <b>90 лари</b>. Безлимитный абонемент на месяц - <b>130 лари</b>.
+    Если вы принесли игру, на которую набралась компания, то вы играете бесплатно.
 
-    💻 Коворкинг – <b>10 лари / час, 25 лари / день, 300 лари / месяц</b>."
+    💻 Коворкинг – <b>10 лари / час, 25 лари / день, 300 лари / месяц</b>
 Promote:
   other: "Сделать админом"
 QR:
@@ -704,7 +717,7 @@ RegistrationOpened:
 RegularEvents:
   other: "Регулярные мероприятия"
 Reminder:
-  other: "Мы ждём Вас <b>{{ .StartTime.Format \"02.01.2006 15:04\" }}</b> - <b>{{ .GameRu }}</b>, локация - <b>{{ .LocationRu }}</b> \n\nДо встречи!\n"
+  other: "Мы ждём вас <b>{{ .StartTime.Format \"02.01.2006 15:04\" }}</b> - <b>{{ .GameRu }}</b>, локация - <b><a href=\"{{ .AddressLink}}\">{{ .LocationRu }}</a></b> \n\nДо встречи!\n"
 Remove:
   other: "Выписать с игры (вместе с гостями)"
 RemoveGuests:
@@ -810,7 +823,7 @@ SignUp:
   other: Запись
 Start:
   other: |
-    Список доступных команд появится автоматически, когда вы наберете /.
+    Список доступных команд появится автоматически, когда вы наберете "/"
 Statistics:
   other: |
     <b>Количество посещений за месяц. Локация – {{ .Location }}</b>
@@ -948,6 +961,10 @@ YouAreBanned:
   other: "Вы забанены @{{ .BannedBy }}"
 YouAreNotAdmin:
   other: "Вы не админ"
+ShowPlayers:
+  other: "Показывать игроков"
+DontShowPlayers:
+  other: "Не показывать игроков"
 YouJoinedUserToGame:
   other: |
     Вы успешно добавили пользователя в игру <b>{{ .GameRu }}</b>, проводимой в <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.

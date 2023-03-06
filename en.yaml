@@ -149,6 +149,7 @@ AnnounceRevoked:
     The game of <b>{{ .GameEn }}</b> held on ({{ weekday .StartTime "en"}}) <b>{{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b> has been cancelled.
 Announcement:
   other: |
+    Sign up: @mesto123_bot
     Games currently open:
     {{ range $i, $date := . }}
     {{- if $date.Announces }}
@@ -162,14 +163,13 @@ Announcement:
     {{- end }}
     {{- end }}
     {{ end }}
-    Sign up <a href="https://docs.google.com/spreadsheets/d/1R_9X4pbxbKhkOVZr8sFtxumGpcsRcwBo92lA5f_0QFk/edit#gid=2123882920">HERE</a>
     Location: <a href="https://www.google.com/maps/place/MESTO/@41.7123272,44.8034361,16.25z/data=!4m5!3m4!1s0x0:0xebb52ae2df885eb5!8m2!3d41.7078998!4d44.7976618?hl=en">Marjanishvili</a> and <a href="https://www.google.com/maps/place/165-179,+165+Shalva+Nutsubidze+St,+T'bilisi/@41.7266447,44.7281625,17z/data=!3m1!4b1!4m5!3m4!1s0x40447309639f6529:0x913174e679eb1559!8m2!3d41.7266447!4d44.7281625?hl=en">Vazha-Pshavela</a>
 AnnouncesNoChanges:
   other: |
     No changes were made.
 AnotherCommandError:
   description: "User already run another command and must finish it before run another command"
-  other: "You are already running another command. Please complete the command it or cancel it."
+  other: "You are already running another command. Please complete the command it or /cancel it."
 AreYouSure:
   other: "Are you sure?"
 Ban:
@@ -235,10 +235,11 @@ FullCurrentGames:
     {{- range $day, $date := . }}
     <b><u>{{ $date.Weekday }} - {{ $date.Date }}</u></b>
     {{- range $j, $announce := $date.Announces }}
-    <b>{{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameEn }}</a>{{ else }}{{ $announce.GameEn }}{{ end }} ({{ $announce.LocationEn }})</b>
-      {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players:
+    <b>{{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.BGGLink "") }}<a href="{{ $announce.BGGLink }}">{{ $announce.GameEn }}</a>{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameEn }}</a>{{ else }}{{ $announce.GameEn }}{{ end }} ({{ $announce.LocationEn }})</b>
+      {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players{{- if and (eq $announce.Type "game") $announce.Players }}:
       {{- range $k, $player := $announce.Players }}
       @{{ $player.Username }}{{ if not (eq $player.Guests 0) }} +{{ $player.Guests }}{{ end }}{{ if eq $player.Username $announce.Initiator }} (game initiator){{ end }}
+      {{- end }}
       {{- end }}
     {{- end }}
     {{ end }}
@@ -248,10 +249,11 @@ CurrentGames:
     <b><u>{{ $date.Weekday }} - {{ $date.Date }}</u></b>
     {{- range $j, $announce := $date.Announces }}
     {{- if lt $announce.PlayersCount $announce.MaxPlayers }}
-    <b>{{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameEn }}</a>{{ else }}{{ $announce.GameEn }}{{ end }} ({{ $announce.LocationEn }})</b>
-      {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players:
+    <b>{{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.BGGLink "") }}<a href="{{ $announce.BGGLink }}">{{ $announce.GameEn }}</a>{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameEn }}</a>{{ else }}{{ $announce.GameEn }}{{ end }} ({{ $announce.LocationEn }})</b>
+      {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players{{- if and (eq $announce.Type "game") $announce.Players }}:
       {{- range $k, $player := $announce.Players }}
       @{{ $player.Username }}{{ if not (eq $player.Guests 0) }} +{{ $player.Guests }}{{ end }}{{ if eq $player.Username $announce.Initiator }} (game initiator){{ end }}
+      {{- end }}
       {{- end }}
     {{- end }}
     {{- end }}
@@ -558,6 +560,10 @@ LastVisitsCaption:
   other: Last visits
 Leave:
   other: "Leave"
+Move:
+  other: "Move a game"
+Delete:
+  other: "Delete a game"
 Like:
   other: "Like"
 LinkIsNotValid:
@@ -648,9 +654,13 @@ NoMyGames:
 Notifications:
   other: Notifications
 DisableFullSchedule:
-  other: Enable Shortened Schedule
+  other: Don't Show Full Games
 EnableFullSchedule:
-  other: Enable Full Schedule
+  other: Show Full Games
+ShowPlayersDisabled:
+  other: Now the list of players will not be displayed in the general schedule
+ShowPlayersEnabled:
+  other: Now the list of players will be displayed in the general schedule
 FullScheduleDisabled:
   other: Shortened schedule has been enabled
 FullScheduleEnabled:
@@ -704,7 +714,7 @@ RegistrationOpened:
 RegularEvents:
   other: "Weekly activities"
 Reminder:
-  other: "We'll be waiting for you at <b>{{ .StartTime.Format \"02.01.2006 15:04\" }}</b> - <b>{{ .GameEn }}</b>, location - <b>{{ .LocationEn }}</b> \n\nSee you!\n"
+  other: "We'll be waiting for you at <b>{{ .StartTime.Format \"02.01.2006 15:04\" }}</b> - <b>{{ .GameEn }}</b>, location - <b><a href=\"{{ .AddressLink }}\">{{ .LocationEn }}</a></b> \n\nSee you!\n"
 Remove:
   other: "Remove from a game (along with the guests)"
 RemoveGuests:
@@ -809,7 +819,7 @@ SignUp:
   other: Registration
 Start:
   other: |
-    The list of available commands will pop up automatically after you type "/".
+    The list of available commands will pop up automatically after you type "/"
 Statistics:
   other: |
     <b>Count of visits per month. Location – {{ .Location }}</b>
@@ -946,6 +956,10 @@ YouAreBanned:
   other: "You have been banned by @{{ .BannedBy }}"
 YouAreNotAdmin:
   other: "You are not an admin."
+ShowPlayers:
+  other: "Show players"
+DontShowPlayers:
+  other: "Don't show players"
 YouJoinedUserToGame:
   other: |
     You have successfully added the user to the game of <b>{{ .GameEn }}</b> held on <b>({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
