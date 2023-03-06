@@ -896,6 +896,8 @@ UseInlineKeyboard:
     Пожалуйста, используйте встроенную клавиатуру перед Вами.
 UserAlreadyMarked:
   other: "Пользователь @{{ . }} уже был отмечен сегодня"
+AlreadyJoinedError:
+  other: "Вы уже записались на эту игру"
 UserBanned:
   other: "Пользователь @{{ . }} забанен"
 UserDemoted:

@@ -892,6 +892,8 @@ UseInlineKeyboard:
     Please use the inline keyboard.
 UserAlreadyMarked:
   other: "User @{{ . }} has already been marked today"
+AlreadyJoinedError:
+  other: "You already signed up for this game"
 UserBanned:
   other: "User @{{ . }} has been banned"
 UserDemoted:
