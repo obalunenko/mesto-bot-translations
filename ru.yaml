@@ -244,7 +244,7 @@ FullCurrentGames:
     {{- else }}
     {{- if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }} ({{ $announce.PlayersCount }} участников)
     {{- end }} <b>({{ $announce.LocationRu }})</b>
-      {{- if and (eq $announce.Type "game") $announce.Players }}:
+      {{- if $announce.Players }}:
       {{- range $k, $player := $announce.Players }}
       @{{ $player.Username }}{{ if not (eq $player.Guests 0) }} +{{ $player.Guests }}{{ end }}{{ if eq $player.Username $announce.Initiator }} (инициатор игры){{ end }}
       {{- end }}
@@ -262,7 +262,7 @@ CurrentGames:
     {{- else }}
     {{- if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }} ({{ $announce.PlayersCount }} участников)
     {{- end }} <b>({{ $announce.LocationRu }})</b>
-      {{- if and (eq $announce.Type "game") $announce.Players }}:
+      {{- if $announce.Players }}:
       {{- range $k, $player := $announce.Players }}
       @{{ $player.Username }}{{ if not (eq $player.Guests 0) }} +{{ $player.Guests }}{{ end }}{{ if eq $player.Username $announce.Initiator }} (инициатор игры){{ end }}
       {{- end }}
