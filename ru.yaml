@@ -159,7 +159,7 @@ Announcement:
     {{- if not (eq $announce.Type "irregular") }}
     {{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.BGGLink "") }}<a href="{{ $announce.BGGLink }}">{{ $announce.GameRu }}</a>{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков) <b>({{ $announce.LocationRu }})</b>
     {{- else }}
-    {{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.BGGLink "") }}<a href="{{ $announce.BGGLink }}">{{ $announce.GameRu }}</a>{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }} ({{ $announce.PlayersCount }} участников) <b>({{ $announce.LocationRu }})</b>
+    {{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.BGGLink "") }}<a href="{{ $announce.BGGLink }}">{{ $announce.GameRu }}</a>{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }} <b>({{ $announce.LocationRu }})</b>
     {{- end }}
     {{- end }}
     {{- end }}
@@ -242,7 +242,7 @@ FullCurrentGames:
     {{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.Type "irregular") }}
     {{- if not (eq $announce.BGGLink "") }}<a href="{{ $announce.BGGLink }}">{{ $announce.GameRu }}</a>{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков)
     {{- else }}
-    {{- if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }} ({{ $announce.PlayersCount }} участников)
+    {{- if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }}
     {{- end }} <b>({{ $announce.LocationRu }})</b>
       {{- if $announce.Players }}:
       {{- range $k, $player := $announce.Players }}
@@ -260,7 +260,7 @@ CurrentGames:
     {{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.Type "irregular") }}
     {{- if not (eq $announce.BGGLink "") }}<a href="{{ $announce.BGGLink }}">{{ $announce.GameRu }}</a>{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков)
     {{- else }}
-    {{- if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }} ({{ $announce.PlayersCount }} участников)
+    {{- if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }}
     {{- end }} <b>({{ $announce.LocationRu }})</b>
       {{- if $announce.Players }}:
       {{- range $k, $player := $announce.Players }}

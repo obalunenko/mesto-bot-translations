@@ -157,7 +157,7 @@ Announcement:
     <b>{{ $date.Weekday }} - {{ $date.Date }}</b>
     {{- range $j, $announce := $date.Announces }}
     {{- if lt $announce.PlayersCount $announce.MaxPlayers }}
-    {{ $announce.Time }} {{ $announce.Emoji }} {{ $announce.GameEn }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков) <b>({{ $announce.LocationEn }})</b>
+    {{ $announce.Time }} {{ $announce.Emoji }} {{ $announce.GameEn }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players) <b>({{ $announce.LocationEn }})</b>
     {{- end }}
     {{- end }}
     {{- end }}
@@ -238,7 +238,7 @@ FullCurrentGames:
     {{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.Type "irregular") }}
     {{- if not (eq $announce.BGGLink "") }}<a href="{{ $announce.BGGLink }}">{{ $announce.GameEn }}</a>{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameEn }}</a>{{ else }}{{ $announce.GameEn }}{{ end }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players)
     {{- else }}
-    {{- if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameEn }}</a>{{ else }}{{ $announce.GameEn }}{{ end }} ({{ $announce.PlayersCount }} participants)
+    {{- if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameEn }}</a>{{ else }}{{ $announce.GameEn }}{{ end }}
     {{- end }} <b>({{ $announce.LocationEn }})</b>
       {{- if $announce.Players }}:
       {{- range $k, $player := $announce.Players }}
@@ -256,7 +256,7 @@ CurrentGames:
     {{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.Type "irregular") }}
     {{- if not (eq $announce.BGGLink "") }}<a href="{{ $announce.BGGLink }}">{{ $announce.GameEn }}</a>{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameEn }}</a>{{ else }}{{ $announce.GameEn }}{{ end }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players)
     {{- else }}
-    {{- if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameEn }}</a>{{ else }}{{ $announce.GameEn }}{{ end }} ({{ $announce.PlayersCount }} participants)
+    {{- if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameEn }}</a>{{ else }}{{ $announce.GameEn }}{{ end }}
     {{- end }} <b>({{ $announce.LocationEn }})</b>
       {{- if $announce.Players }}:
       {{- range $k, $player := $announce.Players }}
