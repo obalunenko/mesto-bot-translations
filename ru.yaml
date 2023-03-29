@@ -166,7 +166,7 @@ Announcement:
     {{- end }}
     {{- end }}
     {{ end }}
-    Адреса: <a href="https://www.google.com/maps/place/MESTO+Board+Game+Club+%26+Coworking+Space/@41.7079064,44.7953917,17z/data=!3m1!4b1!4m5!3m4!1s0x40440d1a77c968a5:0xebb52ae2df885eb5!8m2!3d41.7079024!4d44.7975804?hl=en-GB">Марджанишвили</a> и <a href="https://www.google.com/maps/place/MESTO+Board+Game+Club+%26+Coworking+Space/@41.7266447,44.7281625,15z/data=!4m2!3m1!1s0x0:0xa6160a3dd5028235?sa=X&hl=en-GB&ved=2ahUKEwiyqsmprrP8AhVz8DgGHTXaBjYQ_BJ6BAhiECE">Важа-Пшавела</a>
+    Адреса: <a href="https://maps.app.goo.gl/wT2HkMRrMLxActbV9">Технический Университет</a> и <a href="https://www.google.com/maps/place/MESTO+Board+Game+Club+%26+Coworking+Space/@41.7266447,44.7281625,15z/data=!4m2!3m1!1s0x0:0xa6160a3dd5028235?sa=X&hl=en-GB&ved=2ahUKEwiyqsmprrP8AhVz8DgGHTXaBjYQ_BJ6BAhiECE">Важа-Пшавела</a>
 
 AnnouncesNoChanges:
   other: |
