@@ -975,6 +975,13 @@ ShowPlayers:
   other: "Показывать игроков"
 DontShowPlayers:
   other: "Не показывать игроков"
+EnterMessage:
+  other: "Пожалуйста, введите сообщение для рассылки"
+MessageSent:
+  other: "Сообщение разослано всем активным пользователям"
+MailingList:
+  other: |
+    {{ .Text }}
 YouJoinedUserToGame:
   other: |
     Вы успешно добавили пользователя в игру <b>{{ .GameRu }}</b>, проводимой в <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.
