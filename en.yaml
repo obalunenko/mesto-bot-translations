@@ -977,6 +977,8 @@ EnterMessage:
   other: "Пожалуйста, введите сообщение для рассылки"
 MessageSent:
   other: "Сообщение разослано всем активным пользователям"
+UpdateSchedule:
+  other: "Update schedule"
 MailingList:
   other: |
     {{ .Text }}

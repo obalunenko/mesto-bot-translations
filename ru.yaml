@@ -982,6 +982,8 @@ MessageSent:
 MailingList:
   other: |
     {{ .Text }}
+UpdateSchedule:
+  other: "Обновить расписание"
 YouJoinedUserToGame:
   other: |
     Вы успешно добавили пользователя в игру <b>{{ .GameRu }}</b>, проводимой в <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.
