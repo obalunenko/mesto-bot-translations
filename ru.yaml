@@ -382,7 +382,7 @@ EventJoined:
     Дата: <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}})</b>
     Время: <b>{{ .StartTime.Format "15:04" }}</b>
     Локация: <a href="{{ .AddressLink }}"><b>{{ .LocationRu }}</b></a>
-    Продолжительность: <b>приблизительно {{ div .Duration 60}} часов</b>
+    Продолжительность: <b>приблизительно {{ round (divf .Duration 60) 1 }} часов</b>
 EventLeft:
   other: |
     Вы покинули событие <b>{{ .Name }}</b>, проводимый <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.
@@ -471,7 +471,7 @@ GameJoined:
     Дата: <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}})</b>
     Время: <b>{{ .StartTime.Format "15:04" }}</b>
     Локация: <a href="{{ .AddressLink }}"><b>{{ .LocationRu }}</b></a>
-    Продолжительность: <b>{{ div .MinDuration 60}}-{{ div .MaxDuration 60}} часов</b>
+    Продолжительность: <b>{{ round (divf .MinDuration 60) 1 }}-{{ round (divf .MaxDuration 60) 1}} часов</b>
 GameLeft:
   other: |
     Вы покинули игру <b>{{ .GameRu }}</b>, проводимую <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.
