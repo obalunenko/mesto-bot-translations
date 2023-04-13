@@ -149,7 +149,6 @@ AnnounceRevoked:
     The game of <b>{{ .GameEn }}</b> held on ({{ weekday .StartTime "en"}}) <b>{{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b> has been cancelled.
 Announcement:
   other: |
-    Sign up: @mesto123_bot
     Games currently open:
     {{ range $i, $date := . }}
     {{- if $date.Announces }}
@@ -163,7 +162,6 @@ Announcement:
     {{- end }}
     {{- end }}
     {{ end }}
-    Location: <a href="https://www.google.com/maps/place/MESTO/@41.7123272,44.8034361,16.25z/data=!4m5!3m4!1s0x0:0xebb52ae2df885eb5!8m2!3d41.7078998!4d44.7976618?hl=en">Marjanishvili</a> and <a href="https://www.google.com/maps/place/165-179,+165+Shalva+Nutsubidze+St,+T'bilisi/@41.7266447,44.7281625,17z/data=!3m1!4b1!4m5!3m4!1s0x40447309639f6529:0x913174e679eb1559!8m2!3d41.7266447!4d44.7281625?hl=en">Vazha-Pshavela</a>
 AnnouncesNoChanges:
   other: |
     No changes were made.
@@ -379,7 +377,7 @@ EventJoined:
     You have successfully joined the <b>{{ .Name }}</b> event!
     Date: <b>({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }}</b>
     Time: <b>{{ .StartTime.Format "15:04" }}</b>
-    Location: <b>{{ .LocationEn }}</b>
+    Location: <a href="{{ .AddressLink }}"><b>{{ .LocationEn }}</b></a>
     Duration: <b>approximately {{ round (divf .Duration 60) 1 }} hours</b>
 EventLeft:
   other: |
@@ -468,7 +466,7 @@ GameJoined:
     You have successfully joined for a game of <b>{{ .GameEn }}</b>!
     Date: <b>({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }}</b>
     Time: <b>{{ .StartTime.Format "15:04" }}</b>
-    Location: <b>{{ .LocationEn }}</b>
+    Location: <a href="{{ .AddressLink }}"><b>{{ .LocationEn }}</b></a>
     Duration: <b>{{ round (divf .MinDuration 60) 1 }}-{{ round (divf .MaxDuration 60) 1}} hours</b>
 GameLeft:
   other: |
