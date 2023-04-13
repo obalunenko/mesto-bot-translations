@@ -659,6 +659,8 @@ NoGuests:
     You haven't invited any guests yet.
 NoMyGames:
   other: "You have not joined to any game yet"
+MyGamesCaption:
+  other: "My Games"
 Notifications:
   other: Notifications
 DisableFullSchedule:
@@ -979,6 +981,8 @@ MessageSent:
   other: "Сообщение разослано всем активным пользователям"
 UpdateSchedule:
   other: "Update schedule"
+Schedule:
+  other: "Schedule"
 MailingList:
   other: |
     {{ .Text }}
