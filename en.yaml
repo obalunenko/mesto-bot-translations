@@ -660,6 +660,8 @@ NoGuests:
 NoMyGames:
   other: "You have not joined to any game yet"
 MyGamesCaption:
+  other: "My games"
+UpdateList:
   other: "Update list"
 Notifications:
   other: Notifications

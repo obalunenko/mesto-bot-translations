@@ -663,6 +663,8 @@ NoGuests:
 NoMyGames:
   other: "Вы пока не присоединились ни к одной игре"
 MyGamesCaption:
+  other: "Мои игры"
+UpdateList:
   other: "Обновить список"
 Notifications:
   other: Уведомления
