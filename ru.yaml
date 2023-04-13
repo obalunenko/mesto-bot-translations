@@ -663,7 +663,7 @@ NoGuests:
 NoMyGames:
   other: "Вы пока не присоединились ни к одной игре"
 MyGamesCaption:
-  other: "Мои игры"
+  other: "Обновить список"
 Notifications:
   other: Уведомления
 DisableFullSchedule:
