@@ -724,7 +724,7 @@ RegistrationOpened:
 RegularEvents:
   other: "Weekly activities"
 Reminder:
-  other: "We'll be waiting for you at <b>{{ .StartTime.Format \"02.01.2006 15:04\" }}</b> - <b>{{ .GameEn }}</b>, location - <b><a href=\"{{ .AddressLink }}\">{{ .LocationEn }}</a></b> \n\nSee you!\n"
+  other: "We'll be waiting for you at <b>{{ .StartTime.Format \"02.01.2006 15:04\" }}</b> - <b>{{ .GameEn }}</b>, location - <b><a href=\"{{ .AddressLink }}\">{{ .LocationEn }}</a></b>\nDoor code - 4321#\n\nSee you!\n"
 Remove:
   other: "Remove from a game (along with the guests)"
 RemoveGuests:

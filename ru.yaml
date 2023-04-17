@@ -726,7 +726,7 @@ RegistrationOpened:
 RegularEvents:
   other: "Регулярные мероприятия"
 Reminder:
-  other: "Мы ждём вас <b>{{ .StartTime.Format \"02.01.2006 15:04\" }}</b> - <b>{{ .GameRu }}</b>, локация - <b><a href=\"{{ .AddressLink}}\">{{ .LocationRu }}</a></b> \n\nДо встречи!\n"
+  other: "Мы ждём вас <b>{{ .StartTime.Format \"02.01.2006 15:04\" }}</b> - <b>{{ .GameRu }}</b>, локация - <b><a href=\"{{ .AddressLink}}\">{{ .LocationRu }}</a></b>\nКод от двери - 4321#\n\nДо встречи!\n"
 Remove:
   other: "Выписать с игры (вместе с гостями)"
 RemoveGuests:
