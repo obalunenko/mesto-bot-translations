@@ -1011,6 +1011,8 @@ Schedule:
   other: "Расписание"
 CanUseMembership:
   other: "Можно ли использовать абонемент?"
+GameRating:
+  other: "Рейтинг игр"
 UsersWithoutMembership:
   other: |
     Сегодня пришли пользователи без абонемента:

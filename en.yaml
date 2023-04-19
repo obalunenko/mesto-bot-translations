@@ -983,6 +983,8 @@ UpdateSchedule:
   other: "Update schedule"
 Schedule:
   other: "Schedule"
+GameRating:
+  other: "Game Rating"
 MailingList:
   other: |
     {{ .Text }}
