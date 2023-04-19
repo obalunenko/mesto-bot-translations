@@ -57,6 +57,11 @@ AdminEventInfo:
   other: |
     <b><u>{{ .StartTime.Format "02.01.2006 15:04" }}</u></b>
     {{ .Emoji }}<b>{{ .Name }} ({{ .LocationRu }})</b>
+    {{- if .CanUseMembership }}
+    <b>Можно</b> использовать абонемент
+    {{- else }}
+    <b>Нельзя</b> использовать абонемент
+    {{ end }}
       {{- if .MaxParticipants }}{{ $maxParticipants := derefUint .MaxParticipants }}
       {{ .ParticipantsCount }}/{{ $maxParticipants }} участников:
       {{- range $k, $participant := .Participants }}
@@ -90,6 +95,11 @@ AdminIrregularEventInfo:
       {{- else }}
       Закрытая регистрация
       {{- end }}
+      {{- if .CanUseMembership }}
+      <b>Можно</b> использовать абонемент
+      {{- else }}
+      <b>Нельзя</b> использовать абонемент
+      {{ end }}
       {{ .ParticipantsCount }}/{{ .MaxParticipants }} участников:
       {{- range $k, $participant := .Participants }}
       @{{ $participant.Username }}{{ if not (eq $participant.Guests 0) }} +{{ $participant.Guests }}{{ end }}
@@ -368,6 +378,12 @@ EnterUsernameToPromote:
 EventCancelled:
   other: |
     Событие <b>{{ .Name }}</b> отменено
+MembershipAllowed:
+  other: |
+    Для события <b>{{ .Name }}</b> абонементы разрешены
+MembershipDisallowed:
+  other: |
+    Для события <b>{{ .Name }}</b> абонементы запрещены
 EventDurationChanged:
   other: |
     Продолжительность события <b>{{ .Name }}</b> изменена на <b>{{ .Duration }}</b> минут
@@ -738,6 +754,12 @@ RestoreRegularEvent:
 ResumeEvent:
   other: |
     Возобновить событие
+AllowUseMembership:
+  other: |
+    Разрешить абонементы
+DisallowUseMembership:
+  other: |
+    Запретить абонементы
 SameAnnounceError:
   other: В этой локации уже есть та же игра в то же время
 SelectAction:
@@ -987,6 +1009,14 @@ UpdateSchedule:
   other: "Обновить расписание"
 Schedule:
   other: "Расписание"
+CanUseMembership:
+  other: "Можно ли использовать абонемент?"
+UsersWithoutMembership:
+  other: |
+    Сегодня пришли пользователи без абонемента:
+    {{ range $i, $username := . }}
+    @{{ $username }}
+    {{- end }}
 YouJoinedUserToGame:
   other: |
     Вы успешно добавили пользователя в игру <b>{{ .GameRu }}</b>, проводимой в <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.
