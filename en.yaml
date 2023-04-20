@@ -985,6 +985,15 @@ Schedule:
   other: "Schedule"
 GameRating:
   other: "Game Rating"
+UsersWithMembership:
+  other: |
+    На <b>{{ .Name }}</b> все пришли с абонементом.
+UsersWithoutMembership:
+  other: |
+    Сегодня на <b>{{ .Name }}</b> пришли пользователи без абонемента:
+    {{ range $i, $username := .Users }}
+    @{{ $username }}
+    {{- end }}
 MailingList:
   other: |
     {{ .Text }}

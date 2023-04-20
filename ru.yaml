@@ -1013,10 +1013,13 @@ CanUseMembership:
   other: "Можно ли использовать абонемент?"
 GameRating:
   other: "Рейтинг игр"
+UsersWithMembership:
+  other: |
+    На <b>{{ .Name }}</b> все пришли с абонементом.
 UsersWithoutMembership:
   other: |
-    Сегодня пришли пользователи без абонемента:
-    {{ range $i, $username := . }}
+    Сегодня на <b>{{ .Name }}</b> пришли пользователи без абонемента:
+    {{ range $i, $username := .Users }}
     @{{ $username }}
     {{- end }}
 YouJoinedUserToGame:
