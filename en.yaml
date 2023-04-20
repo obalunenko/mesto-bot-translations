@@ -18,14 +18,14 @@ Admin2CurrentGames:
     {{- range $i, $date := . }}
     <b><u>{{ $date.Weekday }} - {{ $date.Date }}</u></b>
     {{- range $j, $announce := $date.Announces }}
-    <b>{{ $announce.Time }} - {{ $announce.Emoji }} {{ $announce.GameEn }} ({{ $announce.LocationEn }})</b>
+    <b>{{ $announce.Time }} - {{ $announce.Emoji }} {{ $announce.GameEn }}</b>
       {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players
     {{- end }}
     {{ end }}
 AdminAnnounceInfo:
   other: |
     <b><u>{{ .StartTime.Format "02.01.2006 15:04" }}</u></b>
-    {{ .Emoji }}<b>{{ .GameEn }} ({{ .LocationEn }})</b>
+    {{ .Emoji }}<b>{{ .GameEn }}</b>
       Initiator: @{{ .Initiator }}
       {{ .PlayersCount }}/{{ .MaxPlayers }} players:
       {{- range $k, $player := .Players }}
@@ -156,7 +156,7 @@ Announcement:
     <b>{{ $date.Weekday }} - {{ $date.Date }}</b>
     {{- range $j, $announce := $date.Announces }}
     {{- if lt $announce.PlayersCount $announce.MaxPlayers }}
-    {{ $announce.Time }} {{ $announce.Emoji }} {{ $announce.GameEn }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players) <b>({{ $announce.LocationEn }})</b>
+    {{ $announce.Time }} {{ $announce.Emoji }} {{ $announce.GameEn }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players)
     {{- end }}
     {{- end }}
     {{- end }}
@@ -237,7 +237,7 @@ FullCurrentGames:
     {{- if not (eq $announce.BGGLink "") }}<a href="{{ $announce.BGGLink }}">{{ $announce.GameEn }}</a>{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameEn }}</a>{{ else }}{{ $announce.GameEn }}{{ end }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players)
     {{- else }}
     {{- if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameEn }}</a>{{ else }}{{ $announce.GameEn }}{{ end }}
-    {{- end }} <b>({{ $announce.LocationEn }})</b>
+    {{- end }}
       {{- if $announce.Players }}:
       {{- range $k, $player := $announce.Players }}
       @{{ $player.Username }}{{ if not (eq $player.Guests 0) }} +{{ $player.Guests }}{{ end }}{{ if eq $player.Username $announce.Initiator }} (game initiator){{ end }}
@@ -255,7 +255,7 @@ CurrentGames:
     {{- if not (eq $announce.BGGLink "") }}<a href="{{ $announce.BGGLink }}">{{ $announce.GameEn }}</a>{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameEn }}</a>{{ else }}{{ $announce.GameEn }}{{ end }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players)
     {{- else }}
     {{- if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameEn }}</a>{{ else }}{{ $announce.GameEn }}{{ end }}
-    {{- end }} <b>({{ $announce.LocationEn }})</b>
+    {{- end }}
       {{- if $announce.Players }}:
       {{- range $k, $player := $announce.Players }}
       @{{ $player.Username }}{{ if not (eq $player.Guests 0) }} +{{ $player.Guests }}{{ end }}{{ if eq $player.Username $announce.Initiator }} (game initiator){{ end }}
@@ -608,7 +608,7 @@ MyGames:
     {{- range $i, $date := . }}
     <b><u>{{ $date.Weekday }} - {{ $date.Date }}</u></b>
     {{- range $j, $announce := $date.Announces }}
-    <b>{{ $announce.Time }} {{ $announce.Emoji }} {{ $announce.GameEn }} ({{ $announce.LocationEn }})</b>
+    <b>{{ $announce.Time }} {{ $announce.Emoji }} {{ $announce.GameEn }}</b>
       {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players:
       {{- range $k, $player := $announce.Players }}
       @{{ $player.Username }}{{ if not (eq $player.Guests 0) }} +{{ $player.Guests }}{{ end }}{{ if eq $player.Username $announce.Initiator }} (game initiator){{ end }}
