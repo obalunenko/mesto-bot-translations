@@ -940,7 +940,6 @@ UserGTFOed:
 UserInfo:
   other: |
     @{{ .Username }}
-    Посещений в последний месяц: {{ .VisitsLastMonth }}
     Репутация: {{ .Reputation }}
     Админ: <code>{{ .IsAdmin }}</code>
     {{ if .Banned }}Забанен @{{ .BannedBy }} по причине: <code>{{ .BanReason }}</code>{{- end }}
@@ -952,10 +951,10 @@ UserInfo:
     {{- end }}
     {{- if not (eq .SubscribedBy "") }}
     Купил {{ if eq .Kind "unlimited" }}безлимитный{{ end }} абонемент {{ .SubscriptionDate.Format "02.01.2006" }} на {{ .SubscriptionDuration }} дней {{ if not (eq .Kind "unlimited") }}и на {{ .VisitsNumber }} посещений{{ end }} у @{{ .SubscribedBy }}.
-    Посещений за эту подписку: {{ .VisitsLastSubscription }}
-    {{- range $i, $date := .VisitsListLastSubscription }}
-    - <code>{{ $date.Format "02.01.2006" }}</code>
     {{- end }}
+    Посещений в последний месяц: {{ .VisitsLastMonth }}
+    {{- range $i, $visit := .VisitsListLastMonth }}
+    - <code>{{ $visit.Date.Format "02.01.2006" }} ({{ if $visit.ByMembership }}абонемент{{ else }}без абонемента{{ end }})</code>
     {{- end }}
     {{- if .Attendance }}
     Собирается посетить:
