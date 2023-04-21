@@ -5,13 +5,14 @@ AddGuests:
 AddGuestsAdmin:
   other: "Добавить гостей к игроку"
 Addresses:
-  other: Адреса
+  other: Адрес
 AddressesMsg:
   other: |
     {{- range $i, $loc := .}}
     <b>МЕСТО {{ $loc.NameRu }}</b>
     <a href="{{ $loc.AddressLink }}">{{ index $loc.Address "en" }}</a>
     Как добраться от метро <a href="{{ $loc.HowToGoLink }}">{{ $loc.NameRu }}</a>
+    1 подъезд справа, код от подъезда - 4321#, 1 этаж
     {{ end }}
 Admin2CurrentGames:
   other: |

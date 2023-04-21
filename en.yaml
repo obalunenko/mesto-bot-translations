@@ -5,13 +5,14 @@ AddGuests:
 AddGuestsAdmin:
   other: "Add guests to player"
 Addresses:
-  other: Addresses
+  other: Address
 AddressesMsg:
   other: |
     {{- range $i, $loc := .}}
     <b>MESTO {{ $loc.NameEn }}</b>
     <a href="{{ $loc.AddressLink }}">{{ index $loc.Address "en" }}</a>
     How to reach from m/s <a href="{{ $loc.HowToGoLink }}">{{ $loc.NameEn }}</a>
+    1 entrance on the right, door code - 4321#, 1 floor
     {{ end }}
 Admin2CurrentGames:
   other: |
