@@ -984,7 +984,7 @@ UpdateSchedule:
 Schedule:
   other: "Schedule"
 GameRating:
-  other: "Game Rating"
+  other: "🔮 Game Wizard"
 UsersWithMembership:
   other: |
     На <b>{{ .Name }}</b> все пришли с абонементом.
