@@ -1019,8 +1019,8 @@ UsersWithMembership:
 UsersWithoutMembership:
   other: |
     Сегодня на <b>{{ .Name }}</b> пришли пользователи без абонемента:
-    {{ range $i, $username := .Users }}
-    @{{ $username }}
+    {{ range $i, $user := .Users }}
+    @{{ $user.Username }}{{ if gt $user.Guests 0 }}+{{ $user.Guests }}{{ end }}
     {{- end }}
 YouJoinedUserToGame:
   other: |
