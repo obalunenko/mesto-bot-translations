@@ -610,7 +610,7 @@ MaxPlayersIncreasedInAnnounce:
 MoveEventNotification:
   other: |
     Событие <b>{{ .Name }}</b> было <u>сдвинуто</u>.
-    Новое время: <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b>.
+    Новое время: <b>{{ weekdayName .Weekday "ru"}} в {{ .StartTime.Format "15:04" }}</b>.
     Новая локация: <b>{{ .LocationRu }}</b>.
 MoveGame:
   other: "Перенести игру"

@@ -593,7 +593,7 @@ MaxPlayersIncreasedInAnnounce:
 MoveEventNotification:
   other: |
     The event <b>{{ .Name }}</b> <u>has been moved</u>.
-    New time: <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "en"}}) at {{ .StartTime.Format "15:04" }}</b>.
+    New time: <b>{{ weekdayName .Weekday "en"}} at {{ .StartTime.Format "15:04" }}</b>.
     New Location: <b>{{ .LocationEn }}</b>.
 MoveGame:
   other: "Move a game"
