@@ -280,6 +280,8 @@ CurrentGames:
     {{ end }}
 DayNotification:
   other: Уведомлять за день
+ThreeDaysNotification:
+  other: Уведомлять за 3 дня
 DeleteAnnounceNotification:
   other: |
     Пользователь @{{ .Initiator }} <u>отменил</u> игру <b>{{ .GameRu }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.
