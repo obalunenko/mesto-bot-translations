@@ -16,13 +16,19 @@ AddressesMsg:
     {{ end }}
 Admin2CurrentGames:
   other: |
-    {{- range $i, $date := . }}
+    {{- range $i, $date := .Announces }}
     <b><u>{{ $date.Weekday }} - {{ $date.Date }}</u></b>
     {{- range $j, $announce := $date.Announces }}
     <b>{{ $announce.Time }} - {{ $announce.Emoji }} {{ $announce.GameRu }}</b>
       {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков
     {{- end }}
     {{ end }}
+    {{- if .Enrollments }}
+    <b>Открыт набор на:</b>
+    {{ range $i, $enrollment := .Enrollments }}
+    <a href="{{ $enrollment.ChatLink }}">{{ $enrollment.Name }}</a> (писать @{{ $enrollment.Initiator }})
+    {{- end }}
+    {{- end }}
 AdminAnnounceInfo:
   other: |
     <b><u>{{ .StartTime.Format "02.01.2006 15:04" }}</u></b>
@@ -160,7 +166,7 @@ AnnounceRevoked:
     Игра <b>{{ .GameRu }}</b>, проводимая в <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b> отменена.
 Announcement:
   other: |
-    {{ range $i, $date := . }}
+    {{ range $i, $date := .Announces }}
     {{- if $date.Announces }}
     {{- $length := len $date.Announces }}{{ if gt $length 0}}
     <b>{{ $date.Weekday }} - {{ $date.Date }}</b>
@@ -176,6 +182,12 @@ Announcement:
     {{- end }}
     {{- end }}
     {{ end }}
+    {{- if .Enrollments }}
+    <b>Открыт набор на:</b>
+    {{ range $i, $enrollment := .Enrollments }}
+    <a href="{{ $enrollment.ChatLink }}">{{ $enrollment.Name }}</a> (писать @{{ $enrollment.Initiator }})
+    {{- end }}
+    {{- end }}
 AnnouncesNoChanges:
   other: |
     Анонсы оставлены без изменения.
@@ -244,7 +256,7 @@ CreateIrregularEvent:
   other: "Создать событие"
 FullCurrentGames:
   other: |
-    {{- range $i, $date := . }}
+    {{- range $i, $date := .Announces }}
     <b>{{ $date.Weekday }} - {{ $date.Date }}</b>
     {{- range $j, $announce := $date.Announces }}
     {{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.Type "irregular") }}
@@ -259,9 +271,15 @@ FullCurrentGames:
       {{- end }}
     {{- end }}
     {{ end }}
+    {{- if .Enrollments }}
+    <b>Открыт набор на:</b>
+    {{ range $i, $enrollment := .Enrollments }}
+    <a href="{{ $enrollment.ChatLink }}">{{ $enrollment.Name }}</a> (писать @{{ $enrollment.Initiator }})
+    {{- end }}
+    {{- end }}
 CurrentGames:
   other: |
-    {{- range $i, $date := . }}
+    {{- range $i, $date := .Announces }}
     <b>{{ $date.Weekday }} - {{ $date.Date }}</b>
     {{- range $j, $announce := $date.Announces }}
     {{- if lt $announce.PlayersCount $announce.MaxPlayers }}
@@ -278,6 +296,12 @@ CurrentGames:
     {{- end }}
     {{- end }}
     {{ end }}
+    {{- if .Enrollments }}
+    <b>Открыт набор на:</b>
+    {{ range $i, $enrollment := .Enrollments }}
+    <a href="{{ $enrollment.ChatLink }}">{{ $enrollment.Name }}</a> (писать @{{ $enrollment.Initiator }})
+    {{- end }}
+    {{- end }}
 DayNotification:
   other: Уведомлять за день
 ThreeDaysNotification:
@@ -1015,6 +1039,8 @@ CanUseMembership:
   other: "Можно ли использовать абонемент?"
 GameRating:
   other: "🔮 Подобрать игру"
+SelectEnrollmentType:
+  other: "Выберите, на что человек набирает людей"
 UsersWithMembership:
   other: |
     На <b>{{ .Name }}</b> все пришли с абонементом.
@@ -1024,6 +1050,28 @@ UsersWithoutMembership:
     {{ range $i, $user := .Users }}
     @{{ $user.Username }}{{ if gt $user.Guests 0 }}+{{ $user.Guests }}{{ end }}
     {{- end }}
+EnrollmentCreated:
+  other: "Набор на игру/событие создан"
+Enrollments:
+  other: |
+    <b>Открыт набор на:</b>
+    {{ range $i, $enrollment := . }}
+    <a href="{{ $enrollment.ChatLink }}">{{ $enrollment.Name }}</a> (писать @{{ $enrollment.Initiator }})
+    {{- end }}
+CreateEnrollment:
+  other: "Создать набор на игру"
+DeleteEnrollment:
+  other: "Удалить набор на игру"
+SelectEnrollmentToDelete:
+  other: "Выберите набор для удаления"
+NoEnrollmentsToDelete:
+  other: "Нет наборов для удаления"
+NoEnrollments:
+  other: "Нет наборов"
+EnrollmentDeleted:
+  other: "Набор удалён"
+EnrollmentsCaption:
+  other: "Наборы на игры"
 YouJoinedUserToGame:
   other: |
     Вы успешно добавили пользователя в игру <b>{{ .GameRu }}</b>, проводимой в <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.

@@ -231,7 +231,7 @@ CreateIrregularEvent:
   other: "Create event"
 FullCurrentGames:
   other: |
-    {{- range $i, $date := . }}
+    {{- range $i, $date := .Announces }}
     <b>{{ $date.Weekday }} - {{ $date.Date }}</b>
     {{- range $j, $announce := $date.Announces }}
     {{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.Type "irregular") }}
@@ -246,9 +246,15 @@ FullCurrentGames:
       {{- end }}
     {{- end }}
     {{ end }}
+    {{- if .Enrollments }}
+    <b>Open enrollment for games:</b>
+    {{ range $i, $enrollment := .Enrollments }}
+    <a href="{{ $enrollment.ChatLink }}">{{ $enrollment.Name }}</a> (contact @{{ $enrollment.Initiator }})
+    {{- end }}
+    {{- end }}
 CurrentGames:
   other: |
-    {{- range $i, $date := . }}
+    {{- range $i, $date := .Announces }}
     <b>{{ $date.Weekday }} - {{ $date.Date }}</b>
     {{- range $j, $announce := $date.Announces }}
     {{- if lt $announce.PlayersCount $announce.MaxPlayers }}
@@ -265,6 +271,12 @@ CurrentGames:
     {{- end }}
     {{- end }}
     {{ end }}
+    {{- if .Enrollments }}
+    <b>Open enrollment for games:</b>
+    {{ range $i, $enrollment := .Enrollments }}
+    <a href="{{ $enrollment.ChatLink }}">{{ $enrollment.Name }}</a> (contact @{{ $enrollment.Initiator }})
+    {{- end }}
+    {{- end }}
 DayNotification:
   other: Notify the day before
 ThreeDaysNotification:
