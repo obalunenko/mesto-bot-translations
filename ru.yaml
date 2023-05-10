@@ -183,8 +183,7 @@ Announcement:
     {{- end }}
     {{ end }}
     {{- if .Enrollments }}
-    <b>Открыт набор на:</b>
-    {{ range $i, $enrollment := .Enrollments }}
+    <b>Открыт набор на:</b>{{ range $i, $enrollment := .Enrollments }}
     <a href="{{ $enrollment.ChatLink }}">{{ $enrollment.Name }}</a> (писать @{{ $enrollment.Initiator }})
     {{- end }}
     {{- end }}
@@ -272,8 +271,7 @@ FullCurrentGames:
     {{- end }}
     {{ end }}
     {{- if .Enrollments }}
-    <b>Открыт набор на:</b>
-    {{ range $i, $enrollment := .Enrollments }}
+    <b>Открыт набор на:</b>{{ range $i, $enrollment := .Enrollments }}
     <a href="{{ $enrollment.ChatLink }}">{{ $enrollment.Name }}</a> (писать @{{ $enrollment.Initiator }})
     {{- end }}
     {{- end }}
@@ -297,8 +295,7 @@ CurrentGames:
     {{- end }}
     {{ end }}
     {{- if .Enrollments }}
-    <b>Открыт набор на:</b>
-    {{ range $i, $enrollment := .Enrollments }}
+    <b>Открыт набор на:</b>{{ range $i, $enrollment := .Enrollments }}
     <a href="{{ $enrollment.ChatLink }}">{{ $enrollment.Name }}</a> (писать @{{ $enrollment.Initiator }})
     {{- end }}
     {{- end }}

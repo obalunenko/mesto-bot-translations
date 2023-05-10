@@ -247,8 +247,7 @@ FullCurrentGames:
     {{- end }}
     {{ end }}
     {{- if .Enrollments }}
-    <b>Open enrollment for games:</b>
-    {{ range $i, $enrollment := .Enrollments }}
+    <b>Open enrollment for games:</b>{{ range $i, $enrollment := .Enrollments }}
     <a href="{{ $enrollment.ChatLink }}">{{ $enrollment.Name }}</a> (contact @{{ $enrollment.Initiator }})
     {{- end }}
     {{- end }}
@@ -272,8 +271,7 @@ CurrentGames:
     {{- end }}
     {{ end }}
     {{- if .Enrollments }}
-    <b>Open enrollment for games:</b>
-    {{ range $i, $enrollment := .Enrollments }}
+    <b>Open enrollment for games:</b>{{ range $i, $enrollment := .Enrollments }}
     <a href="{{ $enrollment.ChatLink }}">{{ $enrollment.Name }}</a> (contact @{{ $enrollment.Initiator }})
     {{- end }}
     {{- end }}
