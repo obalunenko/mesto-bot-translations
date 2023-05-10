@@ -618,7 +618,7 @@ MoveRegularEvent:
   other: "Move weekly activity"
 MyGames:
   other: |
-    {{- range $i, $date := . }}
+    {{- range $i, $date := .Announces }}
     <b><u>{{ $date.Weekday }} - {{ $date.Date }}</u></b>
     {{- range $j, $announce := $date.Announces }}
     <b>{{ $announce.Time }} {{ $announce.Emoji }} {{ $announce.GameEn }}</b>
