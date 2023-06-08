@@ -720,9 +720,22 @@ Prices:
   other: Prices
 PricesMsg:
   other: |
-    🎲 Game evening / day on weekdays - 20 GEL, on weekends - 25 GEL. Subscription for 5 visits - 90 GEL. Unlimited subscription for a month - 130 GEL.
-    If you brought a game that the company has picked up on, then you play for free
-
+    🎲 Game day / night:
+    • Weekdays (day hours: 10:00 a.m. - 5:00 p.m. with game end till 7 p.m.) – 12 GEL
+    • Monday - Tuesday (night hours after 7 p.m.) – 15 GEL
+    • Wednesday - Friday (night hours after 7 p.m.) – 20 GEL
+    • Weekends, holidays – 25 GEL
+    
+    Memberships:
+    • 5 visits (valid for 2 months) – 90 GEL
+    • Unlimited membership for a month – 130 GEL
+    
+    Hourly rates for games up to 2 hours:
+    • Weekdays – 6 GEL / hour
+    • Weekends – 8 GEL / hour
+    
+    Bring your own game that we don't have and play for free as an owner.
+    
     💻 Coworking - 10 GEL / hour, 25 GEL / day, 300 GEL / month
 Promote:
   other: "Promote"
