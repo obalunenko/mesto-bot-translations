@@ -54,16 +54,6 @@ AdminEnterUsernameToLeave:
   other: "Enter the username that you would like to remove from a game or event."
 AdminEnterUsernameToRemoveGuests:
   other: "Please enter the username you'd like to remove guests from."
-AdminEventInfo:
-  other: |
-    <b><u>{{ .StartTime.Format "02.01.2006 15:04" }}</u></b>
-    {{ .Emoji }}<b>{{ .Name }} ({{ .LocationEn }})</b>
-      {{- if .MaxParticipants }}{{ $maxParticipants := derefUint .MaxParticipants }}
-      {{ .ParticipantsCount }}/{{ $maxParticipants }} participants:
-      {{- range $k, $participant := .Participants }}
-      @{{ $participant.Username }}{{ if not (eq $participant.Guests 0) }} +{{ $participant.Guests }}{{ end }}
-      {{- end }}
-      {{- end }}
 AdminEventJoined:
   other: |
     You have successfully added @{{ .User }} to <b>{{ .Event.Name }}</b>, held on <b>({{ weekday .Event.StartTime "en"}}) {{ .Event.StartTime.Format "02.01.2006" }} at {{ .Event.StartTime.Format "15:04" }}</b> at <b>{{ .Event.LocationEn }}</b>.
@@ -76,10 +66,13 @@ AdminGameJoined:
 AdminGameLeft:
   other: |
     You have removed @{{ .User }} from <b>{{ .Game.GameEn }}</b>, held on <b>{{ .Game.StartTime.Format "02.01.2006" }} ({{ weekday .Game.StartTime "en"}}) at {{ .Game.StartTime.Format "15:04" }}</b> at <b>{{ .Game.LocationEn }}</b>.
-AdminIrregularEventInfo:
+AdminEventInfo:
   other: |
     <b><u>{{ .StartTime.Format "02.01.2006 15:04" }}</u></b>
     {{ .Emoji }}<b>{{ .Name }} ({{ .LocationEn }})</b>
+      {{- if .Theme }}
+      Event theme: <b>{{ .Theme }}</b>
+      {{- end }}
       {{- if .IsCancelled }}
       <b>Cancelled</b>
       {{ end }}
@@ -91,23 +84,28 @@ AdminIrregularEventInfo:
       {{- else }}
       Private registration
       {{- end }}
+      {{- if gt .Period 0 }}
+      The event is repeated every {{ .Period }} days
+      {{- else }}
+      One-time event
+      {{- end }}
       {{ .ParticipantsCount }}/{{ .MaxParticipants }} participants:
       {{- range $k, $participant := .Participants }}
       @{{ $participant.Username }}{{ if not (eq $participant.Guests 0) }} +{{ $participant.Guests }}{{ end }}
       {{- end }}
       Notes: <code>{{ .Notes }}</code>
       Link:  {{ .ChatLink }}
-AdminIrregularEventJoined:
+AdminEventJoined:
   other: |
     You have successfully signed up @{{ .User }} for <b>{{ .Name }}</b> held on ({{ weekday .StartTime "en"}}) <b>{{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
-AdminIrregularEventLeft:
+AdminEventLeft:
   other: |
     You have removed @{{ .User }} from <b>{{ .Event.Name }}</b>, held on <b>({{ weekday .Event.StartTime "en"}} {{ .Event.StartTime.Format "02.01.2006" }} ) at {{ .Event.StartTime.Format "15:04" }}</b> at <b>{{ .Event.LocationEn }}</b>.
 AdminJoinEventNotification:
   other: You have been added to the <b>{{ .Name }}</b> event, held on <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
 AdminJoinGameNotification:
   other: You have been added to the game of <b>{{ .GameEn }}</b>, held on <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
-AdminJoinIrregularEventNotification:
+AdminJoinEventNotification:
   other: You have been added to the <b>{{ .Name }}</b> event, held on <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
 AdminLastGames:
   other: |
@@ -128,7 +126,7 @@ AdminLeaveEventNotification:
   other: You have been removed from the <b>{{ .Name }}</b> event, held on <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
 AdminLeaveGameNotification:
   other: You have been removed from the game of <b>{{ .GameEn }}</b>, held on <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
-AdminLeaveIrregularEventNotification:
+AdminLeaveEventNotification:
   other: You have been removed from the <b>{{ .Name }}</b> event, held on <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
 Admins:
   other: "Administrators"
@@ -180,8 +178,6 @@ Bye:
 CancelEvent:
   other: |
     Cancel the event
-CancelRegularEvent:
-  other: "Cancel weekly activity"
 CannotDecrease:
   other: |
     Cannot decrease maximum players count.
@@ -200,6 +196,9 @@ ChangeMaxParticipants:
 ChangeName:
   other: |
     Event name
+ChangeTheme:
+  other: |
+    Event theme
 ChangeNotes:
   other: |
     Notes
@@ -227,14 +226,14 @@ ContactsMsg:
     {{- end }}
 CreateGame:
   other: "Create game"
-CreateIrregularEvent:
+CreateEvent:
   other: "Create event"
 FullCurrentGames:
   other: |
     {{- range $i, $date := .Announces }}
     <b>{{ $date.Weekday }} - {{ $date.Date }}</b>
     {{- range $j, $announce := $date.Announces }}
-    {{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.Type "irregular") }}
+    {{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.Type "event") }}
     {{- if not (eq $announce.BGGLink "") }}<a href="{{ $announce.BGGLink }}">{{ $announce.GameEn }}</a>{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameEn }}</a>{{ else }}{{ $announce.GameEn }}{{ end }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players)
     {{- else }}
     {{- if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameEn }}</a>{{ else }}{{ $announce.GameEn }}{{ end }}
@@ -257,7 +256,7 @@ CurrentGames:
     <b>{{ $date.Weekday }} - {{ $date.Date }}</b>
     {{- range $j, $announce := $date.Announces }}
     {{- if lt $announce.PlayersCount $announce.MaxPlayers }}
-    {{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.Type "irregular") }}
+    {{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.Type "event") }}
     {{- if not (eq $announce.BGGLink "") }}<a href="{{ $announce.BGGLink }}">{{ $announce.GameEn }}</a>{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameEn }}</a>{{ else }}{{ $announce.GameEn }}{{ end }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players)
     {{- else }}
     {{- if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameEn }}</a>{{ else }}{{ $announce.GameEn }}{{ end }}
@@ -284,18 +283,18 @@ DeleteAnnounceNotification:
     User @{{ .Initiator }} <u>has cancelled</u> the game of <b>{{ .GameEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }}  at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b>.
 DeleteGame:
   other: "Delete game"
-DeleteIrregularEvent:
+DeleteEvent:
   other: "Delete event"
-DeleteIrregularEventNotification:
+DeleteEventNotification:
   other: |
     The event of <b>{{ .Name }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }}  at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b><u>has been cancelled</u> .
 Demote:
   other: "Demote"
 Dislike:
   other: "Dislike"
-EditIrregularEvent:
+EditEvent:
   other: "Edit event"
-EditIrregularEventNotification:
+EditEventNotification:
   other: <b>{{ .Name }}</b> event, held on <b>{{ .LocationEn }} {{ .StartTime.Format "02.01.2006 15:04" }}</b> has been changed. See /my_games for details
 EmailIsSet:
   other: Email <code>{{ . }}</code> is successfully set. Now you will be notified by Google.Calendar
@@ -332,6 +331,9 @@ EnterNewDate:
 EnterNewEventDuration:
   other: |
     Please enter the new duration of the event <b>{{ .Name }}</b> in minutes
+EnterNewEventPeriod:
+  other: |
+    Please enter the new period of the event <b>{{ .Name }}</b> in days
 EnterNewEventLink:
   other: |
     Please enter the new link of the <b>{{ .Name }}</b> event
@@ -341,6 +343,9 @@ EnterNewEventMaxParticipants:
 EnterNewEventName:
   other: |
     Please enter the new name of the event <b>{{ .Name }}</b>
+EnterNewEventTheme:
+  other: |
+    Please enter the new theme of the event <b>{{ .Name }}</b>
 EnterNewEventNotes:
   other: |
     Please enter new notes for the event <b>{{ .Name }}</b>
@@ -383,6 +388,9 @@ EventCancelled:
 EventDurationChanged:
   other: |
     The duration of the event <b>{{ .Name }}</b> was changed to <b>{{ .Duration }}</b> minutes
+EventPeriodChanged:
+  other: |
+    The period of the event <b>{{ .Name }}</b> was changed to <b>{{ .Period }}</b> days
 EventInfo:
   other: "Event info"
 EventJoined:
@@ -414,6 +422,9 @@ EventMoved:
 EventNameChanged:
   other: |
     Event name was changed to <b>{{ .Name }}</b>
+EventThemeChanged:
+  other: |
+    Event theme was changed to <b>{{ .Theme }}</b>
 EventNotesChanged:
   other: |
     Event notes <b>{{ .Name }}</b> changed
@@ -538,23 +549,23 @@ InvalidLocationError:
 InvalidTimeError:
   description: "User entered invalid time"
   other: "Time <code>{{ .Time }}</code> is not valid. Enter time again using <code>HH:MM</code> format, please."
-IrregularEventCancelNotification:
+EventCancelNotification:
   other: <b>{{ .Name }}</b> event has been cancelled
-IrregularEventChangedLocationNotification:
+EventChangedLocationNotification:
   other: <b>{{ .Name }}</b> event has been moved to <b>{{ .LocationEn }}</b>
-IrregularEventChangedTimeNotification:
+EventChangedTimeNotification:
   other: <b>{{ .Name }}</b> event will take place at <b>{{ .StartTime.Format "15:04 02.01.2006" }}</b>
-IrregularEventCreated:
+EventCreated:
   other: |
     Event <b>{{ .Name }}</b> has been created successfully.
-IrregularEventDeleted:
+EventDeleted:
   other: |
     The event of <b>{{ .Name }}</b> on ({{ weekday .StartTime "en"}}) <b>{{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b> has been deleted.
-IrregularEventResumeNotification:
+EventResumeNotification:
   other: <b>{{ .Name }}</b> event has been resumed
-IrregularEvents:
+Events:
   other: "One-time events"
-IrregularEventsNoChanges:
+EventsNoChanges:
   other: |
     No changes were made.
 Join:
@@ -614,8 +625,6 @@ MoveGameNotification:
     User @{{ .Initiator }} <u>has moved</u> a game of <b>{{ .GameEn }}</b>.
     New time: ({{ weekday .StartTime "en"}}) <b>{{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b>.
     New Location: <b>{{ .LocationEn }}</b>.
-MoveRegularEvent:
-  other: "Move weekly activity"
 MyGames:
   other: |
     {{- range $i, $date := .Announces }}
@@ -747,8 +756,6 @@ RegistrationClosed:
 RegistrationOpened:
   other: |
     The registration for <b>{{ .Name }}</b> is open
-RegularEvents:
-  other: "Weekly activities"
 Reminder:
   other: "We'll be waiting for you at <b>{{ .StartTime.Format \"02.01.2006 15:04\" }}</b> - <b>{{ .GameEn }}</b>, location - <b><a href=\"{{ .AddressLink }}\">{{ .LocationEn }}</a></b>\nDoor code - 4321#\n\nSee you!\n"
 Remove:
@@ -757,8 +764,6 @@ RemoveGuests:
   other: "Remove guests"
 RemoveGuestsAdmin:
   other: "Remove guests"
-RestoreRegularEvent:
-  other: "Restore cancelled weekly activity"
 ResumeEvent:
   other: |
     Resume the event
@@ -802,9 +807,9 @@ SelectGuestsCountToAdd:
   other: "Please select the number of guests to add"
 SelectGuestsCountToRemove:
   other: "Please select the number of guests to remove"
-SelectIrregularEventToDelete:
+SelectEventToDelete:
   other: "Please select an event to delete"
-SelectIrregularEventToEdit:
+SelectEventToEdit:
   other: "Please select an event to edit"
 SelectLocation:
   other: |
@@ -1023,3 +1028,5 @@ UsersWithoutMembership:
 MailingList:
   other: |
     {{ .Text }}
+ChangePeriod:
+  other: "Change event period"

@@ -60,21 +60,6 @@ AdminEnterUsernameToLeave:
   other: "Пожалуйста, введите юзернейм пользователя, которого хотите удалить из какой-либо игре или событию"
 AdminEnterUsernameToRemoveGuests:
   other: "Введите юзернейм пользователя, у которого хотите уменьшить число гостей"
-AdminEventInfo:
-  other: |
-    <b><u>{{ .StartTime.Format "02.01.2006 15:04" }}</u></b>
-    {{ .Emoji }}<b>{{ .Name }} ({{ .LocationRu }})</b>
-    {{- if .CanUseMembership }}
-    <b>Можно</b> использовать абонемент
-    {{- else }}
-    <b>Нельзя</b> использовать абонемент
-    {{ end }}
-      {{- if .MaxParticipants }}{{ $maxParticipants := derefUint .MaxParticipants }}
-      {{ .ParticipantsCount }}/{{ $maxParticipants }} участников:
-      {{- range $k, $participant := .Participants }}
-      @{{ $participant.Username }}{{ if not (eq $participant.Guests 0) }} +{{ $participant.Guests }}{{ end }}
-      {{- end }}
-      {{- end }}
 AdminEventJoined:
   other: |
     Вы успешно присоединили @{{ .User }} к событию <b>{{ .Event.Name }}</b>, проводимой <b>{{ .Event.StartTime.Format "02.01.2006" }} ({{ weekday .Event.StartTime "ru"}}) в {{ .Event.StartTime.Format "15:04" }}</b> на <b>{{ .Event.LocationRu }}</b>.
@@ -87,10 +72,13 @@ AdminGameJoined:
 AdminGameLeft:
   other: |
     Вы удалили @{{ .User }} из игры <b>{{ .Game.GameRu }}</b>, проводимую <b>{{ .Game.StartTime.Format "02.01.2006" }} ({{ weekday .Game.StartTime "ru"}}) в {{ .Game.StartTime.Format "15:04" }}</b> на <b>{{ .Game.LocationRu }}</b>.
-AdminIrregularEventInfo:
+AdminEventInfo:
   other: |
     <b><u>{{ .StartTime.Format "02.01.2006 15:04" }}</u></b>
     {{ .Emoji }}<b>{{ .Name }} ({{ .LocationRu }})</b>
+      {{- if .Theme }}
+      Тематика мероприятия: <b>{{ .Theme }}</b>
+      {{- end }}
       {{- if .IsCancelled }}
       <b>Отменено</b>
       {{ end }}
@@ -107,23 +95,28 @@ AdminIrregularEventInfo:
       {{- else }}
       <b>Нельзя</b> использовать абонемент
       {{ end }}
+      {{- if gt .Period 0 }}
+      Мероприятие повторяется раз в {{ .Period }} дней
+      {{- else }}
+      Разовое мероприятие
+      {{- end }}
       {{ .ParticipantsCount }}/{{ .MaxParticipants }} участников:
       {{- range $k, $participant := .Participants }}
       @{{ $participant.Username }}{{ if not (eq $participant.Guests 0) }} +{{ $participant.Guests }}{{ end }}
       {{- end }}
       Заметки: <code>{{ .Notes }}</code>
       Ссылка:  {{ .ChatLink }}
-AdminIrregularEventJoined:
+AdminEventJoined:
   other: |
     Вы успешно присоединили @{{ .User }} к событию <b>{{ .Event.Name }}</b>, проводимой <b>{{ .Event.StartTime.Format "02.01.2006" }} ({{ weekday .Event.StartTime "ru"}}) в {{ .Event.StartTime.Format "15:04" }}</b> на <b>{{ .Event.LocationRu }}</b>.
-AdminIrregularEventLeft:
+AdminEventLeft:
   other: |
     Вы удалили @{{ .User }} из события <b>{{ .Event.Name }}</b>, проводимый <b>{{ .Event.StartTime.Format "02.01.2006" }} ({{ weekday .Event.StartTime "ru"}}) в {{ .Event.StartTime.Format "15:04" }}</b> на <b>{{ .Event.LocationRu }}</b>.
 AdminJoinEventNotification:
   other: Вас добавили к событию <b>{{ .Name }}</b>, проводимому на <b>{{ .LocationRu }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
 AdminJoinGameNotification:
   other: Вас добавили в игру <b>{{ .GameRu }}</b>, проводимую на <b>{{ .LocationRu }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
-AdminJoinIrregularEventNotification:
+AdminJoinEventNotification:
   other: Вас добавили к событию <b>{{ .Name }}</b>, проводимому на <b>{{ .LocationRu }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
 AdminLastGames:
   other: |
@@ -144,7 +137,7 @@ AdminLeaveEventNotification:
   other: Вас удалили с события <b>{{ .Name }}</b>, проводимого на <b>{{ .LocationRu }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
 AdminLeaveGameNotification:
   other: Вас удалили из игры <b>{{ .GameRu }}</b>, проводимую на <b>{{ .LocationRu }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
-AdminLeaveIrregularEventNotification:
+AdminLeaveEventNotification:
   other: Вас удалили с события <b>{{ .Name }}</b>, проводимого на <b>{{ .LocationRu }} {{ .StartTime.Format "02.01.2006 15:04" }}</b>
 AdminSelectAnnounce:
   other: "Пожалуйста, выберите анонс"
@@ -172,7 +165,7 @@ Announcement:
     <b>{{ $date.Weekday }} - {{ $date.Date }}</b>
     {{- range $j, $announce := $date.Announces }}
     {{- if lt $announce.PlayersCount $announce.MaxPlayers }}
-    {{- if not (eq $announce.Type "irregular") }}
+    {{- if not (eq $announce.Type "event") }}
     {{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.BGGLink "") }}<a href="{{ $announce.BGGLink }}">{{ $announce.GameRu }}</a>{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков)
     {{- else }}
     {{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.BGGLink "") }}<a href="{{ $announce.BGGLink }}">{{ $announce.GameRu }}</a>{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }}
@@ -204,8 +197,6 @@ Bye:
 CancelEvent:
   other: |
     Отменить событие
-CancelRegularEvent:
-  other: "Отменить регулярное мероприятие"
 CannotDecrease:
   other: |
     Некуда уменьшать максимальное число игроков.
@@ -224,6 +215,9 @@ ChangeMaxParticipants:
 ChangeName:
   other: |
     Название события
+ChangeTheme:
+  other: |
+    Тема события
 ChangeNotes:
   other: |
     Заметки
@@ -251,14 +245,14 @@ ContactsMsg:
     {{- end }}
 CreateGame:
   other: "Создать игру"
-CreateIrregularEvent:
+CreateEvent:
   other: "Создать событие"
 FullCurrentGames:
   other: |
     {{- range $i, $date := .Announces }}
     <b>{{ $date.Weekday }} - {{ $date.Date }}</b>
     {{- range $j, $announce := $date.Announces }}
-    {{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.Type "irregular") }}
+    {{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.Type "event") }}
     {{- if not (eq $announce.BGGLink "") }}<a href="{{ $announce.BGGLink }}">{{ $announce.GameRu }}</a>{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков)
     {{- else }}
     {{- if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }}
@@ -281,7 +275,7 @@ CurrentGames:
     <b>{{ $date.Weekday }} - {{ $date.Date }}</b>
     {{- range $j, $announce := $date.Announces }}
     {{- if lt $announce.PlayersCount $announce.MaxPlayers }}
-    {{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.Type "irregular") }}
+    {{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.Type "event") }}
     {{- if not (eq $announce.BGGLink "") }}<a href="{{ $announce.BGGLink }}">{{ $announce.GameRu }}</a>{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков)
     {{- else }}
     {{- if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }}
@@ -308,18 +302,18 @@ DeleteAnnounceNotification:
     Пользователь @{{ .Initiator }} <u>отменил</u> игру <b>{{ .GameRu }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.
 DeleteGame:
   other: "Удалить игру"
-DeleteIrregularEvent:
+DeleteEvent:
   other: "Удалить событие"
-DeleteIrregularEventNotification:
+DeleteEventNotification:
   other: |
     Событие <b>{{ .Name }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b> отменено.
 Demote:
   other: "Убрать из админов"
 Dislike:
   other: "Понизить репутацию"
-EditIrregularEvent:
+EditEvent:
   other: "Изменить событие"
-EditIrregularEventNotification:
+EditEventNotification:
   other: Событие <b>{{ .Name }}</b>, проводимое на <b>{{ .LocationRu }} {{ .StartTime.Format "02.01.2006 15:04" }}</b> было изменено. Посмотрите /my_games для получения подробной информации
 EmailIsSet:
   other: Email <code>{{ . }}</code> успешно установлен. Теперь Вам будут приходить уведомления в Google.Calendar
@@ -355,6 +349,9 @@ EnterNewDate:
 EnterNewEventDuration:
   other: |
     Введите новую продолжительность события <b>{{ .Name }}</b> в минутах
+EnterNewEventPeriod:
+  other: |
+    Введите новую периодичность события <b>{{ .Name }}</b> в днях
 EnterNewEventLink:
   other: |
     Введите новую ссылку для события <b>{{ .Name }}</b>
@@ -364,6 +361,9 @@ EnterNewEventMaxParticipants:
 EnterNewEventName:
   other: |
     Введите новое название события <b>{{ .Name }}</b>
+EnterNewEventTheme:
+  other: |
+    Введите новую тематику события <b>{{ .Name }}</b>
 EnterNewEventNotes:
   other: |
     Введите новые заметки о событии <b>{{ .Name }}</b>
@@ -408,6 +408,9 @@ MembershipAllowed:
 MembershipDisallowed:
   other: |
     Для события <b>{{ .Name }}</b> абонементы запрещены
+EventPeriodChanged:
+  other: |
+    Периодичность события <b>{{ .Name }}</b> изменена на <b>{{ .Period }}</b> дней
 EventDurationChanged:
   other: |
     Продолжительность события <b>{{ .Name }}</b> изменена на <b>{{ .Duration }}</b> минут
@@ -442,6 +445,9 @@ EventMoved:
 EventNameChanged:
   other: |
     Название события изменено на <b>{{ .Name }}</b>
+EventThemeChanged:
+  other: |
+    Тематика события изменена на <b>{{ .Theme }}</b>
 EventNotesChanged:
   other: |
     Заметки о событии <b>{{ .Name }}</b> изменены
@@ -566,23 +572,23 @@ InvalidLocationError:
 InvalidTimeError:
   description: "User entered invalid date"
   other: "Время <code>{{ .Time }}</code> введено неверно. Пожалуйста, введите время снова в формате <code>HH:MM</code>."
-IrregularEventCancelNotification:
+EventCancelNotification:
   other: Событие <b>{{ .Name }}</b> было отменено
-IrregularEventChangedLocationNotification:
+EventChangedLocationNotification:
   other: Событие <b>{{ .Name }}</b> было перемещено на <b>{{ .LocationRu }}</b>
-IrregularEventChangedTimeNotification:
+EventChangedTimeNotification:
   other: Событие <b>{{ .Name }}</b> произойдёт в <b>{{ .StartTime.Format "15:04 02.01.2006" }}</b>
-IrregularEventCreated:
+EventCreated:
   other: |
     Событие <b>{{ .Name }}</b> успешно создано.
-IrregularEventDeleted:
+EventDeleted:
   other: |
     Событие <b>{{ .Name }}</b>, проводимое в <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b> было удалено.
-IrregularEventResumeNotification:
+EventResumeNotification:
   other: Событие <b>{{ .Name }}</b> было возобновлено
-IrregularEvents:
+Events:
   other: "События"
-IrregularEventsNoChanges:
+EventsNoChanges:
   other: |
     События оставлены без изменения.
 Join:
@@ -642,8 +648,6 @@ MoveGameNotification:
     Пользователь @{{ .Initiator }} <u>сдвинул</u> игру <b>{{ .GameRu }}</b>.
     Новое время: <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b>.
     Новая локация: <b>{{ .LocationRu }}</b>.
-MoveRegularEvent:
-  other: "Перенести регулярное мероприятие"
 MyGames:
   other: |
     {{- range $i, $date := .Announces }}
@@ -776,8 +780,6 @@ RegistrationClosed:
 RegistrationOpened:
   other: |
     Регистрация на <b>{{ .Name }}</b> открыта
-RegularEvents:
-  other: "Регулярные мероприятия"
 Reminder:
   other: "Мы ждём вас <b>{{ .StartTime.Format \"02.01.2006 15:04\" }}</b> - <b>{{ .GameRu }}</b>, локация - <b><a href=\"{{ .AddressLink}}\">{{ .LocationRu }}</a></b>\nКод от двери - 4321#\n\nДо встречи!\n"
 Remove:
@@ -786,8 +788,6 @@ RemoveGuests:
   other: "Удалить гостей"
 RemoveGuestsAdmin:
   other: "Выписать только гостей игрока"
-RestoreRegularEvent:
-  other: "Возобновить отмененное регулярное мероприятие"
 ResumeEvent:
   other: |
     Возобновить событие
@@ -837,9 +837,9 @@ SelectGuestsCountToAdd:
   other: "Пожалуйста, выберите число гостей, которое хотите добавить"
 SelectGuestsCountToRemove:
   other: "Пожалуйста, выберите число гостей, которое хотите удалить"
-SelectIrregularEventToDelete:
+SelectEventToDelete:
   other: "Пожалуйста, выберите событие, которое хотите удалить"
-SelectIrregularEventToEdit:
+SelectEventToEdit:
   other: "Пожалуйста, выберите событие, которое хотите изменить"
 SelectLocation:
   other: |
@@ -1079,6 +1079,8 @@ EnrollmentDeleted:
   other: "Набор удалён"
 EnrollmentsCaption:
   other: "Наборы на игры"
+ChangePeriod:
+  other: "Изменить периодичность события"
 YouJoinedUserToGame:
   other: |
     Вы успешно добавили пользователя в игру <b>{{ .GameRu }}</b>, проводимой в <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.
