@@ -54,6 +54,18 @@ AdminEnterUsernameToLeave:
   other: "Enter the username that you would like to remove from a game or event."
 AdminEnterUsernameToRemoveGuests:
   other: "Please enter the username you'd like to remove guests from."
+AllowUseMembership:
+  other: |
+    Allow membership usage
+DisallowUseMembership:
+  other: |
+    Forbid membership usage
+MembershipAllowed:
+  other: |
+    Membership usage is allowed for the event <b>{{ .Name }}</b>
+MembershipDisallowed:
+  other: |
+    Membership usage is disallowed for the event <b>{{ .Name }}</b>
 AdminEventJoined:
   other: |
     You have successfully added @{{ .User }} to <b>{{ .Event.Name }}</b>, held on <b>({{ weekday .Event.StartTime "en"}}) {{ .Event.StartTime.Format "02.01.2006" }} at {{ .Event.StartTime.Format "15:04" }}</b> at <b>{{ .Event.LocationEn }}</b>.
@@ -682,6 +694,8 @@ UpdateList:
   other: "Update list"
 Notifications:
   other: Notifications
+CanUseMembership:
+  other: Can visitor use membership?
 DisableFullSchedule:
   other: Don't Show Full Games
 EnableFullSchedule:
@@ -1027,3 +1041,27 @@ MailingList:
     {{ .Text }}
 ChangePeriod:
   other: "Change event period"
+EnrollmentCreated:
+  other: "Enrollment on game/event is created"
+Enrollments:
+  other: |
+    <b>Enrollment is open for:</b>
+    {{ range $i, $enrollment := . }}
+    <a href="{{ $enrollment.ChatLink }}">{{ $enrollment.Name }}</a> (contact @{{ $enrollment.Initiator }})
+    {{- end }}
+CreateEnrollment:
+  other: "Create enrollment for a game"
+DeleteEnrollment:
+  other: "Delete Enrollment for a game"
+EnrollmentDeleted:
+  other: "Enrollment is deleted"
+SelectEnrollmentToDelete:
+  other: "Please select Enrollment to delete"
+NoEnrollmentsToDelete:
+  other: "No Enrollments to delete"
+NoEnrollments:
+  other: "No Enrollments"
+EnrollmentsCaption:
+  other: "Enrollments for games"
+SelectEnrollmentType:
+  other: "Please select Enrollment type"

@@ -398,13 +398,13 @@ EnterUsernameToPromote:
   other: "Введите юзернейм пользователя, которого хотите повысить до админов"
 EventCancelled:
   other: |
-    Событие <b>{{ .Name }}</b> отменено
+    Мероприятие <b>{{ .Name }}</b> отменено
 MembershipAllowed:
   other: |
-    Для события <b>{{ .Name }}</b> абонементы разрешены
+    Для мероприятия <b>{{ .Name }}</b> абонементы разрешены
 MembershipDisallowed:
   other: |
-    Для события <b>{{ .Name }}</b> абонементы запрещены
+    Для мероприятия <b>{{ .Name }}</b> абонементы запрещены
 EventPeriodChanged:
   other: |
     Периодичность события <b>{{ .Name }}</b> изменена на <b>{{ .Period }}</b> дней
