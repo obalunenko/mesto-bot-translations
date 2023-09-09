@@ -252,11 +252,8 @@ FullCurrentGames:
     {{- range $i, $date := .Announces }}
     <b>{{ $date.Weekday }} - {{ $date.Date }}</b>
     {{- range $j, $announce := $date.Announces }}
-    {{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.Type "event") }}
+    {{ $announce.Time }} {{ $announce.Emoji }}
     {{- if not (eq $announce.BGGLink "") }}<a href="{{ $announce.BGGLink }}">{{ $announce.GameRu }}</a>{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков)
-    {{- else }}
-    {{- if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }}
-    {{- end }}
       {{- if $announce.Players }}:
       {{- range $k, $player := $announce.Players }}
       @{{ $player.Username }}{{ if not (eq $player.Guests 0) }} +{{ $player.Guests }}{{ end }}{{ if eq $player.Username $announce.Initiator }} (инициатор игры){{ end }}
@@ -275,11 +272,8 @@ CurrentGames:
     <b>{{ $date.Weekday }} - {{ $date.Date }}</b>
     {{- range $j, $announce := $date.Announces }}
     {{- if lt $announce.PlayersCount $announce.MaxPlayers }}
-    {{ $announce.Time }} {{ $announce.Emoji }} {{ if not (eq $announce.Type "event") }}
+    {{ $announce.Time }} {{ $announce.Emoji }}
     {{- if not (eq $announce.BGGLink "") }}<a href="{{ $announce.BGGLink }}">{{ $announce.GameRu }}</a>{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} игроков)
-    {{- else }}
-    {{- if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameRu }}</a>{{ else }}{{ $announce.GameRu }}{{ end }}
-    {{- end }}
       {{- if $announce.Players }}:
       {{- range $k, $player := $announce.Players }}
       @{{ $player.Username }}{{ if not (eq $player.Guests 0) }} +{{ $player.Guests }}{{ end }}{{ if eq $player.Username $announce.Initiator }} (инициатор игры){{ end }}
@@ -375,7 +369,10 @@ EnterNewEventTablesCount:
     Введите новое количество столов
 EnterNotes:
   other: |
-    Введите дополнительные заметки для события
+    Введите дополнительные заметки для мероприятия
+EnterPeriod:
+  other: |
+    Введите периодичность мероприятия в днях (0 - если мероприятие разовое)
 EnterParticipantsCount:
   other: |
     Введите максимальное число участников
