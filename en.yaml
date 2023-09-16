@@ -160,19 +160,27 @@ AnnounceRevoked:
     The game of <b>{{ .GameEn }}</b> held on ({{ weekday .StartTime "en"}}) <b>{{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> at <b>{{ .LocationEn }}</b> has been cancelled.
 Announcement:
   other: |
-    Games currently open:
-    {{ range $i, $date := . }}
+    {{ range $i, $date := .Announces }}
     {{- if $date.Announces }}
     {{- $length := len $date.Announces }}{{ if gt $length 0}}
     <b>{{ $date.Weekday }} - {{ $date.Date }}</b>
     {{- range $j, $announce := $date.Announces }}
     {{- if lt $announce.PlayersCount $announce.MaxPlayers }}
-    {{ $announce.Time }} {{ $announce.Emoji }} {{ $announce.GameEn }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players)
+    {{- if not (eq $announce.Type "event") }}
+    {{ $announce.Time }} {{ $announce.Emoji }} {{ if $announce.BGGLink }}{{ $link := deref $announce.BGGLink }}{{ if not (eq $link "")}}<a href="{{ $announce.BGGLink }}">{{ $announce.GameEn }}</a>{{ end }}{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameEn }}</a>{{ else }}{{ $announce.GameEn }}{{ end }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players)
+    {{- else }}
+    {{ $announce.Time }} {{ $announce.Emoji }} {{ if $announce.BGGLink }}{{ $link := deref $announce.BGGLink }}{{ if not (eq $link "")}}<a href="{{ $announce.BGGLink }}">{{ $announce.GameEn }}</a>{{ end }}{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameEn }}</a>{{ else }}{{ $announce.GameEn }}{{ end }}
+    {{- end }}
     {{- end }}
     {{- end }}
     {{- end }}
     {{- end }}
     {{ end }}
+    {{- if .Enrollments }}
+    <b>Enrollment opened for:</b>{{ range $i, $enrollment := .Enrollments }}
+    <a href="{{ $enrollment.ChatLink }}">{{ $enrollment.Name }}</a> (contact @{{ $enrollment.Initiator }})
+    {{- end }}
+    {{- end }}
 AnnouncesNoChanges:
   other: |
     No changes were made.
@@ -246,7 +254,7 @@ FullCurrentGames:
     <b>{{ $date.Weekday }} - {{ $date.Date }}</b>
     {{- range $j, $announce := $date.Announces }}
     {{ $announce.Time }} {{ $announce.Emoji }}
-    {{- if not (eq $announce.BGGLink "") }}<a href="{{ $announce.BGGLink }}">{{ $announce.GameEn }}</a>{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameEn }}</a>{{ else }}{{ $announce.GameEn }}{{ end }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players)
+    {{- if $announce.BGGLink }}{{ $link := deref $announce.BGGLink }}{{ if not (eq $link "")}}<a href="{{ $announce.BGGLink }}">{{ $announce.GameEn }}</a>{{ end }}{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameEn }}</a>{{ else }}{{ $announce.GameEn }}{{ end }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players)
       {{- if $announce.Players }}:
       {{- range $k, $player := $announce.Players }}
       @{{ $player.Username }}{{ if not (eq $player.Guests 0) }} +{{ $player.Guests }}{{ end }}{{ if eq $player.Username $announce.Initiator }} (game initiator){{ end }}
@@ -266,7 +274,7 @@ CurrentGames:
     {{- range $j, $announce := $date.Announces }}
     {{- if lt $announce.PlayersCount $announce.MaxPlayers }}
     {{ $announce.Time }} {{ $announce.Emoji }}
-    {{- if not (eq $announce.BGGLink "") }}<a href="{{ $announce.BGGLink }}">{{ $announce.GameEn }}</a>{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameEn }}</a>{{ else }}{{ $announce.GameEn }}{{ end }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players)
+    {{- if $announce.BGGLink }}{{ $link := deref $announce.BGGLink }}{{ if not (eq $link "")}}<a href="{{ $announce.BGGLink }}">{{ $announce.GameEn }}</a>{{ end }}{{ else if not (eq $announce.ChatLink "") }}<a href="{{ $announce.ChatLink }}">{{ $announce.GameEn }}</a>{{ else }}{{ $announce.GameEn }}{{ end }} ({{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players)
       {{- if $announce.Players }}:
       {{- range $k, $player := $announce.Players }}
       @{{ $player.Username }}{{ if not (eq $player.Guests 0) }} +{{ $player.Guests }}{{ end }}{{ if eq $player.Username $announce.Initiator }} (game initiator){{ end }}
