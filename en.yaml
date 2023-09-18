@@ -732,6 +732,8 @@ NotReadyYet:
   other: "This feature is not ready yet."
 NotificationsUpdated:
   other: Notification settings updated
+ScheduleWeeksUpdated:
+  other: Now you will be shown the schedule for {{ . }} weeks in advance
 OpenRegistration:
   other: |
     Open registration
@@ -1071,5 +1073,17 @@ NoEnrollments:
   other: "No Enrollments"
 EnrollmentsCaption:
   other: "Enrollments for games"
+ScheduleWeeks:
+  other: "Schedule length"
+SelectScheduleWeeks:
+  other: "Select how many weeks in advance you would like to see the game schedule"
+OneWeek:
+  other: "1 week"
+TwoWeeks:
+  other: "2 weeks"
+ThreeWeeks:
+  other: "3 weeks"
+MembershipEndingReminder:
+  other: "Your membership expires in {{ . }} days"
 SelectEnrollmentType:
   other: "Please select Enrollment type"
