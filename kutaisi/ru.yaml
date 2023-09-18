@@ -11,8 +11,8 @@ AddressesMsg:
     {{- range $i, $loc := .}}
     <b>Клуб настольных игр {{ $loc.NameRu }}</b>
     <a href="{{ $loc.AddressLink }}">{{ index $loc.Address "en" }}</a>
-    Как добраться от метро <a href="{{ $loc.HowToGoLink }}">{{ $loc.NameRu }}</a>
-    1 подъезд справа, код от подъезда - 4321#, 1 этаж
+    Как добраться: <a href="{{ $loc.HowToGoLink }}">{{ $loc.NameRu }}</a>
+    Поднимитесь наверх между 4 и 6 домами мимо мини-стадиона.
     {{ end }}
 Admin2CurrentGames:
   other: |
@@ -237,11 +237,11 @@ Contacts:
   other: Контакты
 ContactsMsg:
   other: |
-    Наш чат в Telegram: https://t.me/mesto_games
+    Наш чат в Telegram: https://t.me/+xTncvCfNLX81ZDhi
 
     Администраторы:
     {{- range $i, $loc := .}}
-    МЕСТО {{ $loc.NameRu }} – @{{ range $index, $admin := $loc.Admins }}{{if $index}} @{{end}}{{$admin}}{{end}}
+    Summer Set Kutaisi {{ $loc.NameRu }} – @{{ range $index, $admin := $loc.Admins }}{{if $index}} @{{end}}{{$admin}}{{end}}
     {{- end }}
 CreateGame:
   other: "Создать игру"
