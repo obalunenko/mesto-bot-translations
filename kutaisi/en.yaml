@@ -16,13 +16,19 @@ AddressesMsg:
     {{ end }}
 Admin2CurrentGames:
   other: |
-    {{- range $i, $date := . }}
+    {{- range $i, $date := .Announces }}
     <b><u>{{ $date.Weekday }} - {{ $date.Date }}</u></b>
     {{- range $j, $announce := $date.Announces }}
     <b>{{ $announce.Time }} - {{ $announce.Emoji }} {{ $announce.GameEn }}</b>
       {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players
     {{- end }}
     {{ end }}
+    {{- if .Enrollments }}
+    <b>Enrollment opened for:</b>
+    {{ range $i, $enrollment := .Enrollments }}
+    <a href="{{ $enrollment.ChatLink }}">{{ $enrollment.Name }}</a> (contact @{{ $enrollment.Initiator }})
+    {{- end }}
+    {{- end }}
 AdminAnnounceInfo:
   other: |
     <b><u>{{ .StartTime.Format "02.01.2006 15:04" }}</u></b>
