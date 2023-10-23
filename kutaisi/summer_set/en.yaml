@@ -1,5 +1,5 @@
 About:
-  other: About Mesto
+  other: About Summer Set Kutaisi
 AddGuests:
   other: "Add guests"
 AddGuestsAdmin:
@@ -9,20 +9,26 @@ Addresses:
 AddressesMsg:
   other: |
     {{- range $i, $loc := .}}
-    <b>MESTO {{ $loc.NameEn }}</b>
+    <b>Board Game Club {{ $loc.NameEn }}</b>
     <a href="{{ $loc.AddressLink }}">{{ index $loc.Address "en" }}</a>
-    How to reach from m/s <a href="{{ $loc.HowToGoLink }}">{{ $loc.NameEn }}</a>
-    1 entrance on the right, door code - 4321#, 1 floor
+    How to reach from <a href="{{ $loc.HowToGoLink }}">{{ $loc.NameEn }}</a>
+    Go uphill between #4 & #6 buildings, just pass the mini-stadium.
     {{ end }}
 Admin2CurrentGames:
   other: |
-    {{- range $i, $date := . }}
+    {{- range $i, $date := .Announces }}
     <b><u>{{ $date.Weekday }} - {{ $date.Date }}</u></b>
     {{- range $j, $announce := $date.Announces }}
     <b>{{ $announce.Time }} - {{ $announce.Emoji }} {{ $announce.GameEn }}</b>
       {{ $announce.PlayersCount }}/{{ $announce.MaxPlayers }} players
     {{- end }}
     {{ end }}
+    {{- if .Enrollments }}
+    <b>Enrollment opened for:</b>
+    {{ range $i, $enrollment := .Enrollments }}
+    <a href="{{ $enrollment.ChatLink }}">{{ $enrollment.Name }}</a> (contact @{{ $enrollment.Initiator }})
+    {{- end }}
+    {{- end }}
 AdminAnnounceInfo:
   other: |
     <b><u>{{ .StartTime.Format "02.01.2006 15:04" }}</u></b>
@@ -238,11 +244,11 @@ Contacts:
   other: Contacts
 ContactsMsg:
   other: |
-    Our Telegram chat: https://t.me/mesto_games
+    Our Telegram chat: https://t.me/+xTncvCfNLX81ZDhi
 
     Administrators:
     {{- range $i, $loc := .}}
-    MESTO {{ $loc.NameEn }} – @{{ range $index, $admin := $loc.Admins }}{{if $index}} @{{end}}{{$admin}}{{end}}
+    Summer Set Kutaisi {{ $loc.NameEn }} – @{{ range $index, $admin := $loc.Admins }}{{if $index}} @{{end}}{{$admin}}{{end}}
     {{- end }}
 CreateGame:
   other: "Create game"
@@ -732,8 +738,6 @@ NotReadyYet:
   other: "This feature is not ready yet."
 NotificationsUpdated:
   other: Notification settings updated
-ScheduleWeeksUpdated:
-  other: Now you will be shown the schedule for {{ . }} weeks in advance
 OpenRegistration:
   other: |
     Open registration
@@ -750,23 +754,23 @@ Prices:
   other: Prices
 PricesMsg:
   other: |
-    🎲 Game day / night:
-    • Weekdays (day hours: 10:00 a.m. - 5:00 p.m. with game end till 7 p.m.) – 12 GEL
-    • Monday - Tuesday (night hours after 7 p.m.) – 15 GEL
-    • Wednesday - Friday (night hours after 7 p.m.) – 20 GEL
-    • Weekends, holidays – 25 GEL
+    🎲  Game day/night: 
+    Weekdays 
+    •  Monday – Thursday - 18:00 – 01:00  – 10 GEL
+    •  Friday – 18:00 – 01:00 – 12 GEL
+    Weekends
+    12:00 – 01:00 – 15 GEL
+    Holidays or Birthdays – 30 GEL
     
-    Memberships:
-    • 5 visits (valid for 2 months) – 90 GEL
-    • Unlimited membership for a month – 130 GEL
+    Memberships
+    •  5 visits ( valid up to 2 months ) – 50 GEL
+    •  Unlimited visits for a month – 80 GEL
+     
+    Hourly rates for game sessions up to 2 hours
+    •  Weekdays – 6 GEL
+    •  Weekends – 8 GEL
     
-    Hourly rates for games up to 2 hours:
-    • Weekdays – 6 GEL / hour
-    • Weekends – 8 GEL / hour
-    
-    Bring your own game that we don't have and play for free as an owner.
-    
-    💻 Coworking - 10 GEL / hour, 25 GEL / day, 300 GEL / month
+    Bring your own game that we don’t have and play for free as an owner.
 Promote:
   other: "Promote"
 QR:
@@ -1073,17 +1077,5 @@ NoEnrollments:
   other: "No Enrollments"
 EnrollmentsCaption:
   other: "Enrollments for games"
-ScheduleWeeks:
-  other: "Schedule length"
-SelectScheduleWeeks:
-  other: "Select how many weeks in advance you would like to see the game schedule"
-OneWeek:
-  other: "1 week"
-TwoWeeks:
-  other: "2 weeks"
-ThreeWeeks:
-  other: "3 weeks"
-MembershipEndingReminder:
-  other: "Your membership expires in {{ . }} days"
 SelectEnrollmentType:
   other: "Please select Enrollment type"
