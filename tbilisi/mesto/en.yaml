@@ -658,7 +658,7 @@ MyMembership:
   other: |
     <b>{{ if eq .Kind "unlimited" }}Unlimited {{ end }}Subscription{{ if not (eq .Kind "unlimited") }} on {{ .VisitsNumber }} visits{{ end }}</b>
     Valid from {{ .StartDate.Format "02.01.2006" }} to {{ .FinishDate.Format "02.01.2006" }}.
-    Visits: {{ len .VisitsList }}{{ if not (eq .Kind "unlimited") }}/{{ .VisitsNumber }}{{ end }}
+    Visits: {{ .VisitsWithMembership }}{{ if not (eq .Kind "unlimited") }}/{{ .VisitsNumber }}{{ end }}
     {{- range $i, $visit := .VisitsList }}
     - <code>{{ $visit.VisitDate.Format "02.01.2006" }} ({{ if $visit.MembershipUsed }}with membership{{ else }}without membership{{ end }})</code>
     {{- end }}
