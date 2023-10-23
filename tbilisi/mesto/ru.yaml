@@ -662,8 +662,8 @@ MyMembership:
     <b>{{ if eq .Kind "unlimited" }}Безлимитный {{ end }}Абонемент{{ if not (eq .Kind "unlimited") }} на {{ .VisitsNumber }} посещений{{ end }}</b>
     Действителен с {{ .StartDate.Format "02.01.2006" }} по {{ .FinishDate.Format "02.01.2006" }}.
     Посещений: {{ len .VisitsList }}{{ if not (eq .Kind "unlimited") }}/{{ .VisitsNumber }}{{ end }}
-    {{- range $i, $date := .VisitsList }}
-    - <code>{{ $date.Format "02.01.2006" }}</code>
+    {{- range $i, $visit := .VisitsList }}
+    - <code>{{ $visit.VisitDate.Format "02.01.2006" }} ({{ if $visit.MembershipUsed }}абонемент{{ else }}без абонемента{{ end }})</code>
     {{- end }}
 NewPlaceInAnnounceNotification:
   other: |
@@ -988,7 +988,7 @@ UserInfo:
     {{- end }}
     Посещений в последний месяц: {{ .VisitsLastMonth }}
     {{- range $i, $visit := .VisitsListLastMonth }}
-    - <code>{{ $visit.Date.Format "02.01.2006" }} ({{ if $visit.ByMembership }}абонемент{{ else }}без абонемента{{ end }})</code>
+    - <code>{{ $visit.VisitDate.Format "02.01.2006" }} ({{ if $visit.MembershipUsed }}абонемент{{ else }}без абонемента{{ end }})</code>
     {{- end }}
     {{- if .Attendance }}
     Собирается посетить:
