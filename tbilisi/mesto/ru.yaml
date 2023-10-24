@@ -734,6 +734,8 @@ NotReadyYet:
   other: "Ещё не готово"
 NotificationsUpdated:
   other: Настройки уведомлений обновлены
+ScheduleWeeksUpdated:
+  other: Теперь вам будет показываться расписание на {{ . }} недели вперёд
 OpenRegistration:
   other: |
     Открыть регистрацию
@@ -1078,6 +1080,16 @@ EnrollmentsCaption:
   other: "Наборы на игры"
 ChangePeriod:
   other: "Изменить периодичность события"
+ScheduleWeeks:
+  other: "Длина расписания"
+SelectScheduleWeeks:
+  other: "Выберите, на сколько недель вперед вы хотели бы видеть расписание игр"
+OneWeek:
+  other: "На 1 неделю"
+TwoWeeks:
+  other: "На 2 недели"
+ThreeWeeks:
+  other: "На 3 недели"
 YouJoinedUserToGame:
   other: |
     Вы успешно добавили пользователя в игру <b>{{ .GameRu }}</b>, проводимой в <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.
