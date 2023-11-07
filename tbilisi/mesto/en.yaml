@@ -750,23 +750,23 @@ Prices:
   other: Prices
 PricesMsg:
   other: |
-    🎲 Game day / night:
-    • Weekdays, holidays – ₾25
+    🎲 Gaming session:
     • Monday - Tuesday – ₾15
     • Wednesday - Friday – ₾20
+    • Weekends, holidays – ₾25
     
     Memberships:
     • 5 visits (valid for 2 months) – ₾90
-    • Unlimited membership for a month – ₾130
+    • Monthly unlimited membership – ₾130
     
-    Hourly rates for games up to 2 hours:
+    Hourly rates for games up to 3 hours:
     • Weekdays – ₾6 / hour
     • Weekends – ₾8 / hour
     
     Bring your own game that we don't have and play for free as an owner.
     
-    💻 Coworking - ₾10 / hour, ₾25 / day, ₾300 / month
-    If you have an unlimited gaming membership, visiting the coworking space is ₾15 / day.
+    💻 Coworking rates: ₾10 / hour, ₾25 / day, ₾300 / month.
+    If you have a monthly gaming membership, coworking fee is ₾15 / day.
 Promote:
   other: "Promote"
 QR:
