@@ -656,9 +656,9 @@ MyGames:
     {{ end }}
 MyMembership:
   other: |
-    <b>{{ if eq .Kind "unlimited" }}Unlimited {{ end }}Subscription{{ if not (eq .Kind "unlimited") }} on {{ .VisitsNumber }} visits{{ end }}</b>
+    <b>{{ if eq .Kind "unlimited" }}Unlimited {{ end }}Subscription{{ if eq .Kind "5visits" }} on {{ .VisitsNumber }} visits{{ end }}</b>
     Valid from {{ .StartDate.Format "02.01.2006" }} to {{ .FinishDate.Format "02.01.2006" }}.
-    Visits: {{ .VisitsWithMembership }}{{ if not (eq .Kind "unlimited") }}/{{ .VisitsNumber }}{{ end }}
+    Visits: {{ .VisitsWithMembership }}{{ if eq .Kind "5visits" }}/{{ .VisitsNumber }}{{ end }}
     {{- range $i, $visit := .VisitsList }}
     - <code>{{ $visit.VisitDate.Format "02.01.2006" }} ({{ if $visit.MembershipUsed }}with membership{{ else }}without membership{{ end }})</code>
     {{- end }}
@@ -917,7 +917,7 @@ Subscriptions:
     Today is <code>{{ now.Format "02.01.2006" }}</code>
     <code>Username    |        Period         | Left</code>
     {{- range $i, $sub := . }}
-    <code>@{{ $sub.Username }} | {{ .PurchaseDate.Format "02.01.2006" }}-{{ .FinishDate.Format "02.01.2006" }} | {{ daysLeft .PurchaseDate .Duration }} days / {{ if not (eq .Kind "unlimited") }}{{ .VisitsLeft }} visits{{ else }}Unlimited{{ end }}</code>
+    <code>@{{ $sub.Username }} | {{ .PurchaseDate.Format "02.01.2006" }}-{{ .FinishDate.Format "02.01.2006" }} | {{ daysLeft .PurchaseDate .Duration }} days / {{ if eq .Kind "unlimited") }}Unlimited{{ else if eq .Kind "coworking"}}Coworking{{ else }}{{ .VisitsLeft }} visits{{ end }}</code>
     {{- end }}
 ThreeHoursNotification:
   other: Notify 3 hours before
