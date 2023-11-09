@@ -924,7 +924,7 @@ SubscriptionSold:
 Subscriptions:
   other: |
     Сегодня <code>{{ now.Format "02.01.2006" }}</code>
-    <code>Имя пользователя    |    Период    | Осталось</code>
+    <code>Имя пользователя    |    Период   | Осталось</code>
     {{- range $i, $sub := . }}
     <code>@{{ $sub.Username }} | {{ .PurchaseDate.Format "02.01" }}-{{ .FinishDate.Format "02.01" }} | {{ daysLeft .PurchaseDate .Duration }} дней / {{ if eq .Kind "unlimited" }}Безлимит{{else if eq .Kind "coworking" }}Коворкинг{{ else }}{{ .VisitsLeft }} посещений{{ end }}</code>
     {{- end }}
