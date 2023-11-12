@@ -659,12 +659,16 @@ MyGames:
     {{ end }}
 MyMembership:
   other: |
-    <b>{{ if eq .Kind "unlimited" }}Безлимитный {{ end }}Абонемент{{ if eq .Kind "visits" }} на {{ .VisitsNumber }} посещений{{ end }}</b>
-    Действителен с {{ .StartDate.Format "02.01.2006" }} по {{ .FinishDate.Format "02.01.2006" }}.
-    Посещений: {{ .VisitsWithMembership }}{{ if eq .Kind "5visits" }}/{{ .VisitsNumber }}{{ end }}
-    {{- range $i, $visit := .VisitsList }}
+    {{- range $j, $membership := .}}
+    <b>{{ if eq $membership.Kind "unlimited" }}Безлимитный {{ end }}Абонемент{{ if eq $membership.Kind "5visits" }} на {{ $membership.VisitsNumber }} посещений{{ end }}{{ if eq $membership.Kind "coworking" }} на коворкинг{{ end }}</b>
+    Действителен с {{ $membership.StartDate.Format "02.01.2006" }} по {{ $membership.FinishDate.Format "02.01.2006" }}.
+    {{- if not (eq $membership.Kind "coworking") }}
+    Посещений: {{ $membership.VisitsWithMembership }}{{ if eq $membership.Kind "5visits" }}/{{ $membership.VisitsNumber }}{{ end }}
+    {{- range $i, $visit := $membership.VisitsList }}
     - <code>{{ $visit.VisitDate.Format "02.01.2006" }} ({{ if $visit.MembershipUsed }}абонемент{{ else }}без абонемента{{ end }})</code>
     {{- end }}
+    {{- end }}
+    {{ end }}
 NewPlaceInAnnounceNotification:
   other: |
     Только что появилось свободное место на игру <b>{{ .GameRu }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.

@@ -656,12 +656,16 @@ MyGames:
     {{ end }}
 MyMembership:
   other: |
-    <b>{{ if eq .Kind "unlimited" }}Unlimited {{ end }}Subscription{{ if eq .Kind "5visits" }} on {{ .VisitsNumber }} visits{{ end }}</b>
-    Valid from {{ .StartDate.Format "02.01.2006" }} to {{ .FinishDate.Format "02.01.2006" }}.
-    Visits: {{ .VisitsWithMembership }}{{ if eq .Kind "5visits" }}/{{ .VisitsNumber }}{{ end }}
-    {{- range $i, $visit := .VisitsList }}
+    {{- range $j, $membership := .}}
+    <b>{{ if eq $membership.Kind "unlimited" }}Unlimited {{ end }}{{ if eq $membership.Kind "coworking" }}Coworking {{ end }}Subscription{{ if eq $membership.Kind "5visits" }} on {{ $membership.VisitsNumber }} visits{{ end }}</b>
+    Valid from {{ $membership.StartDate.Format "02.01.2006" }} to {{ $membership.FinishDate.Format "02.01.2006" }}.
+    {{- if not (eq $membership.Kind "coworking") }}
+    Visits: {{ $membership.VisitsWithMembership }}{{ if eq $membership.Kind "5visits" }}/{{ $membership.VisitsNumber }}{{ end }}
+    {{- range $i, $visit := $membership.VisitsList }}
     - <code>{{ $visit.VisitDate.Format "02.01.2006" }} ({{ if $visit.MembershipUsed }}with membership{{ else }}without membership{{ end }})</code>
     {{- end }}
+    {{- end }}
+    {{ end }}
 NewPlaceInAnnounceNotification:
   other: |
     New spot has just become available for a game: <b>{{ .GameEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> on <b>{{ .LocationEn }}</b>.
