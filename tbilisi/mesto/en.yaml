@@ -469,6 +469,7 @@ GameDescription:
     Recommended players: {{ .RecommendedPlayers }}
     Complexity: {{ .Complexity }} / 5
     Duration: {{ .MinDuration }}-{{ .MaxDuration }} min
+    Language: {{ .Language }}
     {{ .DescriptionEn }}</code>
     {{- $length := len .Owners }}
     {{- if eq $length 1 }}
@@ -615,7 +616,7 @@ ListGames:
   other: |
     <code>
     {{- range $i, $game := . }}
-    {{ $game.NameEn }}
+    {{ $game.NameEn }} ({{ $game.Language }}): {{ $game.MinPlayers }}-{{ $game.MaxPlayers }} players
     {{- end }}
     </code>
 MarkUser:
