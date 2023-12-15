@@ -472,6 +472,7 @@ GameDescription:
     Рекомендованное количество игроков: {{ .RecommendedPlayers }}
     Сложность: {{ .Complexity }} / 5
     Продолжительность: {{ .MinDuration }}-{{ .MaxDuration }} мин
+    Язык: {{ .Language }}
     {{ .DescriptionRu }}</code>
     {{- $length := len .Owners }}
     {{- if eq $length 1 }}
