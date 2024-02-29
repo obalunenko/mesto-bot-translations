@@ -472,9 +472,8 @@ GameDescription:
     Language: {{ .Language }}
     {{ .DescriptionEn }}</code>
     {{- $length := len .Owners }}
-    {{- if eq $length 1 }}
-    {{- $first := index .Owners 0}}
-    Owner:  {{- if not (eq $first.Username "МЕСТО") }}@{{ end }}{{ $first.Username }}{{ if $first.Notes }}{{ $notes := deref $first.Notes }}{{ if not (eq $notes "")}} ({{ $notes }}){{ end }}{{ end }}
+    {{- if eq $length 1 }}{{- $first := index .Owners 0}}{{ if not (eq $first.Username "МЕСТО") }}
+    Owner: @{{ $first.Username }}{{ if $first.Notes }}{{ $notes := deref $first.Notes }}{{ if not (eq $notes "")}} ({{ $notes }}){{ end }}{{ end }}{{ end }}
     {{- else if gt $length 1 }}
     Owners:
     {{- range $i, $owner := .Owners}}
