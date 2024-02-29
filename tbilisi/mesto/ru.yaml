@@ -475,9 +475,8 @@ GameDescription:
     Язык: {{ .Language }}
     {{ .DescriptionRu }}</code>
     {{- $length := len .Owners }}
-    {{- if eq $length 1 }}
-    {{- $first := index .Owners 0}}
-    Владелец:  {{- if not (eq $first.Username "МЕСТО") }}@{{ end }}{{ $first.Username }}{{ if $first.Notes }}{{ $notes := deref $first.Notes }}{{ if not (eq $notes "")}} ({{ $notes }}){{ end }}{{ end }}
+    {{- if eq $length 1 }}{{- $first := index .Owners 0}}{{ if not (eq $first.Username "МЕСТО") }}
+    Владелец: @{{ $first.Username }}{{ if $first.Notes }}{{ $notes := deref $first.Notes }}{{ if not (eq $notes "")}} ({{ $notes }}){{ end }}{{ end }}{{ end }}
     {{- else if gt $length 1 }}
     Владельцы:
     {{- range $i, $owner := .Owners}}
