@@ -671,6 +671,8 @@ NewPlaceInAnnounceNotification:
     Только что появилось свободное место на игру <b>{{ .GameRu }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.
 Next:
   other: "Далее >"
+DoubleNext:
+  other: ">>"
 NoAnnounces:
   other: "На данный момент Вы ещё не записались ни на одну игру."
 NoAnnouncesToDelete:
@@ -749,6 +751,8 @@ PlayersUp:
   other: "Увеличить макс число игроков"
 Previous:
   other: "< Назад"
+DoublePrevious:
+  other: "<<"
 Prices:
   other: Цены
 PricesMsg:

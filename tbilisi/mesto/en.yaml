@@ -668,6 +668,8 @@ NewPlaceInAnnounceNotification:
     New spot has just become available for a game: <b>{{ .GameEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> on <b>{{ .LocationEn }}</b>.
 Next:
   other: "Next >"
+DoubleNext:
+  other: ">>"
 NoAnnounces:
   other: "You haven't signed up for any games yet."
 NoAnnouncesToDelete:
@@ -747,6 +749,8 @@ PlayersUp:
   other: "Increase the max number of players"
 Previous:
   other: "< Previous"
+DoublePrevious:
+  other: "<<"
 Prices:
   other: Prices
 PricesMsg:
