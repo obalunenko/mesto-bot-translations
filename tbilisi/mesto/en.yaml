@@ -662,6 +662,18 @@ MyMembership:
     {{- end }}
     {{- end }}
     {{ end }}
+PlayerLeftNotification:
+  other: |
+    @{{ .User }} has left <b>{{ .Announce.GameEn }} on ({{ weekday .Announce.StartTime "en"}}) {{ .Announce.StartTime.Format "02.01.2006" }} at {{ .Announce.StartTime.Format "15:04" }}</b> on <b>{{ .Announce.LocationEn }}</b>
+PlayerJoinedNotification:
+  other: |
+    @{{ .User }} has joined to <b>{{ .Announce.GameEn }} on ({{ weekday .Announce.StartTime "en"}}) {{ .Announce.StartTime.Format "02.01.2006" }} at {{ .Announce.StartTime.Format "15:04" }}</b> on <b>{{ .Announce.LocationEn }}</b>
+ParticipantLeftNotification:
+  other: |
+    @{{ .User }} has left to <b>{{ .Event.Name }} on ({{ weekday .Event.StartTime "en" }}) {{ .Event.StartTime.Format "02.01.2006" }} at {{ .Event.StartTime.Format "15:04" }}</b> on <b>{{ .Event.LocationEn }}</b>
+ParticipantJoinedNotification:
+  other: |
+    @{{ .User }} has joined to <b>{{ .Event.Name }} on ({{ weekday .Event.StartTime "en" }}) {{ .Event.StartTime.Format "02.01.2006" }} at {{ .Event.StartTime.Format "15:04" }}</b> on <b>{{ .Event.LocationEn }}</b>
 NewPlaceInAnnounceNotification:
   other: |
     New spot has just become available for a game: <b>{{ .GameEn }} on ({{ weekday .StartTime "en"}}) {{ .StartTime.Format "02.01.2006" }} at {{ .StartTime.Format "15:04" }}</b> on <b>{{ .LocationEn }}</b>.
@@ -1088,3 +1100,11 @@ ThreeWeeks:
   other: "3 weeks"
 SelectEnrollmentType:
   other: "Please select Enrollment type"
+NotifyCreator:
+  other: "Notify me when someone sign up and sign out"
+DontNotifyCreator:
+  other: "Don't notify me when someone sign up and sign out"
+NotifyCreatorDisabled:
+  other: "You will no longer receive notifications about signing up and signing out of your games"
+NotifyCreatorEnabled:
+  other: "From now you will receive notifications about signing up and signing out of your games"

@@ -668,6 +668,18 @@ MyMembership:
 NewPlaceInAnnounceNotification:
   other: |
     Только что появилось свободное место на игру <b>{{ .GameRu }} {{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.
+PlayerLeftNotification:
+  other: |
+    @{{ .User }} покинул <b>{{ .Announce.GameRu }}, проводимую ({{ weekday .Announce.StartTime "ru"}}) {{ .Announce.StartTime.Format "02.01.2006" }} в {{ .Announce.StartTime.Format "15:04" }}</b> на <b>{{ .Announce.LocationRu }}</b>
+PlayerJoinedNotification:
+  other: |
+    @{{ .User }} присоединился к <b>{{ .Announce.GameRu }}, проводимой ({{ weekday .Announce.StartTime "ru"}}) {{ .Announce.StartTime.Format "02.01.2006" }} в {{ .Announce.StartTime.Format "15:04" }}</b> на <b>{{ .Announce.LocationRu }}</b>
+ParticipantLeftNotification:
+  other: |
+    @{{ .User }} покинул <b>{{ .Event.Name }}, проводимое ({{ weekday .Event.StartTime "ru" }}) {{ .Event.StartTime.Format "02.01.2006" }} в {{ .Event.StartTime.Format "15:04" }}</b> на <b>{{ .Event.LocationКг }}</b>
+ParticipantJoinedNotification:
+  other: |
+    @{{ .User }} присоединился к <b>{{ .Event.Name }}, проводимому ({{ weekday .Event.StartTime "ru" }}) {{ .Event.StartTime.Format "02.01.2006" }} в {{ .Event.StartTime.Format "15:04" }}</b> на <b>{{ .Event.LocationRu }}</b>
 Next:
   other: "Далее >"
 DoubleNext:
@@ -1096,3 +1108,11 @@ ThreeWeeks:
 YouJoinedUserToGame:
   other: |
     Вы успешно добавили пользователя в игру <b>{{ .GameRu }}</b>, проводимой в <b>{{ .StartTime.Format "02.01.2006" }} ({{ weekday .StartTime "ru"}}) в {{ .StartTime.Format "15:04" }}</b> на <b>{{ .LocationRu }}</b>.
+NotifyCreator:
+  other: "Уведомлять меня, когда кто-то запишется на мою игру"
+DontNotifyCreator:
+  other: "Не уведомлять меня, когда кто-то запишется на мою игру"
+NotifyCreatorDisabled:
+  other: "Вы больше не будете получать уведомления о присоединении и удалении игроков к вашим играм"
+NotifyCreatorEnabled:
+  other: "С этого момента вы будете получать уведомления о присоединении и удалении игроков к вашим играм"
