@@ -676,7 +676,7 @@ PlayerJoinedNotification:
     @{{ .User }} присоединился к <b>{{ .Announce.GameRu }}, проводимой ({{ weekday .Announce.StartTime "ru"}}) {{ .Announce.StartTime.Format "02.01.2006" }} в {{ .Announce.StartTime.Format "15:04" }}</b> на <b>{{ .Announce.LocationRu }}</b>
 ParticipantLeftNotification:
   other: |
-    @{{ .User }} покинул <b>{{ .Event.Name }}, проводимое ({{ weekday .Event.StartTime "ru" }}) {{ .Event.StartTime.Format "02.01.2006" }} в {{ .Event.StartTime.Format "15:04" }}</b> на <b>{{ .Event.LocationКг }}</b>
+    @{{ .User }} покинул <b>{{ .Event.Name }}, проводимое ({{ weekday .Event.StartTime "ru" }}) {{ .Event.StartTime.Format "02.01.2006" }} в {{ .Event.StartTime.Format "15:04" }}</b> на <b>{{ .Event.LocationRu }}</b>
 ParticipantJoinedNotification:
   other: |
     @{{ .User }} присоединился к <b>{{ .Event.Name }}, проводимому ({{ weekday .Event.StartTime "ru" }}) {{ .Event.StartTime.Format "02.01.2006" }} в {{ .Event.StartTime.Format "15:04" }}</b> на <b>{{ .Event.LocationRu }}</b>
