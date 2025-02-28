@@ -549,7 +549,9 @@ InternalError:
   description: "Cannot connect to database or to lambdas"
   other: "Произошла внутренняя ошибка: <code>{{ .Error }}</code>"
 InvalidCountError:
-  other: "Вы ввели неверное число"
+  other: "Вы ввели неверное число: {{ .Count }}"
+NegativeCountError:
+  other: "Вы ввели отрицательное число: {{ .Count }}"
 InvalidDateError:
   description: "User entered invalid date"
   other: "Дата <code>{{ .Date }}</code> введена неверно. Пожалуйста, введите дату снова в формате <code>dd.mm</code>."
