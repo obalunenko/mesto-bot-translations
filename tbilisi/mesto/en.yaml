@@ -232,6 +232,8 @@ ClosedLocation:
     This time slot is outside our operating hours. Please choose a different starting time.
 Contacts:
   other: Contacts
+MyHistory:
+  other: My History
 ContactsMsg:
   other: |
     Our Telegram chat: https://t.me/mesto_games

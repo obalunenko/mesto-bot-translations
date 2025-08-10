@@ -231,6 +231,8 @@ ClosedLocation:
     Время игры выходит за ограничения времени работы МЕСТА. Пожалуйста, выберите другое время для игры.
 Contacts:
   other: Контакты
+MyHistory:
+  other: Моя история
 ContactsMsg:
   other: |
     Наш чат в Telegram: https://t.me/mesto_games
